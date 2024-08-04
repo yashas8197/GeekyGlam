@@ -1,10 +1,14 @@
-import { Button } from "@/components/ui/button";
+import { Outlet } from "react-router-dom";
+import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   return (
-    <div>
-      <Button>Add</Button>
-    </div>
+    <>
+      <Header />
+      <Outlet />
+      <Footer />
+    </>
   );
 }
 
