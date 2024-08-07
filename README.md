@@ -9,7 +9,7 @@
 To get started with geekyMart locally, follow these steps:
 
     git clone https://github.com/yashas8197/geekyMart.git
-    cd geekyMart
+    cd geekyGlam
     npm install
     npm run dev
 
