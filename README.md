@@ -1,8 +1,23 @@
-# React + Vite
+<div align="center">
+    <h1 align="center">geekyGlam</h1>
+    <h2 align="center">Where Style Meets Trend</h2>
+    <p align="center">Discover the latest fashion trends and elevate your wardrobe with our exclusive collection of new clothes.</p>
+</div>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## **Installation & Setup**
 
-Currently, two official plugins are available:
+To get started with GeekyGlam locally, follow these steps:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+    git clone https://github.com/yashas8197/GeekyGlam.git
+    cd GeekyGlam
+    npm install
+    npm run dev
+
+## **Features**
+
+## **Built With**
+
+- **React JS** - A JavaScript library for building user interfaces
+- **Redux Toolkit** - A toolkit for efficient Redux development
+- **React Router v6** - Declarative routing for React.js
+- **shadcn** - A library for Styling
