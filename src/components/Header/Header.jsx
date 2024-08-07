@@ -11,17 +11,17 @@ const Header = () => {
           </Link>
 
           <div className="hidden md:flex space-x-6">
-            <Link to="/search">
-              <Search />
+            <Link to="/search" className="group">
+              <Search className="duration-300 group-hover:scale-125" />
             </Link>
-            <Link to="/profile">
-              <CircleUser />
+            <Link to="/profile" className="group">
+              <CircleUser className="duration-300 group-hover:scale-125" />
             </Link>
-            <Link to="wishlist">
-              <Heart />
+            <Link to="wishlist" className="group">
+              <Heart className="duration-300 group-hover:scale-125" />
             </Link>
-            <Link to="/cartlist">
-              <ShoppingCart />
+            <Link to="/cartlist" className="group">
+              <ShoppingCart className="duration-300 group-hover:scale-125" />
             </Link>
           </div>
 
