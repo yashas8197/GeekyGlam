@@ -1,5 +1,5 @@
 <div align="center">
-    <h1 align="center">geekyMart</h1>
+    <h1 align="center">geekyGlam</h1>
     <h2 align="center">Where Style Meets Trend</h2>
     <p align="center">Discover the latest fashion trends and elevate your wardrobe with our exclusive collection of new clothes.</p>
 </div>
@@ -9,7 +9,7 @@
 To get started with geekyMart locally, follow these steps:
 
     git clone https://github.com/yashas8197/geekyMart.git
-    cd geekyMart
+    cd geekyGlam
     npm install
     npm run dev
 
@@ -20,3 +20,4 @@ To get started with geekyMart locally, follow these steps:
 - **React JS** - A JavaScript library for building user interfaces
 - **Redux Toolkit** - A toolkit for efficient Redux development
 - **React Router v6** - Declarative routing for React.js
+- **shadcn** - A library for Styling
