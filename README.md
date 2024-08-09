@@ -8,13 +8,8 @@
 
 To get started with GeekyGlam locally, follow these steps:
 
-<<<<<<< HEAD
     git clone https://github.com/yashas8197/GeekyGlam.git
     cd GeekyGlam
-=======
-    git clone https://github.com/yashas8197/geekyMart.git
-    cd geekyGlam
->>>>>>> d72ba9c (Update README.md)
     npm install
     npm run dev
 
