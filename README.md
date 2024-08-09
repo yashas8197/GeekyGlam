@@ -6,10 +6,10 @@
 
 ## **Installation & Setup**
 
-To get started with geekyMart locally, follow these steps:
+To get started with GeekyGlam locally, follow these steps:
 
-    git clone https://github.com/yashas8197/geekyMart.git
-    cd geekyGlam
+    git clone https://github.com/yashas8197/GeekyGlam.git
+    cd GeekyGlam
     npm install
     npm run dev
 

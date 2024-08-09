@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useLocation, useSearchParams } from "react-router-dom";
+import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import {
   categoryFilter,
   clearCategoryFilter,
@@ -16,17 +16,11 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
 import Banner from "@/components/Banner";
 import { Slider } from "@/components/ui/slider";
 import { Checkbox } from "@/components/ui/checkbox";
+import Loading from "@/components/Shimmer/Loading";
+import ProductCard from "@/components/ProductCard/ProductCard";
 
 const ProductsList = () => {
   const location = useLocation();
@@ -52,9 +46,26 @@ const ProductsList = () => {
       dispatch(clearCategoryFilter());
       dispatch(categoryFilter({ value: filterCategory, checked: true }));
     }
-  }, [dispatch, filterCategory]);
+  }, []);
 
-  if (status === "loading") return <p>loading...</p>;
+  if (status === "loading") {
+    return (
+      <div className="flex justify-center items-center mt-96">
+        <div className="grid grid-cols-4 gap-4 mx-48">
+          {"abcdefghij".split(" ").map((i) => (
+            <div
+              key={i}
+              className="mx-40 flex justify-center items-center gap-6"
+            >
+              <Loading />
+              <Loading />
+              <Loading />
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
 
   const maxValue = products.reduce(
     (acc, curr) => (parseInt(curr.price) > acc ? parseInt(curr.price) : acc),
@@ -126,11 +137,11 @@ const ProductsList = () => {
   };
 
   return (
-    <div className="my-5 py-2">
+    <div className="my-5 py-2 ">
       <Banner loca={filterCategory} />
 
       <div className="container flex justify-between items-center mb-8">
-        <small className="text-gray-400 mx-auto">
+        <small className="text-gray-400 ml-96">
           Showing 1 - 8 0f 29 products
         </small>
         <div className="flex items-center ">
@@ -282,23 +293,7 @@ const ProductsList = () => {
 
         <div className="grid grid-cols-3 gap-4 w-3/4">
           {sortProducts.map((product) => (
-            <Card key={product._id} className="w-[18rem]">
-              <CardContent>
-                <div className="relative overflow-hidden h-[20rem]">
-                  <img
-                    src={product.image}
-                    className="object-cover w-full h-full absolute bottom-0 pt-5 rounded-lg"
-                  />
-                </div>
-              </CardContent>
-              <CardHeader>
-                <CardTitle>{product.title}</CardTitle>
-                <CardDescription>
-                  {product.description.substring(0, 30) + "..."}
-                </CardDescription>
-                <CardDescription>₹ {product.price}</CardDescription>
-              </CardHeader>
-            </Card>
+            <ProductCard key={product._id} product={product} />
           ))}
         </div>
       </div>

@@ -2,7 +2,7 @@ import { GithubIcon, LinkedinIcon, TwitterIcon } from "lucide-react";
 
 const Footer = () => {
   return (
-    <div>
+    <div className="m-0">
       <div className="bg-gray-600">
         <div className="container py-7 flex justify-between">
           <p className="text-gray-300">
