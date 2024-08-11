@@ -1,7 +1,31 @@
-import { CircleUser, Heart, Search, ShoppingCart } from "lucide-react";
-import { Link } from "react-router-dom";
+import { CircleUser, Heart, Search, ShoppingCart, X } from "lucide-react";
+import { Link, useNavigate } from "react-router-dom";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import { useDispatch, useSelector } from "react-redux";
+import { removeItem } from "@/utils/cartSlice";
+import { useState } from "react";
+import { Button } from "../ui/button";
 
 const Header = () => {
+  const dispatch = useDispatch();
+  const [isOpen, setIsOpen] = useState(false);
+  const cartItems = useSelector((state) => state.cart.items);
+  const navigate = useNavigate();
+
+  const handleViewCart = () => {
+    setIsOpen(false);
+    navigate("/cartlist");
+  };
+
+  const total = cartItems.reduce(
+    (acc, curr) => acc + curr.price * curr.quantity,
+    0
+  );
+
   return (
     <div className="fixed top-0 left-0 w-full z-50 bg-white shadow-md">
       <nav className="p-6">
@@ -20,9 +44,60 @@ const Header = () => {
             <Link to="wishlist" className="group">
               <Heart className="duration-300 group-hover:scale-125" />
             </Link>
-            <Link to="/cartlist" className="group">
-              <ShoppingCart className="duration-300 group-hover:scale-125" />
-            </Link>
+
+            <Popover open={isOpen} onOpenChange={setIsOpen}>
+              <PopoverTrigger asChild>
+                <span className="group cursor-pointer">
+                  <ShoppingCart className="duration-300 group-hover:scale-125" />
+                </span>
+              </PopoverTrigger>
+              <PopoverContent className="p-4 max-h-96 overflow-y-auto">
+                <div>
+                  {cartItems.map((item) => (
+                    <div key={item._id} className="relative">
+                      <div className="flex p-3">
+                        <div className="w-1/4">
+                          <img src={item.image} className="w-15 h-20" />
+                        </div>
+                        <div className="w-3/4">
+                          <p className="font-semibold ml-2">{item.title}</p>
+                          <p className="text-xs text-gray-400 ml-2">
+                            Quantity: {item.quantity}
+                          </p>
+                          <p className="font-semibold text-xs ml-2">
+                            ₹{item.price}
+                          </p>
+                        </div>
+
+                        <span
+                          onClick={() => dispatch(removeItem(item._id))}
+                          className="absolute top-1 right-1 text-gray-400 cursor-pointer"
+                        >
+                          <X />
+                        </span>
+                      </div>
+                      <hr className="text-gray-400 w-full container" />
+                    </div>
+                  ))}
+                  <div className="flex justify-between py-2 container">
+                    <p className="text-gray-400">TOTAL: </p>
+                    <p className="font-semibold">₹{total}</p>
+                  </div>
+                  <hr className="text-gray-400 w-full container" />
+                  <div className="flex justify-between my-5">
+                    <Button
+                      variant="outline"
+                      onClick={handleViewCart}
+                      className=" text-gray-400 cursor-pointer"
+                      to="/cartlist"
+                    >
+                      VIEW CART
+                    </Button>
+                    <Button variant="checkoutButton">CHECKOUT</Button>
+                  </div>
+                </div>
+              </PopoverContent>
+            </Popover>
           </div>
 
           {/* Mobile Menu Button */}
