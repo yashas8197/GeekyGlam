@@ -7,6 +7,7 @@ export const fetchProductDetails = createAsyncThunk(
     const response = await axios.get(
       `https://geeky-glam-backend.vercel.app/product/${productId}`
     );
+    ``;
     return response.data;
   }
 );

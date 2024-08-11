@@ -2,17 +2,28 @@ import ExploreMore from "@/components/ExploreMoreComponent/ExploreMore";
 import ProductOverview from "@/components/ProductOverview/ProductOverview";
 import ServiceHighlights from "@/components/ServiceHighlights/ServiceHighlights";
 import { Button } from "@/components/ui/button";
-import { addItem } from "@/utils/cartSlice";
+import { addItem, removeItem } from "@/utils/cartSlice";
 import { fetchProductDetails } from "@/utils/productDetailsSlice";
+import { addWishlist, removeWishlist } from "@/utils/wishlistSlice";
 import { Heart, ShoppingCart, Star } from "lucide-react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import { useToast } from "@/components/ui/use-toast";
 
 const ProductDetails = () => {
+  const [noOfItems, setNoOfItems] = useState(1);
   const { productId } = useParams();
   const dispatch = useDispatch();
   const { product } = useSelector((state) => state.productDetails);
+  const wishlists = useSelector((state) => state.wishlist.wishList);
+  const cartItems = useSelector((state) => state.cart.items);
+  const { toast } = useToast();
+
+  console.log(cartItems);
+
+  const productExist = wishlists.some((item) => item._id === productId);
+  const cartExist = cartItems.some((item) => item._id === productId);
 
   useEffect(() => {
     dispatch(fetchProductDetails(productId));
@@ -24,6 +35,42 @@ const ProductDetails = () => {
       ⭐️
     </span>
   ));
+
+  const handleAddToWishlist = () => {
+    dispatch(addWishlist(product));
+    toast({
+      description: "Product added to wishlist!",
+      variant: "default",
+      duration: 900,
+    });
+  };
+
+  const handleRemoveWishlist = (productId) => {
+    dispatch(removeWishlist(productId));
+    toast({
+      description: "Product removed from wishlist!",
+      variant: "destructive",
+      duration: 900,
+    });
+  };
+
+  const handleAddToCart = (product) => {
+    dispatch(addItem({ product, quantity: noOfItems }));
+    toast({
+      description: "Product added to Cart!",
+      variant: "default",
+      duration: 900,
+    });
+  };
+
+  const handleRemoveFromCart = (productId) => {
+    dispatch(removeItem(productId));
+    toast({
+      description: "Product removed from Cart!",
+      variant: "destructive",
+      duration: 900,
+    });
+  };
 
   return (
     <div className="pt-20">
@@ -83,6 +130,9 @@ const ProductDetails = () => {
                 <div className="w-20 my-8">
                   <p className="text-base font-semibold">ITEMS</p>
                   <input
+                    value={noOfItems}
+                    min={1}
+                    onChange={(e) => setNoOfItems(e.target.value)}
                     disabled={product.in_stock === false}
                     type="number"
                     className="w-full py-2 px-1 border border-gray-500"
@@ -90,26 +140,51 @@ const ProductDetails = () => {
                 </div>
 
                 <div className="">
-                  <Button
-                    disabled={product.in_stock === false}
-                    variant="addToCart"
-                    className="py-10 px-10"
-                    onClick={() => dispatch(addItem(product))}
-                  >
-                    <span className="flex items-center">
-                      <ShoppingCart className="mr-3" /> ADD TO CART
-                    </span>
-                  </Button>
+                  {cartExist === false ? (
+                    <Button
+                      disabled={product.in_stock === false}
+                      variant="addToCart"
+                      className="py-10 px-10"
+                      onClick={() => handleAddToCart(product)}
+                    >
+                      <span className="flex items-center">
+                        <ShoppingCart className="mr-3" /> ADD TO CART
+                      </span>
+                    </Button>
+                  ) : (
+                    <Button
+                      variant="addToCart"
+                      className="py-10 px-10"
+                      onClick={() => handleRemoveFromCart(product._id)}
+                    >
+                      <span className="flex items-center">
+                        <ShoppingCart className="mr-3" /> REMOVE FROM CART
+                      </span>
+                    </Button>
+                  )}
 
-                  <Button
-                    variant="outline"
-                    className="mx-7 py-6 px-6 hover:text-white"
-                  >
-                    <span className="text-gray-400 hover:text-white flex items-center text-xs">
-                      <Heart className="mr-1 hover:text-white" /> ADD TO
-                      WISHLIST
-                    </span>
-                  </Button>
+                  {productExist === false ? (
+                    <Button
+                      variant="outline"
+                      className="mx-7 py-6 px-6 hover:bg-gray-400 text-gray-400"
+                      onClick={() => handleAddToWishlist(product)}
+                    >
+                      <span className=" hover:text-white flex items-center text-xs">
+                        <span className="">❤️ ADD TO WISHLIST</span>
+                      </span>
+                    </Button>
+                  ) : (
+                    <Button
+                      variant="outline"
+                      className="mx-7 py-6 px-6 hover:bg-gray-400 text-gray-400"
+                      onClick={() => handleRemoveWishlist(product._id)}
+                    >
+                      <span className=" hover:text-white flex items-center text-xs">
+                        ❤️
+                      </span>{" "}
+                      REMOVE FROM WISHLIST
+                    </Button>
+                  )}
                 </div>
               </div>
             </div>
