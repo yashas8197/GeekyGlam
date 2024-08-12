@@ -1,75 +1,12 @@
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
-import { buttonVariants } from "@/components/ui/button";
-
 import { Link } from "react-router-dom";
 import ServiceHighlights from "@/components/ServiceHighlights/ServiceHighlights";
-
-const slides = [
-  {
-    img: "https://res.cloudinary.com/dlrlwy7hg/image/upload/v1722769196/circle-slider-3_mewyfg.jpg",
-    caption: "Nature's Serenity",
-    description:
-      "Immerse yourself in the beauty of a golden sunset over a tranquil beach, perfect for relaxation.",
-  },
-  {
-    img: "https://res.cloudinary.com/dlrlwy7hg/image/upload/v1722769196/circle-slider-2_vty8mf.jpg",
-    caption: "OUR BESTSELLER",
-    description:
-      "Experience the excitement of adventure with thrilling outdoor activities under a vibrant sky",
-  },
-  {
-    img: "https://res.cloudinary.com/dlrlwy7hg/image/upload/v1722769196/circle-slider-1_oe2emx.jpg",
-    caption: "JUST ARRIVED",
-    description:
-      "Immerse yourself in the beauty of a golden sunset over a tranquil beach, perfect for relaxation.",
-  },
-];
+import Carousal from "@/components/Carousel/Carousal";
 
 const Home = () => {
   return (
     <div style={{ backgroundColor: "#F8F9FB" }}>
       <div className="flex min-h-screen flex-col items-center">
-        <Carousel style={{ backgroundColor: "#F8F9FB" }} className="w-full">
-          <CarouselContent>
-            {slides.map((slide, index) => (
-              <CarouselItem key={index} className="w-full flex-shrink-0">
-                <div className="flex justify-between items-center  overflow-hidden">
-                  <div className="w-1/2 px-20">
-                    <p className="text-blue-400 text-4xl">{slide.caption}</p>
-                    <p className="font-sans text-xl">{slide.description}</p>
-                    <Link
-                      to="/products"
-                      state={"All"}
-                      className={buttonVariants({
-                        variant: "viewButton",
-                      })}
-                    >
-                      <span className="w-0 h-0  bg-black absolute top-0 left-0 ease-out duration-500 transition-all group-hover:w-full group-hover:h-full -z-1"></span>
-                      <span className="w-full text-black transition-colors duration-300 ease-in-out group-hover:text-white z-10">
-                        VIEW COLLECTIONS
-                      </span>
-                    </Link>
-                  </div>
-                  <div className="group">
-                    <img
-                      src={slide.img}
-                      className="p-20 pt-20 duration-300 group-hover:scale-110"
-                      alt={slide.caption}
-                    />
-                  </div>
-                </div>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-          <CarouselPrevious className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full" />
-          <CarouselNext className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full" />
-        </Carousel>
+        <Carousal />
       </div>
 
       <div className="container mx-auto my-4">
