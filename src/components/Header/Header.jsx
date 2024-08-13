@@ -13,8 +13,10 @@ import { Button } from "../ui/button";
 const Header = () => {
   const dispatch = useDispatch();
   const [isOpen, setIsOpen] = useState(false);
-  const cartItems = useSelector((state) => state.cart.items);
+  const { products, status, error } = useSelector((state) => state.productList);
   const navigate = useNavigate();
+
+  const cartItems = products.filter((cart) => cart.in_cart === true);
 
   const handleViewCart = () => {
     setIsOpen(false);

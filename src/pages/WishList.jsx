@@ -1,17 +1,24 @@
 import ProductCard from "@/components/ProductCard/ProductCard";
 import { Button } from "@/components/ui/button";
-import { removeWishlist } from "@/utils/wishlistSlice";
+import { updateDataApi } from "@/utils/productDetailsSlice";
+import { fetchProducts } from "@/utils/productListSlice";
+import { fetchWishlist } from "@/utils/wishlistSlice";
 import { ChevronLeft, X } from "lucide-react";
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 
 const WishList = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const wishlists = useSelector((state) => state.wishlist.wishList);
+  const { products, status, error } = useSelector((state) => state.productList);
 
-  console.log(wishlists);
+  const wishlistItems = products.filter((cart) => cart.is_wished === true);
+
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, [dispatch, wishlistItems]);
+
   return (
     <>
       <div className="text-center pt-24">
@@ -23,12 +30,12 @@ const WishList = () => {
         </small>
         <h1 className="text-7xl font-bold my-4">WISHLIST</h1>
         <p className="text-xl text-gray-400">
-          You have {wishlists.length} items in your wishlist
+          You have {wishlistItems.length} items in your wishlist
         </p>
       </div>
       <div className=" container flex flex-col flex-grow">
         <div className="my-10">
-          {wishlists.length === 0 && (
+          {wishlistItems?.length === 0 && (
             <div className="flex justify-center items-center">
               <Button onClick={() => navigate("/products")}>
                 <ChevronLeft />
@@ -37,10 +44,18 @@ const WishList = () => {
             </div>
           )}
           <div className="grid grid-cols-4 gap-4">
-            {wishlists.map((card) => (
+            {wishlistItems.map((card) => (
               <div key={card._id} className="relative">
                 <span
-                  onClick={() => dispatch(removeWishlist(card._id))}
+                  onClick={() =>
+                    dispatch(
+                      updateDataApi({
+                        productId: card._id,
+                        field: "is_wished",
+                        value: false,
+                      })
+                    )
+                  }
                   className="absolute top-1 right-9 text-gray-400 cursor-pointer"
                 >
                   <X />

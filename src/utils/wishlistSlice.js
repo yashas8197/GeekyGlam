@@ -1,27 +1,37 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import axios from "axios";
+
+export const fetchWishlist = createAsyncThunk(
+  "wishlist/fetchWishlist",
+  async () => {
+    const response = await axios.get(
+      `https://geeky-glam-backend.vercel.app/products`
+    );
+
+    return response.data;
+  }
+);
 
 export const wishlistSlice = createSlice({
   name: "wishlist",
   initialState: {
     wishList: [],
+    status: "idle",
+    error: null,
   },
-  reducers: {
-    addWishlist: (state, action) => {
-      const itemExist = state.wishList.some(
-        (item) => item._id === action.payload._id
-      );
-
-      if (!itemExist) {
-        state.wishList.push(action.payload);
-      }
-
-      return;
-    },
-    removeWishlist: (state, action) => {
-      state.wishList = state.wishList.filter(
-        (wishCard) => wishCard._id !== action.payload
-      );
-    },
+  reducers: {},
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchWishlist.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(fetchWishlist.fulfilled, (state, action) => {
+        state.status = "success";
+        state.wishList = action.payload;
+      })
+      .addCase(fetchWishlist.rejected, (state, action) => {
+        state.error = action.error.message;
+      });
   },
 });
 

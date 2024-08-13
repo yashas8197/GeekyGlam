@@ -1,9 +1,37 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import axios from "axios";
+
+// Define the async thunk for fetching cart items
+export const fetchCartItems = createAsyncThunk(
+  "cart/fetchCartItems",
+  async () => {
+    try {
+      const response = await axios.get(
+        `https://geeky-glam-backend.vercel.app/product`
+      );
+      console.log(response);
+
+      if (response.status === 200) {
+        return response.data;
+      } else if (response.name === "AxiosError") {
+        return [
+          {
+            title: "Go back to Products",
+          },
+        ];
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+);
 
 export const cartSlice = createSlice({
   name: "cart",
   initialState: {
     items: [],
+    status: "idle",
+    error: null,
   },
   reducers: {
     addItem: (state, action) => {
@@ -29,9 +57,22 @@ export const cartSlice = createSlice({
       state.items.length = 0;
     },
   },
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchCartItems.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(fetchCartItems.fulfilled, (state, action) => {
+        state.status = "fulfilled";
+        state.items = action.payload.cartItems || [];
+      })
+      .addCase(fetchCartItems.rejected, (state, action) => {
+        state.status = "error";
+        state.error = action.error.message;
+      });
+  },
 });
 
 export const { addItem, removeItem, clearCart, updateQuantity } =
   cartSlice.actions;
-
 export default cartSlice.reducer;

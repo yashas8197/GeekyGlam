@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
+import { useLocation, useSearchParams } from "react-router-dom";
 import {
   categoryFilter,
   clearCategoryFilter,
@@ -30,6 +30,7 @@ const ProductsList = () => {
   const category = useSelector((state) => state.productList.filters.categories);
   const sortBy = useSelector((state) => state.productList.filters.sortBy);
   const filterCategory = location.state || "All";
+
   const [query, setQuery] = useSearchParams({
     cSize: "",
     cPrice: "",

@@ -8,8 +8,9 @@ const SearchPage = () => {
   const results = useSelector((state) => state.search.results);
   const searchCache = useSelector((state) => state.search.query);
   const [searchQuery, setSearchQuery] = useState("");
-  const [showSuggestion, setShowSuggestion] = useState(true);
   const navigate = useNavigate();
+
+  console.log(results);
 
   const handleSearchInput = (e) => {
     const { value } = e.target;
@@ -34,36 +35,34 @@ const SearchPage = () => {
         placeholder="What are you looking for?"
         onChange={handleSearchInput}
       />
-      {showSuggestion &&
-        searchQuery !== "" &&
-        results?.products?.length > 0 && (
-          <div className="absolute w-1/2 top-96 mt-10 bg-white border border-gray-300 rounded-lg shadow-lg overflow-auto">
-            <ul className=" overflow-auto bg-white border border-gray-300 rounded-lg shadow-lg max-h-72">
-              {results.products.map((suggestion) => (
-                <li
-                  onClick={() => navigate(`/product-details/${suggestion._id}`)}
-                  className="flex items-start p-4 cursor-pointer hover:bg-gray-100"
-                  key={suggestion._id}
-                >
-                  <div className="w-1/3">
-                    <img
-                      src={suggestion.image}
-                      className="w-full h-auto rounded"
-                      alt={suggestion.title}
-                    />
-                  </div>
-                  <div className="w-2/3 ml-4">
-                    <p className="text-lg font-semibold">{suggestion.title}</p>
-                    <p className="text-sm text-gray-600">
-                      {suggestion.description}
-                    </p>
-                    <span className="font-bold">₹{suggestion.price}</span>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
+      {searchQuery !== "" && results?.products?.length > 0 && (
+        <div className="absolute w-1/2 top-96 mt-10 bg-white border border-gray-300 rounded-lg shadow-lg overflow-auto">
+          <ul className=" overflow-auto bg-white border border-gray-300 rounded-lg shadow-lg max-h-72">
+            {results.products.map((suggestion) => (
+              <li
+                onClick={() => navigate(`/product-details/${suggestion._id}`)}
+                className="flex items-start p-4 cursor-pointer hover:bg-gray-100"
+                key={suggestion._id}
+              >
+                <div className="w-1/3">
+                  <img
+                    src={suggestion.image}
+                    className="w-full h-auto rounded"
+                    alt={suggestion.title}
+                  />
+                </div>
+                <div className="w-2/3 ml-4">
+                  <p className="text-lg font-semibold">{suggestion.title}</p>
+                  <p className="text-sm text-gray-600">
+                    {suggestion.description}
+                  </p>
+                  <span className="font-bold">₹{suggestion.price}</span>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </div>
   );
 };

@@ -3,7 +3,7 @@ import axios from "axios";
 
 export const searchProducts = createAsyncThunk("search/Products", async (q) => {
   const response = await axios.get(
-    `https://geeky-glam-backend.vercel.app/products?q=${q}`
+    `https://geeky-glam-backend.vercel.app/productsearch?q=${q}`
   );
   return response.data;
 });

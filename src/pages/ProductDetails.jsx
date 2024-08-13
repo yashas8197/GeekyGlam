@@ -3,9 +3,11 @@ import ProductOverview from "@/components/ProductOverview/ProductOverview";
 import ServiceHighlights from "@/components/ServiceHighlights/ServiceHighlights";
 import { Button } from "@/components/ui/button";
 import { addItem, removeItem } from "@/utils/cartSlice";
-import { fetchProductDetails } from "@/utils/productDetailsSlice";
-import { addWishlist, removeWishlist } from "@/utils/wishlistSlice";
-import { Heart, ShoppingCart, Star } from "lucide-react";
+import {
+  updateDataApi,
+  fetchProductDetails,
+} from "@/utils/productDetailsSlice";
+import { ShoppingCart } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
@@ -16,18 +18,17 @@ const ProductDetails = () => {
   const { productId } = useParams();
   const dispatch = useDispatch();
   const { product } = useSelector((state) => state.productDetails);
-  const wishlists = useSelector((state) => state.wishlist.wishList);
-  const cartItems = useSelector((state) => state.cart.items);
+
+  const cartItems = useSelector((state) => state.cart);
   const { toast } = useToast();
 
   console.log(cartItems);
 
-  const productExist = wishlists.some((item) => item._id === productId);
-  const cartExist = cartItems.some((item) => item._id === productId);
+  // const cartExist = cartItems.some((item) => item._id === productId);
 
   useEffect(() => {
     dispatch(fetchProductDetails(productId));
-  }, [productId]);
+  }, [productId, product]);
 
   const numberOfStars = Math.floor(product.rating);
   const stars = Array.from({ length: numberOfStars }).map((_, index) => (
@@ -36,8 +37,11 @@ const ProductDetails = () => {
     </span>
   ));
 
-  const handleAddToWishlist = () => {
-    dispatch(addWishlist(product));
+  const handleAddToWishlist = (product) => {
+    const productId = product._id;
+    dispatch(
+      updateDataApi({ productId: productId, field: "is_wished", value: true })
+    );
     toast({
       description: "Product added to wishlist!",
       variant: "default",
@@ -46,7 +50,9 @@ const ProductDetails = () => {
   };
 
   const handleRemoveWishlist = (productId) => {
-    dispatch(removeWishlist(productId));
+    dispatch(
+      updateDataApi({ productId: productId, field: "is_wished", value: false })
+    );
     toast({
       description: "Product removed from wishlist!",
       variant: "destructive",
@@ -54,8 +60,15 @@ const ProductDetails = () => {
     });
   };
 
-  const handleAddToCart = (product) => {
-    dispatch(addItem({ product, quantity: noOfItems }));
+  const handleAddToCart = (productId) => {
+    dispatch(
+      updateDataApi({
+        productId: productId,
+        field: "in_cart",
+        value: true,
+        quantity: noOfItems,
+      })
+    );
     toast({
       description: "Product added to Cart!",
       variant: "default",
@@ -64,7 +77,14 @@ const ProductDetails = () => {
   };
 
   const handleRemoveFromCart = (productId) => {
-    dispatch(removeItem(productId));
+    dispatch(
+      updateDataApi({
+        productId: productId,
+        field: "in_cart",
+        value: false,
+        quantity: 1,
+      })
+    );
     toast({
       description: "Product removed from Cart!",
       variant: "destructive",
@@ -140,12 +160,12 @@ const ProductDetails = () => {
                 </div>
 
                 <div className="">
-                  {cartExist === false ? (
+                  {product.in_cart === false ? (
                     <Button
                       disabled={product.in_stock === false}
                       variant="addToCart"
                       className="py-10 px-10"
-                      onClick={() => handleAddToCart(product)}
+                      onClick={() => handleAddToCart(product._id)}
                     >
                       <span className="flex items-center">
                         <ShoppingCart className="mr-3" /> ADD TO CART
@@ -163,7 +183,7 @@ const ProductDetails = () => {
                     </Button>
                   )}
 
-                  {productExist === false ? (
+                  {product.is_wished === false ? (
                     <Button
                       variant="outline"
                       className="mx-7 py-6 px-6 hover:bg-gray-400 text-gray-400"

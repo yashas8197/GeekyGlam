@@ -12,6 +12,27 @@ export const fetchProductDetails = createAsyncThunk(
   }
 );
 
+export const updateDataApi = createAsyncThunk(
+  "wishlist/updateDataApi",
+  async ({ productId, field, value, quantity }) => {
+    const dataToUpdate = { [field]: value };
+
+    if (quantity !== undefined) {
+      dataToUpdate.quantity = quantity;
+    }
+
+    try {
+      const response = await axios.post(
+        `https://geeky-glam-backend.vercel.app/product/${productId}`,
+        dataToUpdate
+      );
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  }
+);
+
 export const productDetailsSlice = createSlice({
   name: "productDetails",
   initialState: {

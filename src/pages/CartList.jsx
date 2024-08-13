@@ -1,4 +1,4 @@
-import { addItem, removeItem, updateQuantity } from "@/utils/cartSlice";
+import { fetchCartItems, removeItem, updateQuantity } from "@/utils/cartSlice";
 import {
   ChevronLeft,
   ChevronRight,
@@ -7,7 +7,6 @@ import {
   CirclePlus,
   X,
 } from "lucide-react";
-import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -19,11 +18,20 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import ServiceHighlights from "@/components/ServiceHighlights/ServiceHighlights";
+import { useEffect } from "react";
+import { updateDataApi } from "@/utils/productDetailsSlice";
+import { fetchProducts } from "@/utils/productListSlice";
 
 const CartList = () => {
-  const cartItems = useSelector((state) => state.cart.items);
+  const { products, status, error } = useSelector((state) => state.productList);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const cartItems = products.filter((cart) => cart.in_cart === true);
+
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, [dispatch, cartItems]);
 
   const total = cartItems.reduce(
     (acc, curr) => acc + curr.price * curr.quantity,
@@ -33,13 +41,21 @@ const CartList = () => {
   const handleQuantityMinus = (item) => {
     if (item.quantity <= 1) return;
     dispatch(
-      updateQuantity({ productId: item._id, quantity: item.quantity - 1 })
+      updateDataApi({
+        productId: item._id,
+        field: "in_cart",
+        quantity: item.quantity - 1,
+      })
     );
   };
 
   const handleQuantityPlus = (item) => {
     dispatch(
-      updateQuantity({ productId: item._id, quantity: item.quantity + 1 })
+      updateDataApi({
+        productId: item._id,
+        field: "in_cart",
+        quantity: item.quantity + 1,
+      })
     );
   };
 
@@ -106,7 +122,7 @@ const CartList = () => {
                             </div>
                           </TooltipTrigger>
 
-                          <TooltipContent className="absolute top-0 right-0 ">
+                          <TooltipContent className="absolute top-0 right-5 ">
                             <p>product detail page</p>
                           </TooltipContent>
                         </div>
@@ -118,13 +134,22 @@ const CartList = () => {
                       <TooltipTrigger>
                         <span
                           className="absolute top-1 right-1 cursor-pointer"
-                          onClick={() => dispatch(removeItem(item._id))}
+                          onClick={() =>
+                            dispatch(
+                              updateDataApi({
+                                productId: item._id,
+                                field: "in_cart",
+                                value: false,
+                                quantity: 1,
+                              })
+                            )
+                          }
                         >
                           <X />
                         </span>
                       </TooltipTrigger>
 
-                      <TooltipContent className="absolute top-0 right-0 ">
+                      <TooltipContent className="absolute top-0 right-6 ">
                         <p>Remove item</p>
                       </TooltipContent>
                     </div>
@@ -142,8 +167,8 @@ const CartList = () => {
                 </p>
                 <div>
                   {cartItems.map((item) => (
-                    <>
-                      <div key={item._id}>
+                    <div key={item._id}>
+                      <div>
                         <div className="flex justify-between">
                           <p>
                             {item.title}({item.quantity})
@@ -152,7 +177,7 @@ const CartList = () => {
                         </div>
                       </div>
                       <hr className="my-2" />
-                    </>
+                    </div>
                   ))}
                 </div>
                 <div className="flex justify-between text-xl">
