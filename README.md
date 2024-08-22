@@ -15,6 +15,29 @@ To get started with GeekyGlam locally, follow these steps:
 
 ## **Features**
 
+- ✨ Home Page
+- 🔍 Product Listing Page
+- 🔧 Filter and Sort Products Functionalities
+- 🔍 Search Product Functionality
+- 📦 Individual Product Page
+- 🛒 Cart Management
+- ❤️ Wishlist Management
+- 📝 Order Management
+- 🏠 Address Management
+- 🎟️ Coupon Codes
+
+## Upcoming Features
+
+- 🛒 Checkout Page
+- 💳 Payment Gateway Integration
+- 🔑 Authentication:
+- 📝 User Signup
+- 🔑 User Login
+- 🚪 Logout Page
+- 🌐 Fully Responsive
+- ⚠️ Error Page
+- 📜 Pagination on Product Listing Page
+
 ## **Built With**
 
 - **React JS** - A JavaScript library for building user interfaces
