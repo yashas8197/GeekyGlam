@@ -50,7 +50,7 @@ const tableProducts = [
   },
 ];
 
-const ProductOverview = () => {
+const ProductOverview = ({ product }) => {
   const [formData, setFormData] = useState({
     name: "",
     ratings: 0,
@@ -59,7 +59,7 @@ const ProductOverview = () => {
     date: new Date().toISOString().split("T")[0],
   });
   const dispatch = useDispatch();
-  const reviewsLists = useSelector((state) => state.productDetails.reviews);
+  const reviewsLists = product.reviewsList || [];
 
   const getStars = (rating) => {
     const numberOfStars = Math.floor(rating);

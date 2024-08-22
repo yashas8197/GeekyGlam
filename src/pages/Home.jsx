@@ -38,7 +38,7 @@ const Home = () => {
             >
               <img
                 className="duration-300 group-hover:scale-110"
-                src="https://res.cloudinary.com/dlrlwy7hg/image/upload/v1722773049/marco-xu-496929-unsplash_x3mctr.jpg"
+                src="https://res.cloudinary.com/dlrlwy7hg/image/upload/f_webp/q_auto/marco-xu-496929-unsplash_x3mctr.jpg"
                 alt="Women's Collection"
               />
 
@@ -58,7 +58,7 @@ const Home = () => {
             >
               <img
                 className=" duration-300 group-hover:scale-110"
-                src="https://res.cloudinary.com/dlrlwy7hg/image/upload/v1722773049/photo-1591845466204-dd3aba67ea58_fngure.jpg"
+                src="https://res.cloudinary.com/dlrlwy7hg/image/upload/f_webp/q_auto/photo-1591845466204-dd3aba67ea58_fngure.jpg"
                 alt="Kid's Collection"
               />
               <div className="absolute inset-0 flex items-center justify-center">

@@ -6,15 +6,17 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { useDispatch, useSelector } from "react-redux";
-import { removeItem } from "@/utils/cartSlice";
 import { useState } from "react";
 import { Button } from "../ui/button";
+import { updateDataApi } from "@/utils/productDetailsSlice";
+import { useToast } from "../ui/use-toast";
 
 const Header = () => {
   const dispatch = useDispatch();
   const [isOpen, setIsOpen] = useState(false);
   const { products, status, error } = useSelector((state) => state.productList);
   const navigate = useNavigate();
+  const { toast } = useToast();
 
   const cartItems = products.filter((cart) => cart.in_cart === true);
 
@@ -27,6 +29,22 @@ const Header = () => {
     (acc, curr) => acc + curr.price * curr.quantity,
     0
   );
+
+  const handleRemoveFromCart = (productId) => {
+    dispatch(
+      updateDataApi({
+        productId: productId,
+        field: "in_cart",
+        value: false,
+        quantity: 1,
+      })
+    );
+    toast({
+      description: "Product removed from Cart!",
+      variant: "destructive",
+      duration: 900,
+    });
+  };
 
   return (
     <div className="fixed top-0 left-0 w-full z-50 bg-white shadow-md">
@@ -72,7 +90,7 @@ const Header = () => {
                         </div>
 
                         <span
-                          onClick={() => dispatch(removeItem(item._id))}
+                          onClick={() => handleRemoveFromCart(item._id)}
                           className="absolute top-1 right-1 text-gray-400 cursor-pointer"
                         >
                           <X />

@@ -33,6 +33,10 @@ const CartList = () => {
     dispatch(fetchProducts());
   }, [dispatch, cartItems]);
 
+  const handleCheckout = () => {
+    navigate("/profile?tab=history", { state: { cartItems } });
+  };
+
   const total = cartItems.reduce(
     (acc, curr) => acc + curr.price * curr.quantity,
     0
@@ -189,7 +193,7 @@ const CartList = () => {
           </div>
           {cartItems.length > 0 && (
             <div className="mb-10 float-end">
-              <Button>
+              <Button onClick={handleCheckout}>
                 PROCEED TO CHECKOUT <ChevronRight />
               </Button>
             </div>

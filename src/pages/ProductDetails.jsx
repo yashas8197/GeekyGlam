@@ -2,7 +2,6 @@ import ExploreMore from "@/components/ExploreMoreComponent/ExploreMore";
 import ProductOverview from "@/components/ProductOverview/ProductOverview";
 import ServiceHighlights from "@/components/ServiceHighlights/ServiceHighlights";
 import { Button } from "@/components/ui/button";
-import { addItem, removeItem } from "@/utils/cartSlice";
 import {
   updateDataApi,
   fetchProductDetails,
@@ -12,19 +11,14 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { useToast } from "@/components/ui/use-toast";
+import useLoading from "@/utils/useLoading";
 
 const ProductDetails = () => {
   const [noOfItems, setNoOfItems] = useState(1);
   const { productId } = useParams();
   const dispatch = useDispatch();
   const { product } = useSelector((state) => state.productDetails);
-
-  const cartItems = useSelector((state) => state.cart);
   const { toast } = useToast();
-
-  console.log(cartItems);
-
-  // const cartExist = cartItems.some((item) => item._id === productId);
 
   useEffect(() => {
     dispatch(fetchProductDetails(productId));
@@ -40,7 +34,11 @@ const ProductDetails = () => {
   const handleAddToWishlist = (product) => {
     const productId = product._id;
     dispatch(
-      updateDataApi({ productId: productId, field: "is_wished", value: true })
+      updateDataApi({
+        productId: productId,
+        field: "is_wished",
+        value: true,
+      })
     );
     toast({
       description: "Product added to wishlist!",
@@ -212,7 +210,7 @@ const ProductDetails = () => {
         </div>
       </div>
       <div className="my-20 container w-full">
-        <ProductOverview />
+        <ProductOverview product={product} />
       </div>
       <div>
         <h4 className="text-center font-bold">YOU MIGHT ALSO LIKE</h4>
