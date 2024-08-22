@@ -46,6 +46,10 @@ const Header = () => {
     });
   };
 
+  const handleCheckout = () => {
+    navigate("/profile?tab=history", { state: { cartItems } });
+  };
+
   return (
     <div className="fixed top-0 left-0 w-full z-50 bg-white shadow-md">
       <nav className="p-6">
@@ -113,7 +117,9 @@ const Header = () => {
                     >
                       VIEW CART
                     </Button>
-                    <Button variant="checkoutButton">CHECKOUT</Button>
+                    <Button onClick={handleCheckout} variant="checkoutButton">
+                      CHECKOUT
+                    </Button>
                   </div>
                 </div>
               </PopoverContent>
