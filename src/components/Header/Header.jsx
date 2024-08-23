@@ -10,6 +10,7 @@ import { useState } from "react";
 import { Button } from "../ui/button";
 import { updateDataApi } from "@/utils/productDetailsSlice";
 import { useToast } from "../ui/use-toast";
+import { addOrders } from "@/utils/orderSlice";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -47,6 +48,22 @@ const Header = () => {
   };
 
   const handleCheckout = () => {
+    cartItems.forEach((item) => {
+      const orderPayload = {
+        image: item.image,
+        title: item.title,
+        description: item.description,
+        category: item.category,
+        size: item.size,
+        original_price: item.original_price,
+        price: item.price,
+        delivery_time: item.delivery_time,
+        quantity: item.quantity,
+      };
+
+      console.log("Order Payload: ", orderPayload);
+      dispatch(addOrders(orderPayload));
+    });
     navigate("/profile?tab=history", { state: { cartItems } });
   };
 

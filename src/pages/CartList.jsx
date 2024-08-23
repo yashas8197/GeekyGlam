@@ -21,6 +21,7 @@ import ServiceHighlights from "@/components/ServiceHighlights/ServiceHighlights"
 import { useEffect } from "react";
 import { updateDataApi } from "@/utils/productDetailsSlice";
 import { fetchProducts } from "@/utils/productListSlice";
+import { addOrders } from "@/utils/orderSlice";
 
 const CartList = () => {
   const { products, status, error } = useSelector((state) => state.productList);
@@ -33,8 +34,24 @@ const CartList = () => {
     dispatch(fetchProducts());
   }, [dispatch, cartItems]);
 
-  const handleCheckout = () => {
-    navigate("/profile?tab=history", { state: { cartItems } });
+  const handleCheckout = (cartItems) => {
+    cartItems.forEach((item) => {
+      const orderPayload = {
+        image: item.image,
+        title: item.title,
+        description: item.description,
+        category: item.category,
+        size: item.size,
+        original_price: item.original_price,
+        price: item.price,
+        delivery_time: item.delivery_time,
+        quantity: item.quantity,
+      };
+
+      dispatch(addOrders(orderPayload));
+    });
+
+    navigate("/profile?tab=history");
   };
 
   const total = cartItems.reduce(
@@ -193,7 +210,7 @@ const CartList = () => {
           </div>
           {cartItems.length > 0 && (
             <div className="mb-10 float-end">
-              <Button onClick={handleCheckout}>
+              <Button onClick={() => handleCheckout(cartItems)}>
                 PROCEED TO CHECKOUT <ChevronRight />
               </Button>
             </div>

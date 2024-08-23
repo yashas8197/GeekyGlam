@@ -8,17 +8,18 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Plus } from "lucide-react";
 import { deleteAddress } from "@/utils/addressSlice";
 import { useDispatch, useSelector } from "react-redux";
 import AddressModel from "@/components/AddressModel/AddressModel";
 import { useLocation } from "react-router-dom";
+import { fetchOrders } from "@/utils/orderSlice";
 
 const Profile = () => {
   const location = useLocation();
 
-  const cartItems = location.state?.cartItems || [];
+  const { orders, status, error } = useSelector((state) => state.orders);
   const searchParams = new URLSearchParams(location.search);
   const dispatch = useDispatch();
   const addressList = useSelector((state) => state.address.addresses);
@@ -34,7 +35,11 @@ const Profile = () => {
     country: "",
   });
 
-  console.log(cartItems);
+  useEffect(() => {
+    dispatch(fetchOrders());
+  }, []);
+
+  console.log(orders);
 
   const handleOpenDialog = () => {
     setIsDialogOpen(true);
@@ -141,18 +146,16 @@ const Profile = () => {
         <Card className="max-w-4xl mx-auto">
           <CardHeader className="text-center">
             <CardTitle>Order History</CardTitle>
-            {cartItems.length === 0 ? (
+            {orders.length === 0 ? (
               <CardDescription>No order to display</CardDescription>
             ) : (
-              <CardDescription>
-                You have {cartItems.length} orders
-              </CardDescription>
+              <CardDescription>You have {orders.length} orders</CardDescription>
             )}
           </CardHeader>
 
-          {cartItems.length > 0 && (
+          {orders.length > 0 && (
             <div className="p-4 space-y-4">
-              {cartItems.map((item) => (
+              {orders.map((item) => (
                 <div key={item._id} className="border p-4 rounded-lg shadow-sm">
                   <div className="flex space-x-4">
                     <img

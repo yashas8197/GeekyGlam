@@ -25,10 +25,10 @@ To get started with GeekyGlam locally, follow these steps:
 - 📝 Order Management
 - 🏠 Address Management
 - 🎟️ Coupon Codes
+- 🛒 Checkout Page
 
 ## Upcoming Features
 
-- 🛒 Checkout Page
 - 💳 Payment Gateway Integration
 - 🔑 Authentication:
 - 📝 User Signup
