@@ -32,6 +32,20 @@ export const updateDataApi = createAsyncThunk(
   }
 );
 
+export const reviewPost = createAsyncThunk(
+  "product/postReviews",
+  async ({ review, productId }) => {
+    console.log(review);
+    console.log(productId);
+    const response = await axios.post(
+      `https://geeky-glam-backend.vercel.app/product/reviews/${productId}`,
+      review
+    );
+
+    return response.data;
+  }
+);
+
 export const productDetailsSlice = createSlice({
   name: "productDetails",
   initialState: {
@@ -39,11 +53,7 @@ export const productDetailsSlice = createSlice({
     status: "idle",
     error: null,
   },
-  reducers: {
-    postReviews: (state, action) => {
-      state.product.reviewsList.push(action.payload);
-    },
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder.addCase(fetchProductDetails.pending, (state) => {
       state.status = "loading";
@@ -55,6 +65,18 @@ export const productDetailsSlice = createSlice({
     builder.addCase(fetchProductDetails.rejected, (state, action) => {
       state.status = "error";
       state.error = action.payload.message;
+    });
+
+    builder.addCase(reviewPost.pending, (state) => {
+      state.status = "loading";
+    });
+    builder.addCase(reviewPost.fulfilled, (state, action) => {
+      state.status = "fulfilled";
+      state.product.reviewsList.push(action.payload);
+    });
+    builder.addCase(reviewPost.rejected, (state, action) => {
+      state.status = "error";
+      state.error = action.error.message;
     });
   },
 });

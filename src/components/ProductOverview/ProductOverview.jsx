@@ -9,8 +9,8 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { useDispatch, useSelector } from "react-redux";
-import { postReviews } from "@/utils/productDetailsSlice";
 import { useState } from "react";
+import { reviewPost } from "@/utils/productDetailsSlice";
 
 const tableProducts = [
   {
@@ -56,10 +56,10 @@ const ProductOverview = ({ product }) => {
     ratings: 0,
     reviews: "",
     avatarPhoto: "https://via.placeholder.com/150?text=Avatar",
-    date: new Date().toISOString().split("T")[0],
   });
   const dispatch = useDispatch();
-  const reviewsLists = product.reviewsList || [];
+
+  if (!product) return;
 
   const getStars = (rating) => {
     const numberOfStars = Math.floor(rating);
@@ -81,7 +81,14 @@ const ProductOverview = ({ product }) => {
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    dispatch(postReviews(formData));
+    console.log(formData);
+    dispatch(reviewPost({ review: formData, productId: product._id }));
+    setFormData({
+      name: "",
+      ratings: 0,
+      reviews: "",
+      avatarPhoto: "https://via.placeholder.com/150?text=Avatar",
+    });
   };
   return (
     <div>
@@ -143,22 +150,30 @@ const ProductOverview = ({ product }) => {
         </TabsContent>
         <TabsContent value="reviews" className="w-3/4">
           <div className="container py-6">
-            {reviewsLists.map((review, i) => (
-              <div key={i} className="flex items-center justify-around">
-                <div className="w-1/6">
-                  <img className="rounded-full" src={review.avatarPhoto} />
-                  <p className="mx-6 text-gray-400 py-4">{review.date}</p>
-                </div>
-                <div className="w-3/4">
-                  <h4 className="font-bold">{review.name}</h4>
-                  <span>{getStars(review.ratings)}</span>
+            {product?.reviewsList?.length > 0 ? (
+              product.reviewsList.map((review, i) => (
+                <div key={i} className="flex items-center justify-around">
+                  <div className="w-1/6">
+                    <img
+                      className="rounded-full"
+                      src={review.avatarPhoto}
+                      alt="avatar"
+                    />
+                    <p className="mx-6 text-gray-400 py-4">{review.date}</p>
+                  </div>
+                  <div className="w-3/4">
+                    <h4 className="font-bold">{review.name}</h4>
+                    <span>{getStars(review.ratings)}</span>
 
-                  <p className="text-gray-400 py-4">{review.reviews}</p>
+                    <p className="text-gray-400 py-4">{review.reviews}</p>
 
-                  <hr />
+                    <hr />
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))
+            ) : (
+              <p>No reviews yet.</p>
+            )}
             <div className="my-9">
               <h1 className="text-lg font-bold">LEAVE A REVIEW</h1>
 
