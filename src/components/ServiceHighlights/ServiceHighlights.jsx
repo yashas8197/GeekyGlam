@@ -11,6 +11,7 @@ const ServiceHighlights = () => {
                 src="https://i.pinimg.com/564x/d9/15/f4/d915f415772c58c453e680b31355b2a1.jpg"
                 className="w-1/4 object-contain"
                 alt="Shipping"
+                loading="lazy"
               />
               <div className="w-3/4 pl-3">
                 <div className="font-bold text-xl">Free shipping & return</div>
@@ -35,6 +36,7 @@ const ServiceHighlights = () => {
                 src="https://i.pinimg.com/564x/ee/10/15/ee10150445cdadf2871e87cf362bff07.jpg"
                 className="w-1/4 object-contain"
                 alt="Support"
+                loading="lazy"
               />
               <div className="w-3/4 pl-3">
                 <div className="font-bold text-xl">020-800-456-747</div>

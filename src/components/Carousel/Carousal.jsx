@@ -11,19 +11,19 @@ import { Link } from "react-router-dom";
 const Carousal = () => {
   const slides = [
     {
-      img: "https://res.cloudinary.com/dlrlwy7hg/image/upload/f_webp/q_auto/circle-slider-3_mewyfg.jpg",
+      img: "https://res.cloudinary.com/dlrlwy7hg/image/upload/f_webp/q_auto:low/circle-slider-3_mewyfg.jpg",
       caption: "Nature's Serenity",
       description:
         "Immerse yourself in the beauty of a golden sunset over a tranquil beach, perfect for relaxation.",
     },
     {
-      img: "https://res.cloudinary.com/dlrlwy7hg/image/upload/f_webp/q_auto/circle-slider-2_vty8mf.jpg",
+      img: "https://res.cloudinary.com/dlrlwy7hg/image/upload/f_webp/q_auto:low/circle-slider-2_vty8mf.jpg",
       caption: "OUR BESTSELLER",
       description:
-        "Experience the excitement of adventure with thrilling outdoor activities under a vibrant sky",
+        "Experience the excitement of adventure with thrilling outdoor activities under a vibrant sky.",
     },
     {
-      img: "https://res.cloudinary.com/dlrlwy7hg/image/upload/f_webp/q_auto/circle-slider-1_oe2emx.jpg",
+      img: "https://res.cloudinary.com/dlrlwy7hg/image/upload/f_webp/q_auto:low/circle-slider-1_oe2emx.jpg",
       caption: "JUST ARRIVED",
       description:
         "Immerse yourself in the beauty of a golden sunset over a tranquil beach, perfect for relaxation.",
@@ -54,6 +54,7 @@ const Carousal = () => {
                     src={slide.img}
                     className="p-20 pt-20 duration-300 group-hover:scale-110"
                     alt={slide.caption}
+                    loading="lazy"
                   />
                 </div>
               </div>

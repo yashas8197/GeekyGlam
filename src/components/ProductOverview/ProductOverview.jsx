@@ -158,6 +158,7 @@ const ProductOverview = ({ product }) => {
                       className="rounded-full"
                       src={review.avatarPhoto}
                       alt="avatar"
+                      loading="lazy"
                     />
                     <p className="mx-6 text-gray-400 py-4">{review.date}</p>
                   </div>

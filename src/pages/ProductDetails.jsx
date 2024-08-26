@@ -94,7 +94,7 @@ const ProductDetails = () => {
     <div className="pt-20">
       <div className="flex">
         <div className="w-1/2 p-4">
-          <img src={product.image} />
+          <img src={product.image} loading="lazy" />
         </div>
         <div className="w-1/2 mx-20">
           <h1 className="text-6xl py-4  mt-10">{product.title}</h1>

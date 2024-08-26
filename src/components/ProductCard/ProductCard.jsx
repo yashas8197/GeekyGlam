@@ -22,6 +22,7 @@ const ProductCard = ({ product }) => {
             <img
               src={product.image}
               className="object-cover w-full h-full absolute bottom-0 pt-5 rounded-lg"
+              loading="lazy"
             />
           </div>
         </CardContent>

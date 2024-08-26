@@ -49,6 +49,7 @@ const SearchPage = () => {
                     src={suggestion.image}
                     className="w-full h-auto rounded"
                     alt={suggestion.title}
+                    loading="lazy"
                   />
                 </div>
                 <div className="w-2/3 ml-4">
