@@ -13,7 +13,7 @@ export const fetchProducts = createAsyncThunk(
 );
 
 export const fetchProductsByCategory = createAsyncThunk(
-  "products/fetchProducts",
+  "products/fetchProductsByCategory",
   async (category) => {
     const response = await axios.get(
       `https://geeky-glam-backend.vercel.app/products/${category}`
@@ -78,6 +78,17 @@ export const productListSlice = createSlice({
       state.products = action.payload.products;
     });
     builder.addCase(fetchProducts.rejected, (state, action) => {
+      state.status = "error";
+      state.error = action.payload.message;
+    });
+    builder.addCase(fetchProductsByCategory.pending, (state) => {
+      state.status = "loading";
+    });
+    builder.addCase(fetchProductsByCategory.fulfilled, (state, action) => {
+      state.status = "fulfilled";
+      state.products = action.payload.products;
+    });
+    builder.addCase(fetchProductsByCategory.rejected, (state, action) => {
       state.status = "error";
       state.error = action.payload.message;
     });

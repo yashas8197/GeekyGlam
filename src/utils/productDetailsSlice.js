@@ -35,8 +35,6 @@ export const updateDataApi = createAsyncThunk(
 export const reviewPost = createAsyncThunk(
   "product/postReviews",
   async ({ review, productId }) => {
-    console.log(review);
-    console.log(productId);
     const response = await axios.post(
       `https://geeky-glam-backend.vercel.app/product/reviews/${productId}`,
       review
@@ -63,6 +61,18 @@ export const productDetailsSlice = createSlice({
       state.product = action.payload.product;
     });
     builder.addCase(fetchProductDetails.rejected, (state, action) => {
+      state.status = "error";
+      state.error = action.payload.message;
+    });
+
+    builder.addCase(updateDataApi.pending, (state) => {
+      state.status = "loading";
+    });
+    builder.addCase(updateDataApi.fulfilled, (state, action) => {
+      state.status = "fulfilled";
+      state.product = action.payload.updatedProduct;
+    });
+    builder.addCase(updateDataApi.rejected, (state, action) => {
       state.status = "error";
       state.error = action.payload.message;
     });

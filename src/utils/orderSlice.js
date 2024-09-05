@@ -14,8 +14,6 @@ export const addOrders = createAsyncThunk("orders/addOrders", async (order) => {
     "https://geeky-glam-backend.vercel.app/orders",
     order
   );
-
-  console.log(response);
   return response.data;
 });
 
@@ -36,6 +34,17 @@ export const orderSlice = createSlice({
       state.orders = action.payload.orders;
     });
     builder.addCase(fetchOrders.rejected, (state, action) => {
+      state.status = "error";
+      state.error = action.payload.message;
+    });
+    builder.addCase(addOrders.pending, (state) => {
+      state.status = "loading";
+    });
+    builder.addCase(addOrders.fulfilled, (state, action) => {
+      state.status = "fulfilled";
+      state.orders = [...state.orders, action.payload.order];
+    });
+    builder.addCase(addOrders.rejected, (state, action) => {
       state.status = "error";
       state.error = action.payload.message;
     });

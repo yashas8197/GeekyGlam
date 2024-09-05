@@ -53,7 +53,7 @@ const tableProducts = [
 const ProductOverview = ({ product }) => {
   const [formData, setFormData] = useState({
     name: "",
-    ratings: 0,
+    ratings: 5,
     reviews: "",
     avatarPhoto: "https://via.placeholder.com/150?text=Avatar",
   });
@@ -81,7 +81,6 @@ const ProductOverview = ({ product }) => {
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    console.log(formData);
     dispatch(reviewPost({ review: formData, productId: product._id }));
     setFormData({
       name: "",
@@ -191,6 +190,7 @@ const ProductOverview = ({ product }) => {
                         name="name"
                         value={formData.name}
                         onChange={handleChange}
+                        required
                       />
                     </div>
                   </label>
@@ -201,6 +201,7 @@ const ProductOverview = ({ product }) => {
                       className="border border-black"
                       value={formData.ratings}
                       onChange={handleChange}
+                      required
                     >
                       <option value={5}>★★★★★ (5/5)</option>
                       <option value={4}>★★★★☆ (4/5)</option>
@@ -210,22 +211,6 @@ const ProductOverview = ({ product }) => {
                     </select>
                   </div>
                 </div>
-
-                {/*  <div className="my-7">
-                  <label className="text-gray-400" htmlFor="yourEmail">
-                    YOUR EMAIL *
-                  </label>
-                  <div>
-                    <input
-                      className="border border-gray-400 w-3/4 py-2"
-                      placeholder="   Enter Your Email"
-                      id="yourEmail"
-                      type="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                    />
-                  </div>
-                </div> */}
 
                 <div className="my-7">
                   <label className="text-gray-400" htmlFor="review">
@@ -241,6 +226,7 @@ const ProductOverview = ({ product }) => {
                       rows={4}
                       value={formData.reviews}
                       onChange={handleChange}
+                      required
                     ></textarea>
                   </div>
                 </div>

@@ -2,7 +2,6 @@ import ProductCard from "@/components/ProductCard/ProductCard";
 import { Button } from "@/components/ui/button";
 import { updateDataApi } from "@/utils/productDetailsSlice";
 import { fetchProducts } from "@/utils/productListSlice";
-import { fetchWishlist } from "@/utils/wishlistSlice";
 import { ChevronLeft, X } from "lucide-react";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
