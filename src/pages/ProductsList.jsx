@@ -19,7 +19,6 @@ import {
 import Banner from "@/components/Banner";
 import { Slider } from "@/components/ui/slider";
 import { Checkbox } from "@/components/ui/checkbox";
-import Loading from "@/components/Shimmer/Loading";
 import ProductCard from "@/components/ProductCard/ProductCard";
 
 const ProductsList = () => {
@@ -51,19 +50,8 @@ const ProductsList = () => {
 
   if (status === "loading") {
     return (
-      <div className="flex justify-center items-center mt-96">
-        <div className="grid grid-cols-4 gap-4 mx-48">
-          {"abcdefghij".split(" ").map((i) => (
-            <div
-              key={i}
-              className="mx-40 flex justify-center items-center gap-6"
-            >
-              <Loading />
-              <Loading />
-              <Loading />
-            </div>
-          ))}
-        </div>
+      <div className="flex items-center justify-center min-h-screen">
+        <p>Loading...</p>
       </div>
     );
   }

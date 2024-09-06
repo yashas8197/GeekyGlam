@@ -4,10 +4,9 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "@/components/ui/dialog";
 import { Button } from "../ui/button";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { addAddress, updateAddress } from "@/utils/addressSlice";
 
@@ -50,13 +49,14 @@ const AddressModel = ({
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
+    const updatedFormData = { ...formData };
     setIsDialogOpen(false);
     if (isEditing) {
       setIsEditing(true);
-      dispatch(updateAddress(formData));
+      dispatch(updateAddress(updatedFormData));
     } else {
-      formData.id = addressList.length + 1;
-      dispatch(addAddress(formData));
+      updatedFormData.id = addressList.length + 1;
+      dispatch(addAddress(updatedFormData));
     }
     setFormData({
       street: "",
@@ -68,9 +68,6 @@ const AddressModel = ({
   };
   return (
     <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-      <DialogTrigger asChild>
-        <Button className="hidden">Open Dialog</Button>
-      </DialogTrigger>
       <DialogContent>
         <DialogHeader>
           <DialogTitle>Add New Address</DialogTitle>
@@ -83,6 +80,7 @@ const AddressModel = ({
             type="text"
             name="street"
             placeholder="Street"
+            aria-label="Street"
             className="input w-full"
             value={formData.street}
             onChange={handleOnChange}
@@ -92,6 +90,7 @@ const AddressModel = ({
             type="text"
             name="city"
             placeholder="City"
+            aria-label="City"
             className="input w-full"
             value={formData.city}
             onChange={handleOnChange}
@@ -101,6 +100,7 @@ const AddressModel = ({
             type="text"
             name="state"
             placeholder="State"
+            aria-label="State"
             className="input w-full"
             value={formData.state}
             onChange={handleOnChange}
@@ -110,6 +110,7 @@ const AddressModel = ({
             type="number"
             name="postalCode"
             placeholder="Postal Code"
+            aria-label="Postal Code"
             className="input w-full"
             value={formData.postalCode}
             onChange={handleOnChange}
@@ -119,6 +120,7 @@ const AddressModel = ({
             type="text"
             name="country"
             placeholder="Country"
+            aria-label="Country"
             className="input w-full"
             value={formData.country}
             onChange={handleOnChange}
@@ -132,9 +134,7 @@ const AddressModel = ({
             >
               Cancel
             </Button>
-            <Button type="submit" onClick={(e) => handleOnSubmit(e)}>
-              {isEditing ? "Edit" : "Add"}
-            </Button>
+            <Button type="submit">{isEditing ? "Edit" : "Add"}</Button>
           </div>
         </form>
       </DialogContent>

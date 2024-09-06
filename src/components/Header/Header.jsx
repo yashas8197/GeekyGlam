@@ -1,25 +1,30 @@
 import { CircleUser, Heart, Search, ShoppingCart, X } from "lucide-react";
-import { Link, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { useDispatch, useSelector } from "react-redux";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "../ui/button";
 import { updateDataApi } from "@/utils/productDetailsSlice";
 import { useToast } from "../ui/use-toast";
 import { addOrders } from "@/utils/orderSlice";
+import { fetchProducts } from "@/utils/productListSlice";
 
 const Header = () => {
   const dispatch = useDispatch();
   const [isOpen, setIsOpen] = useState(false);
   const { products, status, error } = useSelector((state) => state.productList);
+
   const navigate = useNavigate();
   const { toast } = useToast();
-
   const cartItems = products.filter((cart) => cart.in_cart === true);
+
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, [dispatch]);
 
   const handleViewCart = () => {
     setIsOpen(false);
@@ -71,20 +76,20 @@ const Header = () => {
     <div className="fixed top-0 left-0 w-full z-50 bg-white shadow-md">
       <nav className="p-6">
         <div className="container mx-auto flex justify-between items-center">
-          <Link className="text-2xl font-bold" to="/">
+          <NavLink className="text-2xl font-bold" to="/">
             GeekyGlam
-          </Link>
+          </NavLink>
 
           <div className="hidden md:flex space-x-6">
-            <Link to="/search" className="group">
+            <NavLink to="/search" className="group">
               <Search className="duration-300 group-hover:scale-125" />
-            </Link>
-            <Link to="/profile" className="group">
+            </NavLink>
+            <NavLink to="/profile" className="group">
               <CircleUser className="duration-300 group-hover:scale-125" />
-            </Link>
-            <Link to="wishlist" className="group">
+            </NavLink>
+            <NavLink to="wishlist" className="group">
               <Heart className="duration-300 group-hover:scale-125" />
-            </Link>
+            </NavLink>
 
             <Popover open={isOpen} onOpenChange={setIsOpen}>
               <PopoverTrigger asChild>

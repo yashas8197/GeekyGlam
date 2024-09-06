@@ -11,18 +11,17 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { useToast } from "@/components/ui/use-toast";
-import useLoading from "@/utils/useLoading";
 
 const ProductDetails = () => {
   const [noOfItems, setNoOfItems] = useState(1);
   const { productId } = useParams();
   const dispatch = useDispatch();
-  const { product } = useSelector((state) => state.productDetails);
+  const { product, status } = useSelector((state) => state.productDetails);
   const { toast } = useToast();
 
   useEffect(() => {
     dispatch(fetchProductDetails(productId));
-  }, [productId, product]);
+  }, [productId]);
 
   const numberOfStars = Math.floor(product.rating);
   const stars = Array.from({ length: numberOfStars }).map((_, index) => (
@@ -89,6 +88,14 @@ const ProductDetails = () => {
       duration: 900,
     });
   };
+
+  if (status === "loading") {
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <p>Loading...</p>
+      </div>
+    );
+  }
 
   return (
     <div className="pt-20">

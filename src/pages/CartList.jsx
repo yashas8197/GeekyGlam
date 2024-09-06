@@ -1,4 +1,3 @@
-import { fetchCartItems, removeItem, updateQuantity } from "@/utils/cartSlice";
 import {
   ChevronLeft,
   ChevronRight,

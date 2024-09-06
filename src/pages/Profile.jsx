@@ -39,8 +39,6 @@ const Profile = () => {
     dispatch(fetchOrders());
   }, []);
 
-  console.log(orders);
-
   const handleOpenDialog = () => {
     setIsDialogOpen(true);
     setIsEditing(false);

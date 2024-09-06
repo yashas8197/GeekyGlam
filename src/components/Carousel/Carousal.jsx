@@ -35,8 +35,8 @@ const Carousal = () => {
         <CarouselContent>
           {slides.map((slide, index) => (
             <CarouselItem key={index} className="w-full flex-shrink-0">
-              <div className="flex justify-between items-center  overflow-hidden">
-                <div className="w-1/2 px-20">
+              <section className="flex justify-between items-center  overflow-hidden">
+                <div className="w-1/2 px-20 md:w-1/2 lg:px-20 sm:w-1/4">
                   <p className="text-blue-400 text-4xl">{slide.caption}</p>
                   <p className="font-sans text-xl mb-4">{slide.description}</p>
                   <Link
@@ -57,7 +57,7 @@ const Carousal = () => {
                     loading="lazy"
                   />
                 </div>
-              </div>
+              </section>
             </CarouselItem>
           ))}
         </CarouselContent>
