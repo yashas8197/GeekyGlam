@@ -25,7 +25,6 @@ export const updateDataApi = createAsyncThunk(
         `https://geeky-glam-backend.vercel.app/product/${productId}`,
         dataToUpdate
       );
-      console.log(response)
       return response.data;
     } catch (error) {
       throw error;

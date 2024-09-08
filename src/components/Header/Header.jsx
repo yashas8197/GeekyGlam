@@ -1,4 +1,4 @@
-import { CircleUser, Heart, Search, ShoppingCart, X } from "lucide-react";
+import { CircleUser, Heart, Search, ShoppingCart } from "lucide-react";
 import { NavLink, useNavigate } from "react-router-dom";
 import {
   Popover,
@@ -8,7 +8,6 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { Button } from "../ui/button";
-import { updateDataApi } from "@/utils/productDetailsSlice";
 import { useToast } from "../ui/use-toast";
 import { addOrders } from "@/utils/orderSlice";
 import { fetchProducts } from "@/utils/productListSlice";
@@ -35,22 +34,6 @@ const Header = () => {
     (acc, curr) => acc + curr.price * curr.quantity,
     0
   );
-
-  const handleRemoveFromCart = (productId) => {
-    dispatch(
-      updateDataApi({
-        productId: productId,
-        field: "in_cart",
-        value: false,
-        quantity: 1,
-      })
-    );
-    toast({
-      description: "Product removed from Cart!",
-      variant: "destructive",
-      duration: 900,
-    });
-  };
 
   const handleCheckout = () => {
     cartItems.forEach((item) => {
@@ -97,8 +80,9 @@ const Header = () => {
                   <ShoppingCart className="duration-300 group-hover:scale-125" />
                 </span>
               </PopoverTrigger>
-              <PopoverContent className="p-4 max-h-96 overflow-y-auto">
+              <PopoverContent className="p-4">
                 <div>
+                  <div className=" h-48 overflow-y-auto">
                   {cartItems.map((item) => (
                     <div key={item._id} className="relative">
                       <div className="flex p-3">
@@ -114,17 +98,11 @@ const Header = () => {
                             ₹{item.price}
                           </p>
                         </div>
-
-                        <span
-                          onClick={() => handleRemoveFromCart(item._id)}
-                          className="absolute top-1 right-1 text-gray-400 cursor-pointer"
-                        >
-                          <X />
-                        </span>
                       </div>
                       <hr className="text-gray-400 w-full container" />
                     </div>
                   ))}
+                  </div>
                   <div className="flex justify-between py-2 container">
                     <p className="text-gray-400">TOTAL: </p>
                     <p className="font-semibold">₹{total}</p>

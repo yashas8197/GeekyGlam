@@ -18,10 +18,22 @@ const ProductDetails = () => {
   const dispatch = useDispatch();
   const { product, status } = useSelector((state) => state.productDetails);
   const { toast } = useToast();
+  
+  const [cartAdd, setCartAdd] = useState(product.in_cart)
+  const [wishlistAdd, setWishlistAdd] = useState(product.is_wished)
 
   useEffect(() => {
     dispatch(fetchProductDetails(productId));
   }, [productId]);
+
+  useEffect(() => {
+    setCartAdd(product.in_cart);
+    setWishlistAdd(product.is_wished);
+  }, [product.in_cart, product.is_wished]);
+
+  
+
+  console.log(product)
 
   const numberOfStars = Math.floor(product.rating);
   const stars = Array.from({ length: numberOfStars }).map((_, index) => (
@@ -31,6 +43,7 @@ const ProductDetails = () => {
   ));
 
   const handleAddToWishlist = (product) => {
+    setWishlistAdd(true)
     const productId = product._id;
     dispatch(
       updateDataApi({
@@ -47,6 +60,7 @@ const ProductDetails = () => {
   };
 
   const handleRemoveWishlist = (productId) => {
+    setWishlistAdd(false)
     dispatch(
       updateDataApi({ productId: productId, field: "is_wished", value: false })
     );
@@ -58,6 +72,8 @@ const ProductDetails = () => {
   };
 
   const handleAddToCart = (productId) => {
+    
+    setCartAdd(true)
     dispatch(
       updateDataApi({
         productId: productId,
@@ -74,6 +90,7 @@ const ProductDetails = () => {
   };
 
   const handleRemoveFromCart = (productId) => {
+    setCartAdd(false)
     dispatch(
       updateDataApi({
         productId: productId,
@@ -89,13 +106,7 @@ const ProductDetails = () => {
     });
   };
 
-  if (status === "loading") {
-    return (
-      <div className="flex items-center justify-center min-h-screen">
-        <p>Loading...</p>
-      </div>
-    );
-  }
+  console.log(cartAdd)
 
   return (
     <div className="pt-20">
@@ -165,7 +176,7 @@ const ProductDetails = () => {
                 </div>
 
                 <div className="">
-                  {product.in_cart === false ? (
+                  {cartAdd === false ? (
                     <Button
                       disabled={product.in_stock === false}
                       variant="addToCart"
@@ -188,7 +199,7 @@ const ProductDetails = () => {
                     </Button>
                   )}
 
-                  {product.is_wished === false ? (
+                  {wishlistAdd === false ? (
                     <Button
                       variant="outline"
                       className="mx-7 py-6 px-6 hover:bg-gray-400 text-gray-400"
