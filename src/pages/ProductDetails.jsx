@@ -31,10 +31,6 @@ const ProductDetails = () => {
     setWishlistAdd(product.is_wished);
   }, [product.in_cart, product.is_wished]);
 
-  
-
-  console.log(product)
-
   const numberOfStars = Math.floor(product.rating);
   const stars = Array.from({ length: numberOfStars }).map((_, index) => (
     <span key={index} className="text-yellow-500 text-lg">
@@ -105,8 +101,6 @@ const ProductDetails = () => {
       duration: 900,
     });
   };
-
-  console.log(cartAdd)
 
   return (
     <div className="pt-20">

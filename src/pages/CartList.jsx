@@ -19,7 +19,7 @@ import {
 import ServiceHighlights from "@/components/ServiceHighlights/ServiceHighlights";
 import { useEffect } from "react";
 import { updateDataApi } from "@/utils/productDetailsSlice";
-import { fetchProducts } from "@/utils/productListSlice";
+import { incrementQuantity, toggleCartOptimistic, fetchProducts, decrementQuantity } from "@/utils/productListSlice";
 import { addOrders } from "@/utils/orderSlice";
 
 const CartList = () => {
@@ -31,7 +31,7 @@ const CartList = () => {
 
   useEffect(() => {
     dispatch(fetchProducts());
-  }, [dispatch, cartItems]);
+  }, [dispatch]);
 
   const handleCheckout = (cartItems) => {
     cartItems.forEach((item) => {
@@ -60,6 +60,7 @@ const CartList = () => {
 
   const handleQuantityMinus = (item) => {
     if (item.quantity <= 1) return;
+    dispatch(decrementQuantity(item._id))
     dispatch(
       updateDataApi({
         productId: item._id,
@@ -70,6 +71,7 @@ const CartList = () => {
   };
 
   const handleQuantityPlus = (item) => {
+    dispatch(incrementQuantity(item._id))
     dispatch(
       updateDataApi({
         productId: item._id,
@@ -154,7 +156,8 @@ const CartList = () => {
                       <TooltipTrigger>
                         <span
                           className="absolute top-1 right-1 cursor-pointer"
-                          onClick={() =>
+                          onClick={() =>{
+                            dispatch(toggleCartOptimistic(item._id))
                             dispatch(
                               updateDataApi({
                                 productId: item._id,
@@ -163,6 +166,7 @@ const CartList = () => {
                                 quantity: 1,
                               })
                             )
+                          }
                           }
                         >
                           <X />
