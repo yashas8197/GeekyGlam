@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/table";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
-import { reviewPost } from "@/utils/productDetailsSlice";
+import { reviewPost, reviewProduct } from "@/utils/productDetailsSlice";
 
 const tableProducts = [
   {
@@ -82,6 +82,7 @@ const ProductOverview = ({ product }) => {
   const handleOnSubmit = (e) => {
     e.preventDefault();
     dispatch(reviewPost({ review: formData, productId: product._id }));
+    dispatch(reviewProduct(formData));
     setFormData({
       name: "",
       ratings: 0,

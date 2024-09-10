@@ -34,7 +34,7 @@ const Banner = ({ loca }) => {
   const content = bannerContent.find((item) => item.category === loca);
   return (
     <>
-      <div className="text-center py-20">
+      <div className="flex flex-wrap flex-col text-center py-20">
         <small>
           <Link to="/" className="mx-2">
             Home

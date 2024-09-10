@@ -34,6 +34,7 @@ const ProductsList = () => {
     cSize: "",
     cPrice: "",
     sort: "",
+    selectedCat: "",
   });
 
   useEffect(() => {
@@ -64,11 +65,25 @@ const ProductsList = () => {
   const cSize = query.get("cSize");
   const cPrice = query.get("cPrice") || maxValue;
   const sort = query.get("sort");
+  const selectedCat = query.get("selectedCat")?.split(",") || [];
 
   const handleCategoryChange = (value, checked) => {
+    const updatedSelectedItems = checked
+      ? [...selectedCat, value]
+      : selectedCat.filter((selectedItem) => selectedItem !== value);
+
     dispatch(categoryFilter({ value: value, checked: checked }));
     dispatch(fetchProducts());
+    setQuery(
+      (prev) => {
+        prev.set("selectedCat", updatedSelectedItems.join(","));
+        return prev;
+      },
+      { return: true }
+    );
   };
+
+  console.log(location.state);
 
   const handleSizeChange = (value) => {
     setQuery(
@@ -280,7 +295,7 @@ const ProductsList = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-3 gap-4 w-3/4">
+        <div className="flex justify-between gap-4 w-3/4 flex-wrap">
           {sortProducts.map((product) => (
             <ProductCard key={product._id} product={product} />
           ))}

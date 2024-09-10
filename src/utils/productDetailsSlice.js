@@ -40,6 +40,7 @@ export const reviewPost = createAsyncThunk(
       review
     );
 
+    console.log(response);
     return response.data;
   }
 );
@@ -51,7 +52,12 @@ export const productDetailsSlice = createSlice({
     status: "idle",
     error: null,
   },
-  reducers: {},
+  reducers: {
+    reviewProduct: (state, action) => {
+      console.log(action.payload);
+      state.product.reviewsList.push(action.payload);
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(fetchProductDetails.pending, (state) => {
       state.status = "loading";
@@ -82,7 +88,8 @@ export const productDetailsSlice = createSlice({
     });
     builder.addCase(reviewPost.fulfilled, (state, action) => {
       state.status = "fulfilled";
-      state.product.reviewsList.push(action.payload);
+      const updatedData = action.payload.product;
+      state.product = updatedData;
     });
     builder.addCase(reviewPost.rejected, (state, action) => {
       state.status = "error";
@@ -91,6 +98,6 @@ export const productDetailsSlice = createSlice({
   },
 });
 
-export const { postReviews } = productDetailsSlice.actions;
+export const { postReviews, reviewProduct } = productDetailsSlice.actions;
 
 export default productDetailsSlice.reducer;
