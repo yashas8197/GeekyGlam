@@ -20,7 +20,7 @@ const ExploreMore = () => {
     );
   }
   return (
-    <div className="flex gap-8 container my-3">
+    <div className="w-3/4 mx-auto grid grid-cols-4 sm:grid-cols-2 md:grid-cols-4 gap-20">
       {similarProducts.map((product) => (
         <ProductCard key={product._id} product={product} />
       ))}

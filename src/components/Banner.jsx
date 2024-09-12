@@ -9,25 +9,25 @@ const Banner = ({ loca }) => {
       category: "All",
       slogan: "Fashion for Everyone",
       description:
-        "Browse a diverse selection of clothing for all ages and styles. From everyday essentials to standout pieces, we have fashion that fits every personality and occasion.",
+        "Browse a diverse selection of clothing for all ages and styles. ",
     },
     {
       category: "Men",
       slogan: "Elevate Your Style",
       description:
-        "Discover a range of sophisticated and trendy styles tailored for men. From sharp suits to casual wear, find the perfect outfit for every occasion.",
+        "Discover a range of sophisticated and trendy styles tailored for men.",
     },
     {
       category: "Women",
       slogan: "Unleash Your Elegance",
       description:
-        "Explore the latest in women's fashion with our elegant and chic collections. Whether it's a formal event or a casual day out, express your style with grace.",
+        "Explore the latest in women's fashion with our elegant and chic collections.",
     },
     {
       category: "Kids",
       slogan: "Fun and Fashionable",
       description:
-        "Brighten up your little one's wardrobe with our playful and comfortable clothing. From vibrant colors to adorable designs, find fashion that’s as fun as they are.",
+        "Brighten up your little one's wardrobe with our playful and comfortable clothing.",
     },
   ];
 

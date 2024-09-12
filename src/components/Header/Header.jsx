@@ -57,51 +57,67 @@ const Header = () => {
 
   return (
     <div className="fixed top-0 left-0 w-full z-50 bg-white shadow-md">
+      <div className="container mx-auto py-4" style={{ color: "#495057" }}>
+        <div className="flex items-center justify-between">
+          <div className="flex-grow">
+            <ul className="flex flex-grow space-x-6 items-center font-light text-sm">
+              <li className="flex items-center">
+                <i className="bi bi-telephone text-xl mx-2"></i>
+                020-800-456-747
+              </li>
+              <li className="pl-6 border-l border-gray-200">
+                Free shipping on orders over $300
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
       <nav className="p-6">
         <div className="container mx-auto flex justify-between items-center">
-          <NavLink className="text-2xl font-bold" to="/">
-            GeekyGlam
+          <NavLink to="/" className="font-bold text-2xl font-serif">
+            GeekyGlam<span style={{ color: "#0284c7" }}>.</span>
           </NavLink>
 
           <div className="hidden md:flex space-x-6">
-            <NavLink to="/search" className="group">
-              <Search className="duration-300 group-hover:scale-125" />
+            <NavLink to="/search" className="group cursor-pointer">
+              <i className="bi bi-search text-xl"></i>
             </NavLink>
-            <NavLink to="/profile" className="group">
-              <CircleUser className="duration-300 group-hover:scale-125" />
+            <NavLink to="/profile" className="group cursor-pointer">
+              <i className="bi bi-person-circle text-xl"></i>
             </NavLink>
-            <NavLink to="wishlist" className="group">
-              <Heart className="duration-300 group-hover:scale-125" />
+            <NavLink to="/wishlist" className="group cursor-pointer">
+              <i className="bi bi-heart text-xl"></i>
             </NavLink>
 
             <Popover open={isOpen} onOpenChange={setIsOpen}>
               <PopoverTrigger asChild>
                 <span className="group cursor-pointer">
-                  <ShoppingCart className="duration-300 group-hover:scale-125" />
+                  <i className="bi bi-cart2 text-xl"></i>
                 </span>
               </PopoverTrigger>
               <PopoverContent className="p-4">
                 <div>
                   <div className=" h-48 overflow-y-auto">
-                  {cartItems.map((item) => (
-                    <div key={item._id} className="relative">
-                      <div className="flex p-3">
-                        <div className="w-1/4">
-                          <img src={item.image} className="w-15 h-20" />
+                    {cartItems.map((item) => (
+                      <div key={item._id} className="relative">
+                        <div className="flex p-3">
+                          <div className="w-1/4">
+                            <img src={item.image} className="w-15 h-20" />
+                          </div>
+                          <div className="w-3/4">
+                            <p className="font-semibold ml-2">{item.title}</p>
+                            <p className="text-xs text-gray-400 ml-2">
+                              Quantity: {item.quantity}
+                            </p>
+                            <p className="font-semibold text-xs ml-2">
+                              ₹{item.price}
+                            </p>
+                          </div>
                         </div>
-                        <div className="w-3/4">
-                          <p className="font-semibold ml-2">{item.title}</p>
-                          <p className="text-xs text-gray-400 ml-2">
-                            Quantity: {item.quantity}
-                          </p>
-                          <p className="font-semibold text-xs ml-2">
-                            ₹{item.price}
-                          </p>
-                        </div>
+                        <hr className="text-gray-400 w-full container" />
                       </div>
-                      <hr className="text-gray-400 w-full container" />
-                    </div>
-                  ))}
+                    ))}
                   </div>
                   <div className="flex justify-between py-2 container">
                     <p className="text-gray-400">TOTAL: </p>
@@ -125,23 +141,6 @@ const Header = () => {
               </PopoverContent>
             </Popover>
           </div>
-
-          {/* Mobile Menu Button */}
-          <button className="md:hidden text-black focus:outline-none">
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4 6h16M4 12h16m-7 6h7"
-              ></path>
-            </svg>
-          </button>
         </div>
       </nav>
     </div>

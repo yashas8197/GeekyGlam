@@ -83,7 +83,7 @@ const ProductsList = () => {
     );
   };
 
-  console.log(location.state);
+  console.log(products);
 
   const handleSizeChange = (value) => {
     setQuery(
@@ -130,6 +130,7 @@ const ProductsList = () => {
         prev.delete("cSize");
         prev.delete("cPrice");
         prev.delete("sort");
+        prev.delete("selectedCat");
         return prev;
       },
       { replace: true }
@@ -141,10 +142,10 @@ const ProductsList = () => {
   };
 
   return (
-    <div className="my-5 py-2 ">
+    <div className="my-24 py-2 ">
       <Banner loca={filterCategory} />
 
-      <div className="container flex justify-between items-center mb-8">
+      <div className="container flex justify-between items-center">
         <small className="text-gray-400 ml-96">
           Showing 1 - 8 0f 29 products
         </small>
@@ -164,14 +165,11 @@ const ProductsList = () => {
           </Select>
         </div>
       </div>
-      <div className="flex justify-between container">
-        <div
-          className="w-1/4 mx-8 rounded-lg"
-          style={{ backgroundColor: "#F8F9FB" }}
-        >
+      <div className="flex justify-between items-start container">
+        <div className="w-1/4 mx-8 rounded-lg">
           <div className="container">
             <div className="flex justify-between items-center mb-3 p-5">
-              <h5 className="text-lg font-semibold">Filters</h5>
+              <h5 className="text-lg font-semibold uppercase">Filters</h5>
               <span
                 onClick={clearFilters}
                 className="text-gray-600 cursor-pointer underline text-sm"
@@ -181,7 +179,7 @@ const ProductsList = () => {
             </div>
             <hr className="text-gray-400 my-8" />
             <div className="mb-4">
-              <h5 className="text-lg text-gray-600">PRICE</h5>
+              <h5 className="text-lg text-gray-500">PRICE</h5>
               <div className="flex justify-between text-gray-600 text-sm mb-2">
                 <span>200</span>
                 <span>{maxValue / 2}</span>
@@ -201,7 +199,7 @@ const ProductsList = () => {
               />
             </div>
             <hr className="text-gray-400 my-8" />
-            <h5 className="text-lg text-gray-400 py-2">Category</h5>
+            <h5 className="text-lg text-gray-400 py-2 uppercase">Category</h5>
             <div className="my-2">
               <div>
                 <Checkbox
@@ -295,7 +293,7 @@ const ProductsList = () => {
           </div>
         </div>
 
-        <div className="flex justify-between gap-4 w-3/4 flex-wrap">
+        <div className="w-3/4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {sortProducts.map((product) => (
             <ProductCard key={product._id} product={product} />
           ))}

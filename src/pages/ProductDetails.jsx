@@ -9,8 +9,12 @@ import {
 import { ShoppingCart } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useToast } from "@/components/ui/use-toast";
+import {
+  toggleCartOptimistic,
+  toggleWishlistOptimistic,
+} from "@/utils/productListSlice";
 
 const ProductDetails = () => {
   const [noOfItems, setNoOfItems] = useState(1);
@@ -18,9 +22,10 @@ const ProductDetails = () => {
   const dispatch = useDispatch();
   const { product, status } = useSelector((state) => state.productDetails);
   const { toast } = useToast();
-  
-  const [cartAdd, setCartAdd] = useState(product.in_cart)
-  const [wishlistAdd, setWishlistAdd] = useState(product.is_wished)
+  const navigate = useNavigate();
+
+  const [cartAdd, setCartAdd] = useState(product.in_cart);
+  const [wishlistAdd, setWishlistAdd] = useState(product.is_wished);
 
   useEffect(() => {
     dispatch(fetchProductDetails(productId));
@@ -39,8 +44,9 @@ const ProductDetails = () => {
   ));
 
   const handleAddToWishlist = (product) => {
-    setWishlistAdd(true)
+    setWishlistAdd(true);
     const productId = product._id;
+    dispatch(toggleWishlistOptimistic(productId));
     dispatch(
       updateDataApi({
         productId: productId,
@@ -56,7 +62,8 @@ const ProductDetails = () => {
   };
 
   const handleRemoveWishlist = (productId) => {
-    setWishlistAdd(false)
+    setWishlistAdd(false);
+    dispatch(toggleWishlistOptimistic(productId));
     dispatch(
       updateDataApi({ productId: productId, field: "is_wished", value: false })
     );
@@ -68,8 +75,8 @@ const ProductDetails = () => {
   };
 
   const handleAddToCart = (productId) => {
-    
-    setCartAdd(true)
+    setCartAdd(true);
+    dispatch(toggleCartOptimistic(productId));
     dispatch(
       updateDataApi({
         productId: productId,
@@ -85,28 +92,11 @@ const ProductDetails = () => {
     });
   };
 
-  const handleRemoveFromCart = (productId) => {
-    setCartAdd(false)
-    dispatch(
-      updateDataApi({
-        productId: productId,
-        field: "in_cart",
-        value: false,
-        quantity: 1,
-      })
-    );
-    toast({
-      description: "Product removed from Cart!",
-      variant: "destructive",
-      duration: 900,
-    });
-  };
-
   return (
-    <div className="pt-20">
+    <div className="pt-28">
       <div className="flex">
-        <div className="w-1/2 p-4">
-          <img src={product.image} loading="lazy" />
+        <div className="w-1/2 p-4 pt-16">
+          <img style={{ width: "120%" }} src={product.image} loading="lazy" />
         </div>
         <div className="w-1/2 mx-20">
           <h1 className="text-6xl py-4  mt-10">{product.title}</h1>
@@ -185,10 +175,10 @@ const ProductDetails = () => {
                     <Button
                       variant="addToCart"
                       className="py-10 px-10"
-                      onClick={() => handleRemoveFromCart(product._id)}
+                      onClick={() => navigate("/cartlist")}
                     >
                       <span className="flex items-center">
-                        <ShoppingCart className="mr-3" /> REMOVE FROM CART
+                        <ShoppingCart className="mr-3" /> GO TO CART
                       </span>
                     </Button>
                   )}

@@ -69,29 +69,42 @@ export const productListSlice = createSlice({
       state.filters.sortBy = "";
     },
     toggleWishlistOptimistic: (state, action) => {
-      const productIndex = state.products.findIndex(product => product._id === action.payload);
+      const productIndex = state.products.findIndex(
+        (product) => product._id === action.payload
+      );
       if (productIndex > -1) {
-          state.products[productIndex].is_wished = !state.products[productIndex].is_wished
+        state.products[productIndex].is_wished =
+          !state.products[productIndex].is_wished;
       }
-  },
-  toggleCartOptimistic: (state, action) => {
-    const productIndex = state.products.findIndex(product => product._id === action.payload)
-    if(productIndex > -1){
-      state.products[productIndex].in_cart = !state.products[productIndex].in_cart
-    }
-  },
-  incrementQuantity: (state, action) => {
-    const productIndex = state.products.findIndex(product => product._id === action.payload)
-    if(productIndex > -1){
-      state.products[productIndex].quantity = state.products[productIndex].quantity + 1
-    }
-  },
-  decrementQuantity: (state, action) => {
-    const productIndex = state.products.findIndex(product => product._id === action.payload)
-    if(productIndex > -1){
-      state.products[productIndex].quantity = state.products[productIndex].quantity - 1
-    }
-  }
+    },
+    toggleCartOptimistic: (state, action) => {
+      console.log(action.payload);
+      const productIndex = state.products.findIndex(
+        (product) => product._id === action.payload
+      );
+      if (productIndex > -1) {
+        state.products[productIndex].in_cart =
+          !state.products[productIndex].in_cart;
+      }
+    },
+    incrementQuantity: (state, action) => {
+      const productIndex = state.products.findIndex(
+        (product) => product._id === action.payload
+      );
+      if (productIndex > -1) {
+        state.products[productIndex].quantity =
+          state.products[productIndex].quantity + 1;
+      }
+    },
+    decrementQuantity: (state, action) => {
+      const productIndex = state.products.findIndex(
+        (product) => product._id === action.payload
+      );
+      if (productIndex > -1) {
+        state.products[productIndex].quantity =
+          state.products[productIndex].quantity - 1;
+      }
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchProducts.pending, (state) => {
@@ -119,7 +132,15 @@ export const productListSlice = createSlice({
   },
 });
 
-export const { categoryFilter, clearCategoryFilter, setSort, clearSort, toggleWishlistOptimistic, toggleCartOptimistic, incrementQuantity, decrementQuantity } =
-  productListSlice.actions;
+export const {
+  categoryFilter,
+  clearCategoryFilter,
+  setSort,
+  clearSort,
+  toggleWishlistOptimistic,
+  toggleCartOptimistic,
+  incrementQuantity,
+  decrementQuantity,
+} = productListSlice.actions;
 
 export default productListSlice.reducer;
