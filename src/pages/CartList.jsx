@@ -19,7 +19,12 @@ import {
 import ServiceHighlights from "@/components/ServiceHighlights/ServiceHighlights";
 import { useEffect } from "react";
 import { updateDataApi } from "@/utils/productDetailsSlice";
-import { incrementQuantity, toggleCartOptimistic, fetchProducts, decrementQuantity } from "@/utils/productListSlice";
+import {
+  incrementQuantity,
+  toggleCartOptimistic,
+  fetchProducts,
+  decrementQuantity,
+} from "@/utils/productListSlice";
 import { addOrders } from "@/utils/orderSlice";
 
 const CartList = () => {
@@ -60,7 +65,7 @@ const CartList = () => {
 
   const handleQuantityMinus = (item) => {
     if (item.quantity <= 1) return;
-    dispatch(decrementQuantity(item._id))
+    dispatch(decrementQuantity(item._id));
     dispatch(
       updateDataApi({
         productId: item._id,
@@ -71,7 +76,7 @@ const CartList = () => {
   };
 
   const handleQuantityPlus = (item) => {
-    dispatch(incrementQuantity(item._id))
+    dispatch(incrementQuantity(item._id));
     dispatch(
       updateDataApi({
         productId: item._id,
@@ -83,7 +88,7 @@ const CartList = () => {
 
   return (
     <TooltipProvider>
-      <div className="mt-10  flex flex-col flex-grow">
+      <div className="mt-24  flex flex-col flex-grow">
         <div className="container">
           <div className="text-center pt-20 pb-10">
             <small>
@@ -156,8 +161,8 @@ const CartList = () => {
                       <TooltipTrigger>
                         <span
                           className="absolute top-1 right-1 cursor-pointer"
-                          onClick={() =>{
-                            dispatch(toggleCartOptimistic(item._id))
+                          onClick={() => {
+                            dispatch(toggleCartOptimistic(item._id));
                             dispatch(
                               updateDataApi({
                                 productId: item._id,
@@ -165,9 +170,8 @@ const CartList = () => {
                                 value: false,
                                 quantity: 1,
                               })
-                            )
-                          }
-                          }
+                            );
+                          }}
                         >
                           <X />
                         </span>

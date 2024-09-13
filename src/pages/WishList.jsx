@@ -23,7 +23,7 @@ const WishList = () => {
 
   return (
     <>
-      <div className="text-center pt-24">
+      <div className="text-center pt-40">
         <small>
           <Link to="/" className="mx-2">
             Home

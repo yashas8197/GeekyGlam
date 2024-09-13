@@ -109,19 +109,16 @@ const ProductDetails = () => {
         </div>
         <div className="w-1/2 mx-20">
           <p className="mt-10 text-xs tracking-widest">
-            <span className="cursor-pointer" onClick={() => navigate("/")}>
-              Home
-            </span>{" "}
-            /
+            <Link to="/" className="cursor-pointer">
+              Home /
+            </Link>
             <span
               className="cursor-pointer"
               onClick={() => navigate(`/products`, { state: product.category })}
             >
-              {"  "}
-              {product.category}
-              {"  "}
+              {" "}
+              {product.category} /
             </span>
-            /{" "}
             <span className="text-gray-400 ">
               {"  "}
               {product.title}
