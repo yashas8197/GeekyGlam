@@ -154,7 +154,7 @@ const ProductsList = () => {
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
-    <div className="my-24 py-2 ">
+    <div className="my-10 py-2 ">
       <Banner loca={filterCategory} />
 
       <div className="container flex justify-between items-center">
@@ -304,7 +304,6 @@ const ProductsList = () => {
             </div>
           </div>
         </div>
-
         <SortedProducts currentProduct={currentProduct} loading={status} />
       </div>
       <PaginationComponent

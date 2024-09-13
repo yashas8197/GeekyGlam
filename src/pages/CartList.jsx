@@ -88,7 +88,7 @@ const CartList = () => {
 
   return (
     <TooltipProvider>
-      <div className="mt-24  flex flex-col flex-grow">
+      <div className="mt-14  flex flex-col flex-grow">
         <div className="container">
           <div className="text-center pt-20 pb-10">
             <small>

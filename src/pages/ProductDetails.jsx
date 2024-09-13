@@ -102,7 +102,7 @@ const ProductDetails = () => {
   };
 
   return (
-    <div className="pt-28">
+    <div className="pt-14">
       <div className="flex">
         <div className="w-1/2 p-4 pt-10">
           <img style={{ width: "120%" }} src={product.image} loading="lazy" />

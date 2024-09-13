@@ -5,7 +5,7 @@ import { Trans } from "react-i18next";
 
 const Home = () => {
   return (
-    <div className="mt-28">
+    <div className="mt-20">
       <div className="flex min-h-screen flex-col">
         <Carousal style={{ backgroundColor: "#F8F9FB" }} />
         <div className="py-16 mx-auto w-1/2">

@@ -23,7 +23,7 @@ const WishList = () => {
 
   return (
     <>
-      <div className="text-center pt-40">
+      <div className="text-center pt-28">
         <small>
           <Link to="/" className="mx-2">
             Home
@@ -47,7 +47,7 @@ const WishList = () => {
           )}
           <div className="grid grid-cols-4 gap-4">
             {wishlistItems.map((card) => (
-              <div key={card._id} className="relative">
+              <div key={card._id} className="relative w-3/4">
                 <ProductCard product={card} />
                 <span
                   onClick={() => {

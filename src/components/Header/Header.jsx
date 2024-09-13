@@ -85,38 +85,6 @@ const Header = () => {
 
   return (
     <div className="fixed top-0 left-0 w-full z-50 bg-white shadow-md">
-      <div className="container mx-auto" style={{ color: "#495057" }}>
-        <div className="flex items-center justify-between">
-          <div className="flex-grow">
-            <ul className="flex flex-grow space-x-6 items-center font-light text-sm">
-              <li className="flex items-center">
-                <i className="bi bi-telephone text-xl mx-2"></i>
-                020-800-456-747
-              </li>
-              <li className="pl-6 border-l border-gray-200">
-                Free shipping on orders over $300
-              </li>
-            </ul>
-          </div>
-          <div className="relative">
-            <span>
-              <img src={selectedLanguage.imgSrc} className="w-4 inline-block" />
-            </span>
-            <select className="p-2" onChange={handleLanguageChange}>
-              {languages.map((language) => (
-                <option
-                  key={language.code}
-                  value={language.code}
-                  className="flex items-center w-full px-4 py-2 text-sm hover:bg-gray-100"
-                >
-                  {language.label}
-                </option>
-              ))}
-            </select>
-          </div>
-        </div>
-      </div>
-
       <nav className="p-6">
         <div className="container mx-auto flex justify-between items-center">
           <NavLink to="/" className="font-bold text-2xl font-serif">
@@ -184,6 +152,26 @@ const Header = () => {
                 </div>
               </PopoverContent>
             </Popover>
+            <div className="group">
+              <select className="pb-2 px-2" onChange={handleLanguageChange}>
+                {languages.map((language) => (
+                  <option
+                    key={language.code}
+                    value={language.code}
+                    className="flex items-center w-full px-4 py-2 text-sm hover:bg-gray-100"
+                  >
+                    {language.label}
+                  </option>
+                ))}
+              </select>
+
+              <span className="px-2">
+                <img
+                  src={selectedLanguage.imgSrc}
+                  className="w-4 inline-block"
+                />
+              </span>
+            </div>
           </div>
         </div>
       </nav>

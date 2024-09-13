@@ -62,7 +62,7 @@ const Profile = () => {
 
   return (
     <>
-      <div className="mt-40 mb-10 text-center text-xs ">
+      <div className="mt-28 mb-10 text-center text-xs ">
         <Link to="/" className="cursor-pointer">
           Home /
         </Link>
@@ -104,10 +104,10 @@ const Profile = () => {
               </Button>
             </div>
           </Card>
-          <ul className="space-y-4">
+          <ul className="">
             {addressList.map((address) => (
               <li key={address.id}>
-                <Card className="p-4 border rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+                <Card className="p-4 border shadow-md hover:shadow-lg transition-shadow duration-300">
                   <div className="space-y-2">
                     <h2 className="text-xl font-semibold">{address.street}</h2>
                     <div className="text-gray-600">
