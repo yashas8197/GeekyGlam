@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation, useSearchParams } from "react-router-dom";
 import {
   categoryFilter,
@@ -19,7 +19,8 @@ import {
 import Banner from "@/components/Banner";
 import { Slider } from "@/components/ui/slider";
 import { Checkbox } from "@/components/ui/checkbox";
-import ProductCard from "@/components/ProductCard/ProductCard";
+import SortedProducts from "@/components/SortedProducts/SortedProducts";
+import PaginationComponent from "@/components/PaginationComponent/PaginationComponent";
 
 const ProductsList = () => {
   const location = useLocation();
@@ -29,6 +30,8 @@ const ProductsList = () => {
   const category = useSelector((state) => state.productList.filters.categories);
   const sortBy = useSelector((state) => state.productList.filters.sortBy);
   const filterCategory = location.state || "All";
+  const [currentPage, setCurrentPage] = useState(1);
+  const [productsPerPage, setProductsPerPage] = useState(6);
 
   const [query, setQuery] = useSearchParams({
     cSize: "",
@@ -83,7 +86,7 @@ const ProductsList = () => {
     );
   };
 
-  console.log(products);
+  // console.log(products);
 
   const handleSizeChange = (value) => {
     setQuery(
@@ -140,6 +143,15 @@ const ProductsList = () => {
     dispatch(clearSort());
     dispatch(fetchProducts());
   };
+
+  //Get current posts
+  const indexOfLastProduct = currentPage * productsPerPage;
+  const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+  const currentProduct = sortProducts.slice(
+    indexOfFirstProduct,
+    indexOfLastProduct
+  );
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
     <div className="my-24 py-2 ">
@@ -293,12 +305,14 @@ const ProductsList = () => {
           </div>
         </div>
 
-        <div className="w-3/4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-          {sortProducts.map((product) => (
-            <ProductCard key={product._id} product={product} />
-          ))}
-        </div>
+        <SortedProducts currentProduct={currentProduct} loading={status} />
       </div>
+      <PaginationComponent
+        productsPerPage={productsPerPage}
+        totalProducts={products.length}
+        currentPage={currentPage}
+        paginate={paginate}
+      />
     </div>
   );
 };

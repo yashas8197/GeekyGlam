@@ -56,21 +56,21 @@ const ProductCard = ({ product }) => {
               className="text-black border border-slate-800 bg-white hover:text-white hover:bg-slate-800 px-4 py-2"
               onClick={() => handleAddToCart(product._id)}
             >
-              <i class="bi bi-cart"></i>
+              <i className="bi bi-cart"></i>
             </button>
             <button
               variant="cardViewBtn"
               className="text-white tracking-widest text-sm uppercase font-mono border border-none px-6 mx-2 text-center leading-10 hover:opacity-80 bg-slate-800"
               onClick={() => navigate(`/product-details/${product._id}`)}
             >
-              <i class="bi bi-search"></i>
+              <i className="bi bi-search"></i>
               <span className="ml-2">View</span>
             </button>
             <button
               onClick={handleOpenDialog}
               className="text-black border border-slate-800 bg-white hover:text-white hover:bg-slate-800 px-4 py-2"
             >
-              <i class="bi bi-arrows-angle-expand"></i>
+              <i className="bi bi-arrows-angle-expand"></i>
             </button>
           </div>
         </div>
