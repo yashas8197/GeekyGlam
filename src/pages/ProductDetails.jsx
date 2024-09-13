@@ -104,11 +104,30 @@ const ProductDetails = () => {
   return (
     <div className="pt-28">
       <div className="flex">
-        <div className="w-1/2 p-4 pt-16">
+        <div className="w-1/2 p-4 pt-10">
           <img style={{ width: "120%" }} src={product.image} loading="lazy" />
         </div>
         <div className="w-1/2 mx-20">
-          <h1 className="text-6xl py-4  mt-10">{product.title}</h1>
+          <p className="mt-10 text-xs tracking-widest">
+            <span className="cursor-pointer" onClick={() => navigate("/")}>
+              Home
+            </span>{" "}
+            /
+            <span
+              className="cursor-pointer"
+              onClick={() => navigate(`/products`, { state: product.category })}
+            >
+              {"  "}
+              {product.category}
+              {"  "}
+            </span>
+            /{" "}
+            <span className="text-gray-400 ">
+              {"  "}
+              {product.title}
+            </span>
+          </p>
+          <h1 className="text-6xl py-4  ">{product.title}</h1>
           <div className="flex justify-between items-center">
             <div className="flex">
               <p className="text-xl font-extralight mx-2">
@@ -199,8 +218,9 @@ const ProductDetails = () => {
                       className="mx-7 py-6 px-6 hover:bg-gray-400 text-gray-400"
                       onClick={() => handleAddToWishlist(product)}
                     >
-                      <span className=" hover:text-white flex items-center text-xs">
-                        <span className="">❤️ ADD TO WISHLIST</span>
+                      <span className=" hover:text-white flex items-center">
+                        <i className="bi bi-heart-fill text-red-700 mr-2"></i>
+                        <span className="text-xs"> ADD TO WISHLIST</span>
                       </span>
                     </Button>
                   ) : (
@@ -210,9 +230,8 @@ const ProductDetails = () => {
                       onClick={() => handleRemoveWishlist(product._id)}
                     >
                       <span className=" hover:text-white flex items-center text-xs">
-                        ❤️
-                      </span>{" "}
-                      REMOVE FROM WISHLIST
+                        REMOVE FROM WISHLIST
+                      </span>
                     </Button>
                   )}
                 </div>
