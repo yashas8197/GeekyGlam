@@ -13,35 +13,36 @@ const Carousal = () => {
   const slides = [
     {
       img: "https://demo.bootstrapious.com/sell/2-0-1/img/slider/circle-slider-1.jpg",
-      caption: "Autumn-colour coats",
-      season: "SPECIAL",
-      description:
-        "Immerse yourself in the beauty of a golden sunset over a tranquil beach, perfect for relaxation.",
+      captionKey: "caption_autumn_coats",
+      seasonKey: "season_special",
+      descriptionKey: "description_autumn",
     },
     {
       img: "https://demo.bootstrapious.com/sell/2-0-1/img/slider/circle-slider-3.jpg",
-      season: "SPECIAL",
-      caption: "OUR BESTSELLER",
-      description:
-        "Experience the excitement of adventure with thrilling outdoor activities under a vibrant sky.",
+      captionKey: "caption_bestseller",
+      seasonKey: "season_special",
+      descriptionKey: "description_adventure",
     },
     {
       img: "https://demo.bootstrapious.com/sell/2-0-1/img/slider/circle-slider-2.jpg",
-      season: "JUST ARRIVED",
-      caption: "Tigerrrs College Jackets",
-      description:
-        "Immerse yourself in the beauty of a golden sunset over a tranquil beach, perfect for relaxation.",
+      captionKey: "caption_college_jackets",
+      seasonKey: "season_arrived",
+      descriptionKey: "description_sunset",
     },
   ];
+
   return (
     <div>
       <Carousel style={{ backgroundColor: "#F8F9FB" }} className="w-full">
         <CarouselContent>
           {slides.map((slide, index) => (
             <CarouselItem key={index} className="w-full h-full">
-              <div style={{ width: "95%" }}>
+              <div
+                className="relative overflow-hidden"
+                style={{ width: "95%" }}
+              >
                 <div
-                  className="h-[600px] bg-no-repeat bg-right flex items-center justify-center px-24 relative overflow-hidden"
+                  className="h-[600px] bg-no-repeat bg-right flex items-center justify-center px-24"
                   style={{
                     backgroundImage: `url(${slide.img})`,
                     backgroundPosition: "right bottom",
@@ -50,13 +51,13 @@ const Carousal = () => {
                   <div className="container">
                     <div className="lg:w-1/2 p-5">
                       <h5 className="uppercase text-gray-500 mb-2 tracking-widest">
-                        {slide.season}
+                        <Trans i18nKey={slide.seasonKey} />
                       </h5>
                       <h2 className="text-5xl font-semibold mb-3">
-                        {slide.caption}
+                        <Trans i18nKey={slide.captionKey} />
                       </h2>
                       <p className="text-lg mb-4 text-gray-700">
-                        {slide.description}
+                        <Trans i18nKey={slide.descriptionKey} />
                       </p>
                       <Link
                         to="/products"
@@ -65,7 +66,7 @@ const Carousal = () => {
                           variant: "checkoutButton",
                         })}
                       >
-                        VIEW COLLECTIONS
+                        <Trans i18nKey="buttonName" />
                       </Link>
                     </div>
                   </div>

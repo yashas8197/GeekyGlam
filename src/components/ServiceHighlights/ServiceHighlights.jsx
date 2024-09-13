@@ -5,7 +5,7 @@ const ServiceHighlights = () => {
         <div className="mx-28">
           <div className="grid grid-cols-3 divide-x-2">
             <div className="flex items-center mx-10">
-              <i class="bi bi-truck text-6xl"></i>
+              <i className="bi bi-truck text-6xl"></i>
               <div className="w-3/4 pl-3">
                 <div className="font-bold uppercase">
                   Free shipping & return
@@ -17,7 +17,7 @@ const ServiceHighlights = () => {
             </div>
 
             <div className="flex items-center mx-10">
-              <i class="bi bi-currency-bitcoin text-6xl"></i>
+              <i className="bi bi-currency-bitcoin text-6xl"></i>
               <div className="w-3/4 pl-3">
                 <div className="font-bold uppercase">Money back guarantee</div>
                 <div className="font-mono text-gray-600">

@@ -1,9 +1,9 @@
-import React from "react";
-import { createRoot } from "react-dom/client";
 import i18n from "i18next";
-import { useTranslation, initReactI18next } from "react-i18next";
+import I18nextBrowserLanguageDetector from "i18next-browser-languagedetector";
+import { initReactI18next } from "react-i18next";
 
 i18n
+  .use(I18nextBrowserLanguageDetector)
   .use(initReactI18next) // passes i18n down to react-i18next
   .init({
     // the translations
@@ -12,18 +12,34 @@ i18n
     resources: {
       en: {
         translation: {
-          caption: "<0>Nature's Serenity<0>",
-          description:
-            "<0>Immerse yourself in the beauty of a golden sunset over a tranquil beach, perfect for relaxation.<0>",
-          buttonName: "VIEW COLLECTION",
+          caption_autumn_coats: "Autumn-colour coats",
+          caption_bestseller: "OUR BESTSELLER",
+          caption_college_jackets: "Tigerrrs College Jackets",
+          season_special: "SPECIAL",
+          season_arrived: "JUST ARRIVED",
+          description_autumn:
+            "Immerse yourself in the beauty of a golden sunset over a tranquil beach, perfect for relaxation.",
+          description_adventure:
+            "Experience the excitement of adventure with thrilling outdoor activities under a vibrant sky.",
+          description_sunset:
+            "Immerse yourself in the beauty of a golden sunset over a tranquil beach, perfect for relaxation.",
+          buttonName: "VIEW COLLECTIONS",
         },
       },
-      sp: {
+      es: {
         translation: {
-          caption: "<0>La serenidad de la naturaleza<0>",
-          description:
-            "<0>Sumérgete en la belleza de una puesta de sol dorada sobre una playa tranquila, perfecta para relajarte.<0>",
-          buttonName: "VER COLECCIÓN",
+          caption_autumn_coats: "La serenidad de la naturaleza",
+          caption_bestseller: "NUESTRO MÁS VENDIDO",
+          caption_college_jackets: "Chaquetas Universitarias Tigerrrs",
+          season_special: "ESPECIAL",
+          season_arrived: "ACABADO DE LLEGAR",
+          description_autumn:
+            "Sumérgete en la belleza de una puesta de sol dorada sobre una playa tranquila, perfecta para relajarte.",
+          description_adventure:
+            "Experimenta la emoción de la aventura con actividades al aire libre emocionantes bajo un cielo vibrante.",
+          description_sunset:
+            "Sumérgete en la belleza de una puesta de sol dorada sobre una playa tranquila, perfecta para relajarte.",
+          buttonName: "VER COLECCIONES",
         },
       },
     },

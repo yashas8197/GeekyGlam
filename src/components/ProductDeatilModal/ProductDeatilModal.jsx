@@ -38,11 +38,20 @@ const ProductDeatilModal = ({ isDialogOpen, setIsDialogOpen, product }) => {
   }, [product.in_cart, product.is_wished]);
 
   const numberOfStars = Math.floor(product.rating);
+  const maxStars = 5;
   const stars = Array.from({ length: numberOfStars }).map((_, index) => (
-    <span key={index} className="text-yellow-500 text-lg">
-      ⭐️
+    <span key={index} className="text-blue-500 text-lg">
+      <i className="bi bi-star-fill"></i>
     </span>
   ));
+
+  const emptyStars = Array.from({ length: maxStars - numberOfStars }).map(
+    (_, index) => (
+      <span key={index + numberOfStars} className="text-gray-300 text-lg">
+        <i className="bi bi-star-fill"></i>
+      </span>
+    )
+  );
 
   const handleAddToWishlist = (product) => {
     setWishlistAdd(true);
@@ -124,6 +133,7 @@ const ProductDeatilModal = ({ isDialogOpen, setIsDialogOpen, product }) => {
               </div>
               <div className="flex items-center">
                 {stars}
+                {emptyStars}
                 <p className="text-gray-400 mx-2 text-xs md:text-sm">
                   {product.reviews} REVIEWS
                 </p>
@@ -176,7 +186,7 @@ const ProductDeatilModal = ({ isDialogOpen, setIsDialogOpen, product }) => {
                       onClick={() => handleAddToCart(product._id)}
                     >
                       <span className="flex items-center">
-                        <ShoppingCart className="mr-2" /> ADD TO CART
+                        <i className="bi bi-cart-fill mr-2"></i> ADD TO CART
                       </span>
                     </Button>
                   ) : (
@@ -186,7 +196,7 @@ const ProductDeatilModal = ({ isDialogOpen, setIsDialogOpen, product }) => {
                       onClick={() => navigate("/cartlist")}
                     >
                       <span className="flex items-center">
-                        <ShoppingCart className="mr-2" /> GO TO CART
+                        <i className="bi bi-cart-fill mr-2"></i> GO TO CART
                       </span>
                     </Button>
                   )}
@@ -197,7 +207,8 @@ const ProductDeatilModal = ({ isDialogOpen, setIsDialogOpen, product }) => {
                       className="py-3 md:py-5 px-3 md:px-5 text-gray-400 hover:bg-gray-300 hover:text-white"
                       onClick={() => handleAddToWishlist(product)}
                     >
-                      ❤️ ADD TO WISHLIST
+                      <i className="bi bi-heart-fill text-red-700 mr-2"></i> ADD
+                      TO WISHLIST
                     </Button>
                   ) : (
                     <Button

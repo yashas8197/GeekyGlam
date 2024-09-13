@@ -8,17 +8,22 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { Button } from "../ui/button";
-import { useToast } from "../ui/use-toast";
 import { addOrders } from "@/utils/orderSlice";
 import { fetchProducts } from "@/utils/productListSlice";
+import { useTranslation } from "react-i18next";
+import i18n from "@/utils/i18n";
 
 const Header = () => {
   const dispatch = useDispatch();
   const [isOpen, setIsOpen] = useState(false);
+  const [selectedLanguage, setSelectedLanguage] = useState({
+    label: "English",
+    imgSrc: "https://upload.wikimedia.org/wikipedia/en/4/41/Flag_of_India.svg",
+  });
   const { products, status, error } = useSelector((state) => state.productList);
+  const { i18n } = useTranslation();
 
   const navigate = useNavigate();
-  const { toast } = useToast();
   const cartItems = products.filter((cart) => cart.in_cart === true);
 
   useEffect(() => {
@@ -49,15 +54,38 @@ const Header = () => {
         quantity: item.quantity,
       };
 
-      console.log("Order Payload: ", orderPayload);
       dispatch(addOrders(orderPayload));
     });
     navigate("/profile?tab=history", { state: { cartItems } });
   };
 
+  const languages = [
+    {
+      label: "English",
+      code: "en",
+      imgSrc:
+        "https://upload.wikimedia.org/wikipedia/en/4/41/Flag_of_India.svg",
+    },
+    {
+      label: "Spain",
+      code: "es",
+      imgSrc:
+        "https://upload.wikimedia.org/wikipedia/en/9/9a/Flag_of_Spain.svg",
+    },
+  ];
+
+  const handleLanguageChange = (e) => {
+    const value = e.target.value;
+    i18n.changeLanguage(value);
+    const selectedCountry = languages.find(
+      (language) => language.code === value
+    );
+    setSelectedLanguage(selectedCountry);
+  };
+
   return (
     <div className="fixed top-0 left-0 w-full z-50 bg-white shadow-md">
-      <div className="container mx-auto py-4" style={{ color: "#495057" }}>
+      <div className="container mx-auto" style={{ color: "#495057" }}>
         <div className="flex items-center justify-between">
           <div className="flex-grow">
             <ul className="flex flex-grow space-x-6 items-center font-light text-sm">
@@ -69,6 +97,22 @@ const Header = () => {
                 Free shipping on orders over $300
               </li>
             </ul>
+          </div>
+          <div className="relative">
+            <span>
+              <img src={selectedLanguage.imgSrc} className="w-4 inline-block" />
+            </span>
+            <select className="p-2" onChange={handleLanguageChange}>
+              {languages.map((language) => (
+                <option
+                  key={language.code}
+                  value={language.code}
+                  className="flex items-center w-full px-4 py-2 text-sm hover:bg-gray-100"
+                >
+                  {language.label}
+                </option>
+              ))}
+            </select>
           </div>
         </div>
       </div>

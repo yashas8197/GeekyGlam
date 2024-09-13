@@ -7,8 +7,8 @@ const Footer = () => {
         <div className="mx-28 px-4">
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
             <div className="flex flex-col mb-5 lg:mb-0">
-              <div className="font-bold uppercase text-lg text-gray-900 mb-3">
-                Sell<span className="text-blue-500">.</span>
+              <div className="font-bold font-serif text-lg text-gray-900 mb-3">
+                GeekyGlam<span className="text-blue-500">.</span>
               </div>
               <p>Elevate Every Moment with Our Premium Selections.</p>
             </div>

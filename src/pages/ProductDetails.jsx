@@ -37,11 +37,20 @@ const ProductDetails = () => {
   }, [product.in_cart, product.is_wished]);
 
   const numberOfStars = Math.floor(product.rating);
+  const maxStars = 5;
   const stars = Array.from({ length: numberOfStars }).map((_, index) => (
-    <span key={index} className="text-yellow-500 text-lg">
-      ⭐️
+    <span key={index} className="text-blue-500 text-lg">
+      <i className="bi bi-star-fill"></i>
     </span>
   ));
+
+  const emptyStars = Array.from({ length: maxStars - numberOfStars }).map(
+    (_, index) => (
+      <span key={index + numberOfStars} className="text-gray-300 text-lg">
+        <i className="bi bi-star-fill"></i>
+      </span>
+    )
+  );
 
   const handleAddToWishlist = (product) => {
     setWishlistAdd(true);
@@ -111,6 +120,7 @@ const ProductDetails = () => {
             </div>
             <div className="flex items-center">
               {stars}
+              {emptyStars}
               <p className="text-gray-400 mx-2">{product.reviews} REVIEWS</p>
             </div>
           </div>

@@ -1,7 +1,10 @@
 import ProductCard from "@/components/ProductCard/ProductCard";
 import { Button } from "@/components/ui/button";
 import { updateDataApi } from "@/utils/productDetailsSlice";
-import { fetchProducts, toggleWishlistOptimistic } from "@/utils/productListSlice";
+import {
+  fetchProducts,
+  toggleWishlistOptimistic,
+} from "@/utils/productListSlice";
 import { ChevronLeft, X } from "lucide-react";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -45,23 +48,22 @@ const WishList = () => {
           <div className="grid grid-cols-4 gap-4">
             {wishlistItems.map((card) => (
               <div key={card._id} className="relative">
+                <ProductCard product={card} />
                 <span
-                  onClick={() =>{
-                    dispatch(toggleWishlistOptimistic(card._id))
+                  onClick={() => {
+                    dispatch(toggleWishlistOptimistic(card._id));
                     dispatch(
                       updateDataApi({
                         productId: card._id,
                         field: "is_wished",
                         value: false,
                       })
-                    )
-                  }
-                  }
-                  className="absolute top-1 right-9 text-gray-400 cursor-pointer"
+                    );
+                  }}
+                  className="absolute top-4 right-0 text-gray-400 cursor-pointer"
                 >
                   <X />
                 </span>
-                <ProductCard product={card} />
               </div>
             ))}
           </div>

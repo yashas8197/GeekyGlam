@@ -5,10 +5,10 @@ import { Trans } from "react-i18next";
 
 const Home = () => {
   return (
-    <div className="mt-32">
-      <div className="flex min-h-screen flex-col items-center">
+    <div className="mt-28">
+      <div className="flex min-h-screen flex-col">
         <Carousal style={{ backgroundColor: "#F8F9FB" }} />
-        <div className="py-16 mx-28 w-1/2">
+        <div className="py-16 mx-auto w-1/2">
           <p className="text-gray-500 uppercase py-2">Top Choices</p>
           <p className="text-2xl font-bold">Popular this week</p>
           <p className="text-gray-500 sans-serif text-xl font-light py-2">
