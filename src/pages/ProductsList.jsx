@@ -159,7 +159,9 @@ const ProductsList = () => {
 
       <div className="container flex justify-between items-center">
         <small className="text-gray-400 ml-96">
-          Showing 1 - 8 0f 29 products
+          Displaying <span className="font-bold">{currentProduct.length}</span>{" "}
+          out of <span className="font-bold">{sortProducts.length}</span>{" "}
+          products
         </small>
         <div className="flex items-center ">
           <label className="mx-5 text-gray-400">Sort By: </label>
