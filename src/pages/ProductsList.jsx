@@ -52,14 +52,6 @@ const ProductsList = () => {
     }
   }, []);
 
-  if (status === "loading") {
-    return (
-      <div className="flex items-center justify-center min-h-screen">
-        <p>Loading...</p>
-      </div>
-    );
-  }
-
   const maxValue = products.reduce(
     (acc, curr) => (parseInt(curr.price) > acc ? parseInt(curr.price) : acc),
     0
@@ -85,8 +77,6 @@ const ProductsList = () => {
       { return: true }
     );
   };
-
-  // console.log(products);
 
   const handleSizeChange = (value) => {
     setQuery(

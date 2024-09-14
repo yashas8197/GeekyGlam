@@ -104,7 +104,7 @@ const ProductDeatilModal = ({ isDialogOpen, setIsDialogOpen, product }) => {
   return (
     <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
       <DialogContent
-        aria-describedby="dialog-description"
+        aria-describedby="product-description"
         className="max-w-lg md:max-w-3xl lg:max-w-4xl p-4 md:p-6"
       >
         <DialogHeader>
@@ -141,9 +141,11 @@ const ProductDeatilModal = ({ isDialogOpen, setIsDialogOpen, product }) => {
             </div>
 
             <div className="my-4 md:my-6">
-              <p className="text-xs md:text-sm text-gray-500">
-                {product.description}. Fashion is a dynamic and ever-evolving
-                art form that transcends...
+              <p
+                id="product-description"
+                className="text-xs md:text-sm text-gray-500"
+              >
+                {product.description}.
               </p>
 
               <div className="mt-4 md:mt-6">

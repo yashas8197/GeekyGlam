@@ -10,18 +10,14 @@ import { useEffect, useState } from "react";
 import { Button } from "../ui/button";
 import { addOrders } from "@/utils/orderSlice";
 import { fetchProducts } from "@/utils/productListSlice";
+import i18next from "i18next";
 import { useTranslation } from "react-i18next";
-import i18n from "@/utils/i18n";
 
 const Header = () => {
   const dispatch = useDispatch();
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedLanguage, setSelectedLanguage] = useState({
-    label: "English",
-    imgSrc: "https://upload.wikimedia.org/wikipedia/en/4/41/Flag_of_India.svg",
-  });
+  const [langOpen, setLangOpen] = useState(false);
   const { products, status, error } = useSelector((state) => state.productList);
-  const { i18n } = useTranslation();
 
   const navigate = useNavigate();
   const cartItems = products.filter((cart) => cart.in_cart === true);
@@ -74,13 +70,15 @@ const Header = () => {
     },
   ];
 
-  const handleLanguageChange = (e) => {
-    const value = e.target.value;
-    i18n.changeLanguage(value);
-    const selectedCountry = languages.find(
-      (language) => language.code === value
-    );
-    setSelectedLanguage(selectedCountry);
+  const handleLanguageChange = (code) => {
+    i18next
+      .changeLanguage(code)
+      .then(() => {
+        console.log("Language changed to " + code);
+      })
+      .catch((err) => {
+        console.error("Error changing language", err);
+      });
   };
 
   return (
@@ -152,26 +150,32 @@ const Header = () => {
                 </div>
               </PopoverContent>
             </Popover>
-            <div className="group">
-              <select className="pb-2 px-2" onChange={handleLanguageChange}>
-                {languages.map((language) => (
-                  <option
-                    key={language.code}
-                    value={language.code}
-                    className="flex items-center w-full px-4 py-2 text-sm hover:bg-gray-100"
-                  >
-                    {language.label}
-                  </option>
-                ))}
-              </select>
+            <Popover open={langOpen} onOpenChange={setLangOpen}>
+              <PopoverTrigger asChild>
+                <span className="group cursor-pointer text-gray-700">
+                  <i className="bi bi-globe text-xl"></i>
+                </span>
+              </PopoverTrigger>
 
-              <span className="px-2">
-                <img
-                  src={selectedLanguage.imgSrc}
-                  className="w-4 inline-block"
-                />
-              </span>
-            </div>
+              <PopoverContent className="w-72 bg-white border border-gray-200 shadow-lg rounded-lg p-4">
+                {languages.map((lang, i) => (
+                  <div
+                    key={i}
+                    onClick={() => handleLanguageChange(lang.code)}
+                    className="flex cursor-pointer items-center py-2 hover:bg-gray-100 rounded-lg transition duration-200"
+                  >
+                    <img
+                      src={lang.imgSrc}
+                      className="w-6 h-6 mr-3"
+                      alt={lang.label}
+                    />
+                    <span className="text-gray-800 font-medium">
+                      {lang.label}
+                    </span>
+                  </div>
+                ))}
+              </PopoverContent>
+            </Popover>
           </div>
         </div>
       </nav>
