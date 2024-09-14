@@ -26,6 +26,7 @@ To get started with GeekyGlam locally, follow these steps:
 - 🏠 Address Management
 - 🎟️ Coupon Codes
 - 🛒 Checkout Page
+- 📜 Pagination on Product Listing Page
 
 ## Upcoming Features
 
@@ -36,7 +37,6 @@ To get started with GeekyGlam locally, follow these steps:
 - 🚪 Logout Page
 - 🌐 Fully Responsive
 - ⚠️ Error Page
-- 📜 Pagination on Product Listing Page
 
 ## **Built With**
 
