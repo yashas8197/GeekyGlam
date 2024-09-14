@@ -77,7 +77,7 @@ const Header = () => {
         console.log("Language changed to " + code);
       })
       .catch((err) => {
-        console.error("Error changing language", err);
+        console.error("Error changing language ", err);
       });
   };
 
