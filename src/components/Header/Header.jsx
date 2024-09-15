@@ -10,8 +10,8 @@ import { useEffect, useState } from "react";
 import { Button } from "../ui/button";
 import { addOrders } from "@/utils/orderSlice";
 import { fetchProducts } from "@/utils/productListSlice";
-import i18next from "i18next";
 import { useTranslation } from "react-i18next";
+import i18next from "i18next";
 
 const Header = () => {
   const dispatch = useDispatch();

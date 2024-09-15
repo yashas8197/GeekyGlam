@@ -7,9 +7,12 @@ import {
 } from "@/components/ui/carousel";
 import { buttonVariants } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { Trans } from "react-i18next";
+import { Trans, useTranslation } from "react-i18next";
+import { useEffect, useState } from "react";
 
 const Carousal = () => {
+  const { i18n } = useTranslation();
+  const [key, setKey] = useState(0);
   const slides = [
     {
       img: "https://demo.bootstrapious.com/sell/2-0-1/img/slider/circle-slider-1.jpg",
@@ -31,8 +34,21 @@ const Carousal = () => {
     },
   ];
 
+  useEffect(() => {
+    const handleLanguageChange = () => {
+      setKey((prevKey) => prevKey + 1); // Increment key to trigger a re-render
+    };
+
+    i18n.on("languageChanged", handleLanguageChange);
+
+    // Cleanup listener when component is unmounted
+    return () => {
+      i18n.off("languageChanged", handleLanguageChange);
+    };
+  }, [i18n]);
+
   return (
-    <div>
+    <div key={key}>
       <Carousel style={{ backgroundColor: "#F8F9FB" }} className="w-full">
         <CarouselContent>
           {slides.map((slide, index) => (
