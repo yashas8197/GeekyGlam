@@ -68,6 +68,12 @@ const Header = () => {
       imgSrc:
         "https://upload.wikimedia.org/wikipedia/en/9/9a/Flag_of_Spain.svg",
     },
+    {
+      label: "Kannada",
+      code: "kn",
+      imgSrc:
+        "https://upload.wikimedia.org/wikipedia/en/4/41/Flag_of_India.svg",
+    },
   ];
 
   const handleLanguageChange = (code) => {

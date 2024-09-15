@@ -1,20 +1,20 @@
 import { Link } from "react-router-dom";
 import ServiceHighlights from "@/components/ServiceHighlights/ServiceHighlights";
 import Carousal from "@/components/Carousel/Carousal";
+import { useTranslation } from "react-i18next";
 import { Trans } from "react-i18next";
 
 const Home = () => {
+  const { t } = useTranslation();
   return (
     <div className="mt-20">
       <div className="flex min-h-screen flex-col">
         <Carousal style={{ backgroundColor: "#F8F9FB" }} />
         <div className="py-16 mx-auto w-1/2">
-          <p className="text-gray-500 uppercase py-2">Top Choices</p>
-          <p className="text-2xl font-bold">Popular this week</p>
+          <p className="text-gray-500 uppercase py-2">{t("top_choices")}</p>
+          <p className="text-2xl font-bold">{t("popular_week")}</p>
           <p className="text-gray-500 sans-serif text-xl font-light py-2">
-            Popular This Week Discover the latest trends and must-have styles.
-            From chic ensembles to timeless classics, our curated selection is
-            designed to keep you ahead of the fashion curve.
+            {t("popular_description")}
           </p>
         </div>
         <div className="relative mx-28 flex flex-col sm:grid sm:grid-cols-2 sm:gap-4">
@@ -26,19 +26,19 @@ const Home = () => {
             />
             <div className="px-4 absolute bottom-0">
               <h3 className="text-3xl font-bold">
-                Black
+                {t("black_canvas_bag").split(" ").slice(0, 1)}
                 <br />
-                canvas
+                {t("black_canvas_bag").split(" ").slice(1, 2)}
                 <br />
-                bag
+                {t("black_canvas_bag").split(" ").slice(2, 3)}
               </h3>
-              <p className="text-gray-500">₹3990</p>
+              <p className="text-gray-500">{t("price_bag")}</p>
               <p>
                 <Link
                   to="/products"
                   className="tracking-widest my-3 uppercase text-sm px-0"
                 >
-                  Shop now
+                  {t("shop_now")}
                 </Link>
               </p>
             </div>
@@ -46,16 +46,14 @@ const Home = () => {
           <div className="">
             <div className="absolute left-1/2 mt-40">
               <h2 className="text-4xl font-bold">
-                Sweaters
-                <br />
-                for
-                <br />
-                her
+                {t("sweaters_for_her").split(" ").slice(0, 1)} <br />
+                {t("sweaters_for_her").split(" ").slice(1, 2)} <br />
+                {t("sweaters_for_her").split(" ").slice(2, 3)}
               </h2>
-              <p className="text-gray-500">₹3990</p>
+              <p className="text-gray-500">{t("price_sweaters")}</p>
               <p>
                 <Link className="text-dark px-0 uppercase" to="/products">
-                  Shop now
+                  {t("shop_now")}
                 </Link>
               </p>
             </div>
@@ -86,7 +84,7 @@ const Home = () => {
               />
               <div className="absolute inset-0 flex items-center justify-center">
                 <h4 className="text-white text-xl font-bold">
-                  Men's Collection
+                  {t("mens_collection")}
                 </h4>
               </div>
             </Link>
@@ -107,7 +105,7 @@ const Home = () => {
 
               <div className="absolute inset-0 flex items-center justify-center">
                 <h4 className="text-white text-xl font-bold">
-                  Women's Collection
+                  {t("womens_collection")}
                 </h4>
               </div>
             </Link>
@@ -128,7 +126,7 @@ const Home = () => {
 
               <div className="absolute inset-0 flex items-center justify-center">
                 <h4 className="text-white text-xl font-bold">
-                  Kid's Collection
+                  {t("kids_collection")}
                 </h4>
               </div>
             </Link>

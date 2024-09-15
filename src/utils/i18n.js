@@ -17,6 +17,58 @@ const resources = {
       description_sunset:
         "Immerse yourself in the beauty of a golden sunset over a tranquil beach, perfect for relaxation.",
       buttonName: "VIEW COLLECTIONS",
+
+      // New translations for the div content
+      top_choices: "Top Choices",
+      popular_week: "Popular this week",
+      popular_description:
+        "Popular This Week Discover the latest trends and must-have styles. From chic ensembles to timeless classics, our curated selection is designed to keep you ahead of the fashion curve.",
+
+      // Translations for the new section
+      black_canvas_bag: "Black canvas bag",
+      price_bag: "₹3990",
+      shop_now: "Shop now",
+
+      // New translations for collections
+      mens_collection: "Men's Collection",
+      womens_collection: "Women's Collection",
+      kids_collection: "Kid's Collection",
+
+      sweaters_for_her: "Sweaters for her",
+      price_sweaters: "₹3990",
+      shop_now: "Shop now",
+
+      // New translations
+      free_shipping_return: "Free shipping & return",
+      free_shipping_over: "Free Shipping over ₹300",
+
+      // New translations
+      money_back_guarantee: "Money back guarantee",
+      money_back_guarantee_30_days: "30 Days Money Back Guarantee",
+
+      available_support: "24/7 Available Support",
+
+      // New translation
+      premium_selections: "Elevate Every Moment with Our Premium Selections.",
+
+      // New translations
+      shop: "Shop",
+      for_women: "For Women",
+      for_men: "For Men",
+      for_kids: "For Kids",
+      our_blog: "Our Blog",
+      company: "Company",
+      login: "Login",
+      register: "Register",
+      wishlist: "Wishlist",
+      checkouts: "Checkouts",
+      daily_offers_discounts: "Daily Offers & Discounts",
+      subscribe_newsletter:
+        "Stay ahead with our latest deals and discounts! Subscribe to our newsletter for exclusive offers on new arrivals",
+      your_email_address: "Your Email Address",
+      send: "Send",
+
+      copyright_notice: " 2020 GeekyGlam. Feel Free To Replicate.",
     },
   },
   es: {
@@ -33,6 +85,130 @@ const resources = {
       description_sunset:
         "Sumérgete en la belleza de una puesta de sol dorada sobre una playa tranquila, perfecta para relajarte.",
       buttonName: "VER COLECCIONES",
+
+      // New translations for the div content
+      top_choices: "Mejores opciones",
+      popular_week: "Popular esta semana",
+      popular_description:
+        "Popular Esta Semana Descubre las últimas tendencias y estilos imprescindibles. Desde conjuntos elegantes hasta clásicos atemporales, nuestra selección curada está diseñada para mantenerte a la vanguardia de la moda.",
+
+      // Translations for the new section
+      black_canvas_bag: "Bolsa de lona negra",
+      price_bag: "₹3990",
+      shop_now: "Compra ahora",
+
+      // New translations for sweaters section
+      sweaters_for_her: "Suéteres para ella",
+      price_sweaters: "₹3990",
+      shop_now: "Compra ahora",
+
+      // New translations for collections
+      mens_collection: "Colección para hombres",
+      womens_collection: "Colección para mujeres",
+      kids_collection: "Colección para niños",
+
+      // New translations
+      free_shipping_return: "Envío y devoluciones gratis",
+      free_shipping_over: "Envío gratis para pedidos ₹300",
+
+      // New translations
+      money_back_guarantee: "Garantía de devolución de",
+      money_back_guarantee_30_days: "Garantía de devolución de  30 días",
+
+      available_support: "Soporte disponible 24/7",
+
+      // New translation
+      premium_selections:
+        "Eleva cada momento con nuestras selecciones premium.",
+
+      // New translations
+      shop: "Tienda",
+      for_women: "Para mujeres",
+      for_men: "Para hombres",
+      for_kids: "Para niños",
+      our_blog: "Nuestro Blog",
+      company: "Empresa",
+      login: "Iniciar sesión",
+      register: "Registrarse",
+      wishlist: "Lista de deseos",
+      checkouts: "Pagos",
+      daily_offers_discounts: "Ofertas y descuentos diarios",
+      subscribe_newsletter:
+        "¡Mantente al día con nuestras últimas ofertas y descuentos! Suscríbete a nuestro boletín para ofertas exclusivas sobre nuevas llegadas",
+      your_email_address: "Tu dirección de correo electrónico",
+      send: "Enviar",
+
+      copyright_notice: " 2020 GeekyGlam. Siéntete libre de replicar.",
+    },
+  },
+  kn: {
+    // Kannada translations
+    translation: {
+      caption_autumn_coats: "ಶರತ್ಕಾಲದ ಬಣ್ಣದ ಕೋಟ್ಸ್",
+      caption_bestseller: "ನಮ್ಮ ಅತ್ಯುತ್ತಮ ಮಾರಾಟ",
+      caption_college_jackets: "ಟಿಗರ್ಸ್ ಕಾಲೇಜ್ ಜಾಕೆಟ್ಸ್",
+      season_special: "ವಿಶೇಷ",
+      season_arrived: "ಹೊಸವಾಗಿ ಬಂದಿದೆ",
+      description_autumn:
+        "ಶಾಂತವಾದ ಬೀಚ್ ಮೇಲೆ ಬಿಳಿಯ ಸೂರ್ಯಮಿತಿ ಮತ್ತು ಶ್ರೇಷ್ಠವಾದ ವಿಶ್ರಾಂತಿ ಎಂದು ಚಿನ್ನದ ನೋಟದಲ್ಲಿ ನಿಮಗೆ ತೇಲಿಸಿ.",
+      description_adventure:
+        "ಬ್ರಾಹ್ಮಣ ಹಾಸ್ಯದ ಮೇಲೆ ನಿಂಗಿ ಆನಂದವನ್ನು ಅನುಭವಿಸಿ. ಚಿರಪಾತ ಹಾರಿಯ ಮೇಲೆ ಉಲ್ಲಾಸಕರ ಕ್ರಿಯೆಗಳೊಂದಿಗೆ.",
+      description_sunset:
+        "ಶಾಂತವಾದ ಬೀಚ್ ಮೇಲೆ ಬಿಳಿಯ ಸೂರ್ಯಮಿತಿ ಮತ್ತು ಶ್ರೇಷ್ಠವಾದ ವಿಶ್ರಾಂತಿ ಎಂದು ಚಿನ್ನದ ನೋಟದಲ್ಲಿ ನಿಮಗೆ ತೇಲಿಸಿ.",
+      buttonName: "ಕಲೆಕ್ಷನ್‌ಗಳನ್ನು ನೋಡಿ",
+
+      // New translations for the div content
+      top_choices: "ಮೆಟ್ಟಿಲು ಆಯ್ಕೆಗಳನ್ನು",
+      popular_week: "ಈ ವಾರದ ಜನಪ್ರಿಯ",
+      popular_description:
+        "ಈ ವಾರದ ಜನಪ್ರಿಯತೆ: ಹೊಸ ಪ್ರವೃತ್ತಿಗಳನ್ನು ಮತ್ತು ಅಗತ್ಯವಾದ ಶೈಲಿಗಳನ್ನು ಅನ್ವೇಷಿಸಿ. ಸಿಖ್ ensembles ನಿಂದ ಶಾಶ್ವತ ಶ್ರೇಷ್ಠಗಳನ್ನು, ನಮ್ಮ ಆಯ್ಕೆ ಮಾಡಲಾದ ಆಯ್ಕೆವು ನಿಮ್ಮನ್ನು ಫ್ಯಾಷನ್ ವೃತ್ತಿಗೆ ಮುನ್ನಡೆಸಲು ವಿನ್ಯಾಸಗೊಳಿಸಲಾಗಿದೆ.",
+
+      // Translations for the new section
+      black_canvas_bag: "ಕಪ್ಪು ಕಾವಲು ಚೀಲ",
+      price_bag: "₹3990",
+      shop_now: "ಈಗ ಖರೀದಿ",
+
+      sweaters_for_her: "ಆಕೆಗಾಗಿ ಸ್ವೆಟರ್‌ಗಳು",
+      price_sweaters: "₹3990",
+      shop_now: "ಈಗ ಶಾಪ್ ಮಾಡಿ",
+
+      // New translations for collections
+      mens_collection: "ಪುರುಷರ ಸಂಗ್ರಹ",
+      womens_collection: "ಮಹಿಳೆಗಳ ಸಂಗ್ರಹ",
+      kids_collection: "ಮಕ್ಕಳ ಸಂಗ್ರಹ",
+
+      // New translations
+      free_shipping_return: "ನಿರ್ವಹಣಾ & ವಾಪಸು",
+      free_shipping_over: "₹300 ಗೆ ಮೇಲು ಉಚಿತ ಸಾಗಣೆ",
+
+      // New translations
+      money_back_guarantee: "ಹಣ ಮರಳಿಸುವ ಗ್ಯಾರಂಟಿ",
+      money_back_guarantee_30_days: "30 ದಿನದ ಹಣ ಮರಳಿಸುವ ಗ್ಯಾರಂಟಿ",
+
+      available_support: "24/7 ಲಭ್ಯವಿರುವ ಬೆಂಬಲ",
+
+      // New translation
+      premium_selections:
+        "ನಮ್ಮ ಪ್ರೀಮಿಯಂ ಆಯ್ಕೆಗಳಲ್ಲಿ ಪ್ರತಿಯೊಂದು ಕ್ಷಣವನ್ನು ಏರಿಸಿ.",
+
+      // New translations
+      shop: "ಆಯ್ಕೆ",
+      for_women: "ಮಹಿಳೆಯರಿಗೆ",
+      for_men: "ಪುರುಷರಿಗೆ",
+      for_kids: "ಮಕ್ಕಳಿಗೆ",
+      our_blog: "ನಮ್ಮ ಬ್ಲಾಗ್",
+      company: "ಕಂಪನಿಯು",
+      login: "ಲಾಗಿನ್",
+      register: "ರಿಜಿಸ್ಟರ್",
+      wishlist: "ಈಗಲು",
+      checkouts: "ಚೆಕ್ಔಟ್ಸ್",
+      daily_offers_discounts: "ದೈನಂದಿನ ಆಫರ್‌ಗಳು ಮತ್ತು ರಿಯಾಯಿತಿಗಳು",
+      subscribe_newsletter:
+        "ನಮ್ಮ ಹೊಸ ನಿರ್ವಹಣೆಗಳಲ್ಲಿ ನಾವಿದ್ದಾಗ ಡೀಲ್ಗಳೊಂದಿಗೆ ಎದುರಿಸಿ! ಹೊಸ ಪ್ರಸಿದ್ಧ ಆಫರ್‌ಗಳನ್ನು ಪಡೆಯಲು ನಮ್ಮ ನ್ಯೂಸ್‌ಲೆಟರ್‌ಗೆ ಚಂದಾ ಹಾಕಿ",
+      your_email_address: "ನಿಮ್ಮ ಇಮೇಲ್ ವಿಳಾಸ",
+      send: "ಕಳಿಯಿರಿ",
+
+      copyright_notice: "2020 GeekyGlam. ಪುನರಾವೃತ್ತಿಗಾಗಿ ಮುಕ್ತವಾಗಿರಿ.",
     },
   },
 };

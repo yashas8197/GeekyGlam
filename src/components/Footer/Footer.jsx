@@ -1,6 +1,8 @@
+import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
+  const { t } = useTranslation();
   return (
     <div>
       <div className="py-6 bg-gray-300 text-gray-600">
@@ -10,11 +12,11 @@ const Footer = () => {
               <div className="font-bold font-serif text-lg text-gray-900 mb-3">
                 GeekyGlam<span className="text-blue-500">.</span>
               </div>
-              <p>Elevate Every Moment with Our Premium Selections.</p>
+              <p>{t("premium_selections")}</p>
             </div>
 
             <div className="flex flex-col mb-5 lg:mb-0">
-              <h6 className="text-uppercase text-gray-900 mb-3">Shop</h6>
+              <h6 className="text-uppercase text-gray-900 mb-3">{t("shop")}</h6>
               <ul className="space-y-2">
                 <li>
                   <Link
@@ -22,7 +24,7 @@ const Footer = () => {
                     to="/products"
                     state={"Women"}
                   >
-                    For Women
+                    {t("for_women")}
                   </Link>
                 </li>
                 <li>
@@ -31,7 +33,7 @@ const Footer = () => {
                     to="/products"
                     state={"Men"}
                   >
-                    For Men
+                    {t("for_men")}
                   </Link>
                 </li>
                 <li>
@@ -40,7 +42,7 @@ const Footer = () => {
                     to="/products"
                     state={"Kids"}
                   >
-                    For Kids
+                    {t("for_kids")}
                   </Link>
                 </li>
                 <li>
@@ -49,7 +51,7 @@ const Footer = () => {
                     target="_blank"
                     href="https://hashnode.com/@Yashas8197"
                   >
-                    Our Blog
+                    {t("our_blog")}
                   </a>
                 </li>
                 <li>
@@ -57,23 +59,25 @@ const Footer = () => {
                     className="text-gray-600 hover:text-blue-500"
                     to="/products"
                   >
-                    Shop
+                    {t("shop")}
                   </Link>
                 </li>
               </ul>
             </div>
 
             <div className="flex flex-col mb-5 lg:mb-0">
-              <h6 className="text-uppercase text-gray-900 mb-3">Company</h6>
+              <h6 className="text-uppercase text-gray-900 mb-3">
+                {t("company")}
+              </h6>
               <ul className="space-y-2">
                 <li>
                   <Link className="text-gray-600 hover:text-blue-500" to="/">
-                    Login
+                    {t("login")}
                   </Link>
                 </li>
                 <li>
                   <Link className="text-gray-600 hover:text-blue-500" to="/">
-                    Register
+                    {t("register")}
                   </Link>
                 </li>
                 <li>
@@ -81,7 +85,7 @@ const Footer = () => {
                     className="text-gray-600 hover:text-blue-500"
                     to="/wishlist"
                   >
-                    Wishlist
+                    {t("wishlist")}
                   </Link>
                 </li>
                 <li>
@@ -89,7 +93,7 @@ const Footer = () => {
                     className="text-gray-600 hover:text-blue-500"
                     to="/profile"
                   >
-                    Checkouts
+                    {t("checkouts")}
                   </Link>
                 </li>
               </ul>
@@ -97,25 +101,22 @@ const Footer = () => {
 
             <div className="flex flex-col">
               <h6 className="text-uppercase text-gray-900 mb-3">
-                Daily Offers & Discounts
+                {t("daily_offers_discounts")}
               </h6>
-              <p className="mb-3">
-                Stay ahead with our latest deals and discounts! Subscribe to our
-                newsletter for exclusive offers on new arrivals
-              </p>
+              <p className="mb-3">{t("subscribe_newsletter")}</p>
               <form action="#" id="newsletter-form">
                 <div className="flex mb-3">
                   <input
                     className="flex-1 bg-transparent border border-gray-400 rounded-l-md px-4 py-2"
                     type="email"
-                    placeholder="Your Email Address"
-                    aria-label="Your Email Address"
+                    placeholder={t("your_email_address")}
+                    aria-label={t("your_email_address")}
                   />
                   <button
-                    className=" border border-gray-400 px-4 py-2 flex items-center justify-center"
+                    className="border border-gray-400 px-4 py-2 flex items-center justify-center"
                     type="submit"
                   >
-                    <i className="bi bi-send"></i>
+                    {t("send")}
                   </button>
                 </div>
               </form>
@@ -126,9 +127,7 @@ const Footer = () => {
       <div className="my-0">
         <div className="bg-gray-600">
           <div className="mx-28 py-7 flex justify-between">
-            <p className="text-gray-300">
-              &copy; 2020 Your company. Feel Free To Replicate.
-            </p>
+            <p className="text-gray-300">&copy;{t("copyright_notice")}</p>
             <div className="flex space-x-4">
               <a href="https://github.com/yashas8197" target="_blank">
                 <i className="bi bi-github text-gray-400 hover:text-gray-300"></i>

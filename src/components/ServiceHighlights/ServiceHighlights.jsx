@@ -1,4 +1,7 @@
+import { useTranslation } from "react-i18next";
+
 const ServiceHighlights = () => {
+  const { t } = useTranslation();
   return (
     <div style={{ backgroundColor: "#F8F9FB" }} className="m-0">
       <div className="mx-auto py-20">
@@ -8,10 +11,10 @@ const ServiceHighlights = () => {
               <i className="bi bi-truck text-6xl"></i>
               <div className="w-3/4 pl-3">
                 <div className="font-bold uppercase">
-                  Free shipping & return
+                  {t("free_shipping_return")}
                 </div>
                 <div className="font-mono text-gray-600">
-                  <small>Free Shipping over ₹300</small>
+                  <small>{t("free_shipping_over")}</small>
                 </div>
               </div>
             </div>
@@ -19,9 +22,12 @@ const ServiceHighlights = () => {
             <div className="flex items-center mx-10">
               <i className="bi bi-currency-bitcoin text-6xl"></i>
               <div className="w-3/4 pl-3">
-                <div className="font-bold uppercase">Money back guarantee</div>
+                <div className="font-bold uppercase">
+                  {" "}
+                  {t("money_back_guarantee")}
+                </div>
                 <div className="font-mono text-gray-600">
-                  <small>30 Days Money Back Guarantee</small>
+                  <small>{t("money_back_guarantee_30_days")}</small>
                 </div>
               </div>
             </div>
@@ -36,7 +42,7 @@ const ServiceHighlights = () => {
               <div className="w-3/4 pl-3">
                 <div className="font-bold">020-800-456-747</div>
                 <div className="font-mono text-gray-600">
-                  <small>24/7 Available Support</small>
+                  <small>{t("available_support")}</small>
                 </div>
               </div>
             </div>
