@@ -1,37 +1,31 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 const Banner = ({ loca }) => {
+  const { t } = useTranslation();
   const category = useSelector((state) => state.productList.filters.categories);
-  const bannerContent = [
-    {
-      category: "All",
-      slogan: "Fashion for Everyone",
-      description:
-        "Browse a diverse selection of clothing for all ages and styles. ",
+  const bannerContent = {
+    All: {
+      slogan: t("bannerContent.all.slogan"),
+      description: t("bannerContent.all.description"),
     },
-    {
-      category: "Men",
-      slogan: "Elevate Your Style",
-      description:
-        "Discover a range of sophisticated and trendy styles tailored for men.",
+    Men: {
+      slogan: t("bannerContent.men.slogan"),
+      description: t("bannerContent.men.description"),
     },
-    {
-      category: "Women",
-      slogan: "Unleash Your Elegance",
-      description:
-        "Explore the latest in women's fashion with our elegant and chic collections.",
+    Women: {
+      slogan: t("bannerContent.women.slogan"),
+      description: t("bannerContent.women.description"),
     },
-    {
-      category: "Kids",
-      slogan: "Fun and Fashionable",
-      description:
-        "Brighten up your little one's wardrobe with our playful and comfortable clothing.",
+    Kids: {
+      slogan: t("bannerContent.kids.slogan"),
+      description: t("bannerContent.kids.description"),
     },
-  ];
+  };
 
-  const content = bannerContent.find((item) => item.category === loca);
+  const content = bannerContent[loca] || bannerContent.All;
   return (
     <>
       <div className="flex flex-wrap flex-col text-center py-20">

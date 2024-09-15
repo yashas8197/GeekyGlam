@@ -69,6 +69,33 @@ const resources = {
       send: "Send",
 
       copyright_notice: " 2020 GeekyGlam. Feel Free To Replicate.",
+
+      bannerContent: {
+        all: {
+          category: "All",
+          slogan: "Fashion for Everyone",
+          description:
+            "Browse a diverse selection of clothing for all ages and styles.",
+        },
+        men: {
+          category: "Men",
+          slogan: "Elevate Your Style",
+          description:
+            "Discover a range of sophisticated and trendy styles tailored for men.",
+        },
+        women: {
+          category: "Women",
+          slogan: "Unleash Your Elegance",
+          description:
+            "Explore the latest in women's fashion with our elegant and chic collections.",
+        },
+        kids: {
+          category: "Kids",
+          slogan: "Fun and Fashionable",
+          description:
+            "Brighten up your little one's wardrobe with our playful and comfortable clothing.",
+        },
+      },
     },
   },
   es: {
@@ -139,6 +166,33 @@ const resources = {
       send: "Enviar",
 
       copyright_notice: " 2020 GeekyGlam. Siéntete libre de replicar.",
+
+      bannerContent: {
+        all: {
+          category: "Todo",
+          slogan: "Moda para todos",
+          description:
+            "Explora una selección diversa de ropa para todas las edades y estilos.",
+        },
+        men: {
+          category: "Hombres",
+          slogan: "Eleva tu estilo",
+          description:
+            "Descubre una gama de estilos sofisticados y modernos para hombres.",
+        },
+        women: {
+          category: "Mujeres",
+          slogan: "Desata tu elegancia",
+          description:
+            "Explora lo último en moda femenina con nuestras colecciones elegantes y chic.",
+        },
+        kids: {
+          category: "Niños",
+          slogan: "Divertido y a la moda",
+          description:
+            "Ilumina el guardarropa de tus pequeños con nuestra ropa cómoda y divertida.",
+        },
+      },
     },
   },
   kn: {
@@ -209,6 +263,33 @@ const resources = {
       send: "ಕಳಿಯಿರಿ",
 
       copyright_notice: "2020 GeekyGlam. ಪುನರಾವೃತ್ತಿಗಾಗಿ ಮುಕ್ತವಾಗಿರಿ.",
+
+      bannerContent: {
+        all: {
+          category: "ಎಲ್ಲಾ",
+          slogan: "ಎಲ್ಲರಿಗೂ ಫ್ಯಾಷನ್",
+          description:
+            "ಎಲ್ಲಾ ವಯಸ್ಸಿನವರ ಮತ್ತು ಶೈಲಿಗಳ ವಿವಿಧ ಆಯ್ಕೆಯನ್ನು ಪರಿಶೀಲಿಸಿ.",
+        },
+        men: {
+          category: "ಪುರುಷರು",
+          slogan: "ನಿಮ್ಮ ಶೈಲಿಯನ್ನು ಏರಿಸಿ",
+          description:
+            "ಪುರುಷರಿಗಾಗಿ ಸೊphisಿತ್ತಿಕೆ ಮತ್ತು ಟ್ರೆಂಡಿ ಶೈಲಿಗಳನ್ನು ಅನ್ವೇಷಿಸಿ.",
+        },
+        women: {
+          category: "ಮಹಿಳೆಯರು",
+          slogan: "ನಿಮ್ಮ ಎಲೆಗನ್ಸ್ ಅನ್ನು ಬಿಡುಗಡೆ ಮಾಡಿ",
+          description:
+            "ನಮ್ಮ ಅಡುಗೆಯ ಮತ್ತು ಗ್ಲಾಮರಸ್ ಸಂಗ್ರಹದೊಂದಿಗೆ ಮಹಿಳಾ ಫ್ಯಾಷನ್ ಅನ್ನು ಅನ್ವೇಷಿಸಿ.",
+        },
+        kids: {
+          category: "ಮಕ್ಕಳು",
+          slogan: "ಆನಂದಕರ ಮತ್ತು ಫ್ಯಾಷನ್",
+          description:
+            "ನಿಮ್ಮ ಚಿಕ್ಕವರ ಬಟ್ಟೆಯ ಅಲ್ಮಾರಿಯನ್ನು ನಮ್ಮ ಆನಂದಕರ ಮತ್ತು ಆರಾಮದಾಯಕ ಬಟ್ಟೆಯೊಂದಿಗೆ ಬೆಳಗಿಸಿ.",
+        },
+      },
     },
   },
 };
