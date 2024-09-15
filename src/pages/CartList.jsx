@@ -216,6 +216,16 @@ const CartList = () => {
             )}
           </div>
           {cartItems.length > 0 && (
+            <Link
+              variant="outline"
+              className="flex items-center hover:underline text-gray-500 float-left mt-4  cursor-pointer text-sm tracking-widest font-light"
+              to="/products"
+            >
+              <i className="bi bi-chevron-left font-extrabold tracking-widest"></i>
+              <span className=" text-xs pr-4 uppercase">continue shopping</span>
+            </Link>
+          )}
+          {cartItems.length > 0 && (
             <div className="mb-10 float-end">
               <Button onClick={() => handleCheckout(cartItems)}>
                 PROCEED TO CHECKOUT <ChevronRight />

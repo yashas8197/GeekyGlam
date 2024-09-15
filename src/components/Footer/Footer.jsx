@@ -12,15 +12,30 @@ const Footer = () => {
               <div className="font-bold font-serif text-lg text-gray-900 mb-3">
                 GeekyGlam<span className="text-blue-500">.</span>
               </div>
-              <p>{t("premium_selections")}</p>
+              <p className="text-sm mb-2 text-gray-500">
+                {t("premium_selections")}
+              </p>
+              <div className="flex space-x-4">
+                <a href="https://github.com/yashas8197" target="_blank">
+                  <i className="bi bi-github text-gray-400 hover:text-blue-500"></i>
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/yashas-v-b5b41a26a/"
+                  target="_blank"
+                >
+                  <i className="bi bi-linkedin text-gray-400 hover:text-blue-500"></i>
+                </a>
+              </div>
             </div>
 
             <div className="flex flex-col mb-5 lg:mb-0">
-              <h6 className="text-uppercase text-gray-900 mb-3">{t("shop")}</h6>
-              <ul className="space-y-2">
+              <h6 className="uppercase tracking-wider font-bold text-gray-900 mb-3">
+                {t("shop")}
+              </h6>
+              <ul className="">
                 <li>
                   <Link
-                    className="text-gray-600 hover:text-blue-500"
+                    className="text-gray-500 text-sm hover:underline"
                     to="/products"
                     state={"Women"}
                   >
@@ -29,7 +44,7 @@ const Footer = () => {
                 </li>
                 <li>
                   <Link
-                    className="text-gray-600 hover:text-blue-500"
+                    className="text-gray-500 text-sm hover:underline"
                     to="/products"
                     state={"Men"}
                   >
@@ -38,7 +53,7 @@ const Footer = () => {
                 </li>
                 <li>
                   <Link
-                    className="text-gray-600 hover:text-blue-500"
+                    className="text-gray-500 text-sm hover:underline"
                     to="/products"
                     state={"Kids"}
                   >
@@ -47,7 +62,7 @@ const Footer = () => {
                 </li>
                 <li>
                   <a
-                    className="text-gray-600 hover:text-blue-500"
+                    className="text-gray-500 text-sm hover:underline"
                     target="_blank"
                     href="https://hashnode.com/@Yashas8197"
                   >
@@ -56,7 +71,7 @@ const Footer = () => {
                 </li>
                 <li>
                   <Link
-                    className="text-gray-600 hover:text-blue-500"
+                    className="text-gray-500 text-sm hover:underline"
                     to="/products"
                   >
                     {t("shop")}
@@ -66,23 +81,29 @@ const Footer = () => {
             </div>
 
             <div className="flex flex-col mb-5 lg:mb-0">
-              <h6 className="text-uppercase text-gray-900 mb-3">
+              <h6 className="uppercase tracking-wider font-bold text-gray-900 mb-3">
                 {t("company")}
               </h6>
-              <ul className="space-y-2">
+              <ul className="">
                 <li>
-                  <Link className="text-gray-600 hover:text-blue-500" to="/">
+                  <Link
+                    className="text-gray-500 text-sm hover:underline"
+                    to="/"
+                  >
                     {t("login")}
                   </Link>
                 </li>
                 <li>
-                  <Link className="text-gray-600 hover:text-blue-500" to="/">
+                  <Link
+                    className="text-gray-500 text-sm hover:underline"
+                    to="/"
+                  >
                     {t("register")}
                   </Link>
                 </li>
                 <li>
                   <Link
-                    className="text-gray-600 hover:text-blue-500"
+                    className="text-gray-500 text-sm hover:underline"
                     to="/wishlist"
                   >
                     {t("wishlist")}
@@ -90,7 +111,7 @@ const Footer = () => {
                 </li>
                 <li>
                   <Link
-                    className="text-gray-600 hover:text-blue-500"
+                    className="text-gray-500 text-sm hover:underline"
                     to="/profile"
                   >
                     {t("checkouts")}
@@ -100,10 +121,12 @@ const Footer = () => {
             </div>
 
             <div className="flex flex-col">
-              <h6 className="text-uppercase text-gray-900 mb-3">
+              <h6 className="uppercase font-bold tracking-wider text-gray-900 mb-3">
                 {t("daily_offers_discounts")}
               </h6>
-              <p className="mb-3">{t("subscribe_newsletter")}</p>
+              <p className="mb-3 text-sm text-gray-500">
+                {t("subscribe_newsletter")}
+              </p>
               <form action="#" id="newsletter-form">
                 <div className="flex mb-3">
                   <input
@@ -116,7 +139,7 @@ const Footer = () => {
                     className="border border-gray-400 px-4 py-2 flex items-center justify-center"
                     type="submit"
                   >
-                    {t("send")}
+                    <i className="bi bi-send-fill"></i>
                   </button>
                 </div>
               </form>
@@ -129,14 +152,23 @@ const Footer = () => {
           <div className="mx-28 py-7 flex justify-between">
             <p className="text-gray-300">&copy;{t("copyright_notice")}</p>
             <div className="flex space-x-4">
-              <a href="https://github.com/yashas8197" target="_blank">
-                <i className="bi bi-github text-gray-400 hover:text-gray-300"></i>
+              <a href="https://www.visa.co.in/" target="_blank">
+                <i
+                  className="fab fa-cc-visa text-gray-400 hover:text-gray-300"
+                  aria-label="Visa"
+                ></i>
               </a>
-              <a
-                href="https://www.linkedin.com/in/yashas-v-b5b41a26a/"
-                target="_blank"
-              >
-                <i className="bi bi-linkedin text-gray-400 hover:text-gray-300"></i>
+              <a href="https://www.paypal.com/in/home" target="_blank">
+                <i
+                  className="fab fa-cc-paypal text-gray-400 hover:text-gray-300"
+                  aria-label="PayPal"
+                ></i>
+              </a>
+              <a href="https://www.mastercard.co.in/en-in.html" target="_blank">
+                <i
+                  className="fab fa-cc-mastercard text-gray-400 hover:text-gray-300"
+                  aria-label="Mastercard"
+                ></i>
               </a>
             </div>
           </div>

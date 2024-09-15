@@ -9,15 +9,18 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { Button } from "../ui/button";
 import { addOrders } from "@/utils/orderSlice";
-import { fetchProducts } from "@/utils/productListSlice";
+import { fetchProducts, toggleCartOptimistic } from "@/utils/productListSlice";
 import { useTranslation } from "react-i18next";
 import i18next from "i18next";
+import { updateDataApi } from "@/utils/productDetailsSlice";
+import { useToast } from "../ui/use-toast";
 
 const Header = () => {
   const dispatch = useDispatch();
   const [isOpen, setIsOpen] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
   const { products, status, error } = useSelector((state) => state.productList);
+  const { toast } = useToast();
 
   const navigate = useNavigate();
   const cartItems = products.filter((cart) => cart.in_cart === true);
@@ -35,6 +38,24 @@ const Header = () => {
     (acc, curr) => acc + curr.price * curr.quantity,
     0
   );
+
+  const handleRemoveFromCart = (productId) => {
+    dispatch(toggleCartOptimistic(productId));
+    dispatch(
+      updateDataApi({
+        productId: productId,
+        field: "in_cart",
+        value: false,
+        quantity: 1,
+      })
+    );
+
+    toast({
+      description: "Product removed from Cart!",
+      variant: "destructive",
+      duration: 900,
+    });
+  };
 
   const handleCheckout = () => {
     cartItems.forEach((item) => {
@@ -80,10 +101,10 @@ const Header = () => {
     i18next
       .changeLanguage(code)
       .then(() => {
-        console.log("Language changed to " + code);
+        // console.log("Language changed to " + code);
       })
       .catch((err) => {
-        console.error("Error changing language ", err);
+        // console.error("Error changing language ", err);
       });
   };
 
@@ -115,41 +136,60 @@ const Header = () => {
               <PopoverContent className="p-4">
                 <div>
                   <div className=" h-48 overflow-y-auto">
-                    {cartItems.map((item) => (
-                      <div key={item._id} className="relative">
-                        <div className="flex p-3">
-                          <div className="w-1/4">
-                            <img src={item.image} className="w-15 h-20" />
+                    {cartItems.length > 0 ? (
+                      cartItems.map((item) => (
+                        <div key={item._id} className="relative">
+                          <div className="flex p-3">
+                            <div className="w-1/4">
+                              <img src={item.image} className="w-15 h-20" />
+                            </div>
+                            <div className="w-3/4">
+                              <p className="font-semibold ml-2">{item.title}</p>
+                              <p className="text-xs text-gray-400 ml-2">
+                                Quantity: {item.quantity}
+                              </p>
+                              <p className="font-semibold text-xs ml-2">
+                                ₹{item.price}
+                              </p>
+                            </div>
+                            <span
+                              onClick={() => handleRemoveFromCart(item._id)}
+                              className="absolute top-1 right-1 text-gray-400 cursor-pointer"
+                            >
+                              X
+                            </span>
                           </div>
-                          <div className="w-3/4">
-                            <p className="font-semibold ml-2">{item.title}</p>
-                            <p className="text-xs text-gray-400 ml-2">
-                              Quantity: {item.quantity}
-                            </p>
-                            <p className="font-semibold text-xs ml-2">
-                              ₹{item.price}
-                            </p>
-                          </div>
+                          <hr className="text-gray-400 w-full container" />
                         </div>
-                        <hr className="text-gray-400 w-full container" />
-                      </div>
-                    ))}
+                      ))
+                    ) : (
+                      <p className="text-center">Your cart is empty</p>
+                    )}
                   </div>
                   <div className="flex justify-between py-2 container">
-                    <p className="text-gray-400">TOTAL: </p>
+                    <p className="text-gray-400 font-light text-xs tracking-widest">
+                      TOTAL:{" "}
+                    </p>
                     <p className="font-semibold">₹{total}</p>
                   </div>
                   <hr className="text-gray-400 w-full container" />
-                  <div className="flex justify-between my-5">
-                    <Button
+                  <div className="flex justify-between my-2">
+                    <p
                       variant="outline"
                       onClick={handleViewCart}
-                      className=" text-gray-400 cursor-pointer"
+                      className="flex items-center hover:underline  cursor-pointer text-sm tracking-widest font-light"
                       to="/cartlist"
                     >
-                      VIEW CART
-                    </Button>
-                    <Button onClick={handleCheckout} variant="checkoutButton">
+                      <span className="text-gray-950 text-xs pl-4">
+                        VIEW CART
+                      </span>
+                      <i className="bi bi-arrow-right-short font-extrabold text-xl"></i>
+                    </p>
+                    <Button
+                      className="tracking-widest"
+                      onClick={handleCheckout}
+                      variant="checkoutButton"
+                    >
                       CHECKOUT
                     </Button>
                   </div>
