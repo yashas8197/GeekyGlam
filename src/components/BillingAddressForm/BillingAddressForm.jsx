@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Button } from "../ui/button";
 import { useDispatch } from "react-redux";
 import { addInfo } from "@/utils/checkoutSlice";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const BillingAddressForm = ({ goToNextTab }) => {
   const [formData, setFormData] = useState({
@@ -232,7 +232,12 @@ const BillingAddressForm = ({ goToNextTab }) => {
           </div>
         </div>
         <div className="flex justify-between">
-          <p className="text-gray-500 uppercase">back</p>
+          <Link
+            to="/cartlist"
+            className="text-gray-500 tracking-widest text-xs uppercase hover:underline"
+          >
+            <i className="bi bi-chevron-left"></i>back
+          </Link>
           <Button className="tracking-widest uppercase" type="submit">
             Choose Delivery Method
           </Button>

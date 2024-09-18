@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Button } from "../ui/button";
 import { useDispatch, useSelector } from "react-redux";
 import { addDeliveryFee, addInfo } from "@/utils/checkoutSlice";
+import { Link } from "react-router-dom";
 
 const DeliveryOptions = ({ goToNextTab }) => {
   const dispatch = useDispatch();
@@ -103,9 +104,12 @@ const DeliveryOptions = ({ goToNextTab }) => {
         </label>
       </div>
       <div className="flex justify-between items-center pb-10">
-        <p className="text-gray-500 uppercase tracking-wider text-xs">
-          back to the address
-        </p>
+        <Link
+          to="/cartlist"
+          className="text-gray-500 uppercase tracking-widest text-xs"
+        >
+          <i className="bi bi-chevron-left"></i>back
+        </Link>
         <Button onClick={handleClick} className="tracking-widest uppercase">
           Choose Delevery method
         </Button>

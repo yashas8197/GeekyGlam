@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Button } from "../ui/button";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useToast } from "../ui/use-toast";
 import { addOrders } from "@/utils/orderSlice";
 import axios from "axios";
-import { addInfo } from "@/utils/checkoutSlice";
+import { addInfo, clearCheckoutData } from "@/utils/checkoutSlice";
 import { clearCart, updateCartStatus } from "@/utils/productListSlice";
 
 const OrderReview = () => {
@@ -45,6 +45,7 @@ const OrderReview = () => {
 
         dispatch(addOrders(orderPayload));
         dispatch(clearCart());
+        dispatch(clearCheckoutData());
         dispatch(updateCartStatus());
       });
       if (cartItems.length > 0) {
@@ -79,13 +80,39 @@ const OrderReview = () => {
     ) {
       toast({
         description: "Please fill all the details",
-        variant: "default",
+        variant: "destructive",
         duration: 900,
       });
     } else {
       if (selectedPayment === "pay") {
         setOrderPlaced(true);
-        // dispatch(addOrders())
+
+        cartItems.forEach((item) => {
+          const orderPayload = {
+            image: item.image,
+            title: item.title,
+            description: item.description,
+            category: item.category,
+            size: item.size,
+            original_price: item.original_price,
+            price: item.price,
+            delivery_time: item.delivery_time,
+            quantity: item.quantity,
+            payment_id: "cash_123!@#",
+            city: checkoutData.city,
+            deliveryMethod: checkoutData.deliveryMethod,
+            state: checkoutData.state,
+            street: checkoutData.street,
+            zip: checkoutData.zip,
+            deliveryFee: deliveryFee,
+          };
+
+          dispatch(addOrders(orderPayload));
+          dispatch(clearCheckoutData());
+          dispatch(clearCart());
+          dispatch(updateCartStatus());
+        });
+        navigate("/confirm");
       } else if (selectedPayment === "razorpay") {
         setOrderPlaced(true);
         displayRazorpay();
@@ -189,7 +216,7 @@ const OrderReview = () => {
           </p>
         </div>
       )}
-      {!checkoutData.msg && (
+      {!checkoutData.msg && cartItems.length > 0 && (
         <div className="w-full max-w-4xl mx-auto my-10 px-4">
           <div className="grid grid-cols-12 text-center my-4 py-3 bg-gray-50 border-b border-gray-200">
             <p className="uppercase font-semibold tracking-widest col-span-6">
@@ -237,9 +264,12 @@ const OrderReview = () => {
           </div>
 
           <div className="flex justify-between my-5">
-            <p className="uppercase tracking-widest text-xs text-gray-400">
-              back to the payment method
-            </p>
+            <Link
+              to="/cartlist"
+              className="text-gray-500 uppercase tracking-widest text-xs"
+            >
+              <i className="bi bi-chevron-left"></i>back
+            </Link>
             <Button onClick={razorpayHandler} className="uppercase">
               place an order
             </Button>

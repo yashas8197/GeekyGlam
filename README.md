@@ -24,13 +24,13 @@ To get started with GeekyGlam locally, follow these steps:
 - ❤️ Wishlist Management
 - 📝 Order Management
 - 🏠 Address Management
-- 🎟️ Coupon Codes
 - 🛒 Checkout Page
-- 📜 Pagination on Product Listing Page
+- 📜 **Pagination on Product Listing Page**
+- 💳 **Payment Gateway Integration**
+- 🌐 **Language Translation (i18Next) for Kannada and Spanish**
 
 ## Upcoming Features
 
-- 💳 Payment Gateway Integration
 - 🔑 Authentication:
 - 📝 User Signup
 - 🔑 User Login

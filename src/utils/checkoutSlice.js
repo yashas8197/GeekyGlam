@@ -18,9 +18,13 @@ export const checkoutSlice = createSlice({
     addDeliveryFee: (state, action) => {
       state.deliveryFee = action.payload;
     },
+    clearCheckoutData: (state, action) => {
+      state.checkoutData = {};
+    },
   },
 });
 
-export const { addInfo, addAmount, addDeliveryFee } = checkoutSlice.actions;
+export const { addInfo, addAmount, addDeliveryFee, clearCheckoutData } =
+  checkoutSlice.actions;
 
 export default checkoutSlice.reducer;

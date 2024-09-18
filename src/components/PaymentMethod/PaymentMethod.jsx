@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Button } from "../ui/button";
 import { useDispatch, useSelector } from "react-redux";
 import { addInfo } from "@/utils/checkoutSlice";
+import { Link } from "react-router-dom";
 
 const PaymentMethod = ({ goToNextTab }) => {
   const [openItems, setOpenItems] = useState({ razorpay: true });
@@ -75,7 +76,7 @@ const PaymentMethod = ({ goToNextTab }) => {
             openItems["pay"] ? "max-h-40 opacity-100" : "max-h-0 opacity-0"
           } transition-all duration-300 ease-in-out overflow-hidden`}
         >
-          <div className="py-5 bg-white">
+          <div className="py-5">
             <label className="flex items-center cursor-pointer">
               <input
                 type="radio"
@@ -97,9 +98,12 @@ const PaymentMethod = ({ goToNextTab }) => {
       </div>
 
       <div className="flex justify-between my-5">
-        <p className="uppercase tracking-widest text-xs text-gray-400">
-          back to the delivery method
-        </p>
+        <Link
+          to="/cartlist"
+          className="text-gray-500 uppercase tracking-widest text-xs"
+        >
+          <i className="bi bi-chevron-left"></i>back
+        </Link>
         <Button onClick={orderOverview} className="uppercase">
           continue to order overview
         </Button>

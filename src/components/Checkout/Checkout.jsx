@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Link } from "react-router-dom";
 import DeliveryOptions from "../DeliveryOptions/DeliveryOptions";
@@ -10,6 +10,15 @@ import ServiceHighlights from "../ServiceHighlights/ServiceHighlights";
 
 const Checkout = () => {
   const [activeTab, setActiveTab] = useState("address");
+
+  const infoNeeded = {
+    address: "Please fill in your address.",
+    delivery: "Choose your delivery method.",
+    payment: "Choose the payment method.",
+    order: "Please review your order.",
+  };
+
+  const message = infoNeeded[activeTab];
   return (
     <div className="mt-5">
       <div className="text-center pt-20 pb-10">
@@ -22,9 +31,7 @@ const Checkout = () => {
         <h1 className="text-7xl font-bold my-4 uppercase tracking-widest">
           checkout
         </h1>
-        <p className="text-xl text-gray-400 font-light">
-          Please fill in your address
-        </p>
+        <p className="text-xl text-gray-400 font-light">{message}</p>
       </div>
       <div className="grid grid-flow-row-dense grid-cols-3 px-16">
         <Tabs
