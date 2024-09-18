@@ -26,6 +26,7 @@ import {
   decrementQuantity,
 } from "@/utils/productListSlice";
 import { addOrders } from "@/utils/orderSlice";
+import OrderSummary from "@/components/OrderSummary/OrderSummary";
 
 const CartList = () => {
   const { products, status, error } = useSelector((state) => state.productList);
@@ -52,16 +53,11 @@ const CartList = () => {
         quantity: item.quantity,
       };
 
-      dispatch(addOrders(orderPayload));
+      // dispatch(addOrders(orderPayload));
     });
 
-    navigate("/profile?tab=history");
+    navigate("/checkout", { state: cartItems });
   };
-
-  const total = cartItems.reduce(
-    (acc, curr) => acc + curr.price * curr.quantity,
-    0
-  );
 
   const handleQuantityMinus = (item) => {
     if (item.quantity <= 1) return;
@@ -186,34 +182,7 @@ const CartList = () => {
               ))}
             </div>
 
-            {cartItems.length > 0 && (
-              <div className="p-5" style={{ backgroundColor: "#F8F9FB" }}>
-                <h4 className="">ORDER SUMMARY</h4>
-                <p className="text-xs my-4 text-gray-400">
-                  Shipping and additional costs are calculated based on values
-                  you have entered.
-                </p>
-                <div>
-                  {cartItems.map((item) => (
-                    <div key={item._id}>
-                      <div>
-                        <div className="flex justify-between">
-                          <p>
-                            {item.title}({item.quantity})
-                          </p>
-                          <p>₹{item.price}</p>
-                        </div>
-                      </div>
-                      <hr className="my-2" />
-                    </div>
-                  ))}
-                </div>
-                <div className="flex justify-between text-xl">
-                  <p>Total: </p>
-                  <p>₹{total}</p>
-                </div>
-              </div>
-            )}
+            <OrderSummary cartItems={cartItems} />
           </div>
           {cartItems.length > 0 && (
             <Link

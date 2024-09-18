@@ -10,6 +10,8 @@ import SearchPage from "./pages/SearchPage.jsx";
 import { Provider } from "react-redux";
 import store from "./utils/store.js";
 import ProductDetails from "./pages/ProductDetails.jsx";
+import Checkout from "./components/Checkout/Checkout.jsx";
+import ConfirmationPage from "./components/ConfirmationPage/ConfirmationPage.jsx";
 
 const WishList = lazy(() => import("./pages/WishList.jsx"));
 const Profile = lazy(() => import("./pages/Profile.jsx"));
@@ -58,6 +60,14 @@ const router = createBrowserRouter([
       {
         path: "/search",
         element: <SearchPage />,
+      },
+      {
+        path: "/checkout",
+        element: <Checkout />,
+      },
+      {
+        path: "/confirm",
+        element: <ConfirmationPage />,
       },
     ],
   },

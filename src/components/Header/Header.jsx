@@ -10,7 +10,6 @@ import { useEffect, useState } from "react";
 import { Button } from "../ui/button";
 import { addOrders } from "@/utils/orderSlice";
 import { fetchProducts, toggleCartOptimistic } from "@/utils/productListSlice";
-import { useTranslation } from "react-i18next";
 import i18next from "i18next";
 import { updateDataApi } from "@/utils/productDetailsSlice";
 import { useToast } from "../ui/use-toast";
@@ -71,9 +70,9 @@ const Header = () => {
         quantity: item.quantity,
       };
 
-      dispatch(addOrders(orderPayload));
+      // dispatch(addOrders(orderPayload));
     });
-    navigate("/profile?tab=history", { state: { cartItems } });
+    navigate("/checkout", { state: cartItems });
   };
 
   const languages = [
@@ -178,7 +177,6 @@ const Header = () => {
                       variant="outline"
                       onClick={handleViewCart}
                       className="flex items-center hover:underline  cursor-pointer text-sm tracking-widest font-light"
-                      to="/cartlist"
                     >
                       <span className="text-gray-950 text-xs pl-4">
                         VIEW CART
@@ -186,6 +184,7 @@ const Header = () => {
                       <i className="bi bi-arrow-right-short font-extrabold text-xl"></i>
                     </p>
                     <Button
+                      disabled={cartItems.length === 0}
                       className="tracking-widest"
                       onClick={handleCheckout}
                       variant="checkoutButton"

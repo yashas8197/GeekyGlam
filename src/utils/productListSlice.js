@@ -22,6 +22,17 @@ export const fetchProductsByCategory = createAsyncThunk(
   }
 );
 
+export const updateCartStatus = createAsyncThunk(
+  "products/updateCartStatus",
+  async () => {
+    const response = await axios.post(
+      `https://geeky-glam-backend.vercel.app/products/updateCartStatus`
+    );
+
+    return response.data;
+  }
+);
+
 export const productListSlice = createSlice({
   name: "productList",
   initialState: {
@@ -78,7 +89,6 @@ export const productListSlice = createSlice({
       }
     },
     toggleCartOptimistic: (state, action) => {
-      console.log(action.payload);
       const productIndex = state.products.findIndex(
         (product) => product._id === action.payload
       );
@@ -105,6 +115,11 @@ export const productListSlice = createSlice({
           state.products[productIndex].quantity - 1;
       }
     },
+    clearCart: (state) => {
+      state.products = state.products.map((item) =>
+        item.in_cart ? { ...item, in_cart: false } : item
+      );
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchProducts.pending, (state) => {
@@ -129,6 +144,17 @@ export const productListSlice = createSlice({
       state.status = "error";
       state.error = action.payload.message;
     });
+    builder.addCase(updateCartStatus.pending, (state) => {
+      state.status = "loading";
+    });
+    builder.addCase(updateCartStatus.fulfilled, (state, action) => {
+      state.status = "fulfilled";
+      state.products = action.payload.updatedProducts;
+    });
+    builder.addCase(updateCartStatus.rejected, (state, action) => {
+      state.status = "error";
+      state.error = action.payload.message;
+    });
   },
 });
 
@@ -141,6 +167,7 @@ export const {
   toggleCartOptimistic,
   incrementQuantity,
   decrementQuantity,
+  clearCart,
 } = productListSlice.actions;
 
 export default productListSlice.reducer;
