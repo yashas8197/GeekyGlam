@@ -110,9 +110,15 @@ const DeliveryOptions = ({ goToNextTab }) => {
         >
           <i className="bi bi-chevron-left"></i>back
         </Link>
-        <Button onClick={handleClick} className="tracking-widest uppercase">
+        <button
+          onClick={handleClick}
+          className="tracking-widest text-xs uppercase py-3 px-3 font-semibold bg-slate-800 text-white border border-none hover:opacity-80"
+        >
           Choose Delevery method
-        </Button>
+          <span className="text-xs">
+            <i className="bi bi-chevron-right"></i>
+          </span>
+        </button>
       </div>
     </div>
   );

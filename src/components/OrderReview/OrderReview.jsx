@@ -270,9 +270,15 @@ const OrderReview = () => {
             >
               <i className="bi bi-chevron-left"></i>back
             </Link>
-            <Button onClick={razorpayHandler} className="uppercase">
+            <button
+              onClick={razorpayHandler}
+              className="tracking-widest text-xs uppercase py-3 px-3 font-semibold bg-slate-800 text-white border border-none hover:opacity-80"
+            >
               place an order
-            </Button>
+              <span className="text-xs">
+                <i className="bi bi-chevron-right"></i>
+              </span>
+            </button>
           </div>
         </div>
       )}

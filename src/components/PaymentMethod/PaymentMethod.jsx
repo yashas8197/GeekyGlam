@@ -104,9 +104,15 @@ const PaymentMethod = ({ goToNextTab }) => {
         >
           <i className="bi bi-chevron-left"></i>back
         </Link>
-        <Button onClick={orderOverview} className="uppercase">
+        <button
+          onClick={orderOverview}
+          className="tracking-widest text-xs uppercase py-3 px-3 font-semibold bg-slate-800 text-white border border-none hover:opacity-80"
+        >
           continue to order overview
-        </Button>
+          <span className="text-xs">
+            <i className="bi bi-chevron-right"></i>
+          </span>
+        </button>
       </div>
     </div>
   );
