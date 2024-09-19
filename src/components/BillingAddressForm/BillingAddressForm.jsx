@@ -64,7 +64,7 @@ const BillingAddressForm = ({ goToNextTab }) => {
     <div className="py-10">
       <p
         className="uppercase font-semibold text-sm container tracking-widest py-4"
-        style={{ backgroundColor: "#F8F9FA" }}
+        style={{ backgroundColor: "#F8F9FB" }}
       >
         invoice address
       </p>

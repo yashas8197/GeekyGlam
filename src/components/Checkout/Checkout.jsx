@@ -39,7 +39,7 @@ const Checkout = () => {
           onValueChange={setActiveTab}
           className="col-span-2 mx-auto"
         >
-          <TabsList>
+          <TabsList style={{ backgroundColor: "#F8F9FB" }}>
             <TabsTrigger value="address" className="uppercase w-1/4">
               address
             </TabsTrigger>
