@@ -68,7 +68,7 @@ const ProductCard = ({ product }) => {
             </button>
             <button
               onClick={handleOpenDialog}
-              className="text-black border border-slate-800 bg-white hover:text-white hover:bg-slate-800 px-4 py-2"
+              className="sm:block hidden text-black border  border-slate-800 bg-white hover:text-white hover:bg-slate-800 px-4 py-2"
             >
               <i className="bi bi-arrows-angle-expand"></i>
             </button>

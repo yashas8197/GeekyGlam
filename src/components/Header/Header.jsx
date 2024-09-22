@@ -108,14 +108,14 @@ const Header = () => {
   };
 
   return (
-    <div className="fixed top-0 left-0 w-full z-50 bg-white shadow-md">
-      <nav className="p-6">
+    <header className="fixed top-0 left-0 w-full z-50 bg-white shadow-md">
+      <nav className="py-6">
         <div className="container mx-auto flex justify-between items-center">
           <NavLink to="/" className="font-bold text-2xl font-serif">
             GeekyGlam<span style={{ color: "#0284c7" }}>.</span>
           </NavLink>
 
-          <div className="hidden md:flex space-x-6">
+          <div className="flex space-x-6">
             <NavLink to="/search" className="group cursor-pointer">
               <i className="bi bi-search text-xl"></i>
             </NavLink>
@@ -125,9 +125,14 @@ const Header = () => {
             <NavLink to="/wishlist" className="group cursor-pointer">
               <i className="bi bi-heart text-xl"></i>
             </NavLink>
+            <NavLink className="sm:hidden block" to="/cartlist">
+              <span className="group cursor-pointer">
+                <i className="bi bi-cart2 text-xl"></i>
+              </span>
+            </NavLink>
 
             <Popover open={isOpen} onOpenChange={setIsOpen}>
-              <PopoverTrigger asChild>
+              <PopoverTrigger className="hidden sm:block " asChild>
                 <span className="group cursor-pointer">
                   <i className="bi bi-cart2 text-xl"></i>
                 </span>
@@ -224,7 +229,7 @@ const Header = () => {
           </div>
         </div>
       </nav>
-    </div>
+    </header>
   );
 };
 

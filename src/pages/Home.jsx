@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import ServiceHighlights from "@/components/ServiceHighlights/ServiceHighlights";
 import Carousal from "@/components/Carousel/Carousal";
 import { useTranslation } from "react-i18next";
-import { Trans } from "react-i18next";
 
 const Home = () => {
   const { t } = useTranslation();
