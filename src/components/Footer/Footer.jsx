@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <div>
       <div className="py-6 bg-gray-300 text-gray-600">
-        <div className="mx-28 px-4">
+        <div className="sm:mx-28 px-4">
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
             <div className="flex flex-col mb-5 lg:mb-0">
               <div className="font-bold font-serif text-lg text-gray-900 mb-3">
@@ -149,9 +149,11 @@ const Footer = () => {
       </div>
       <div className="my-0">
         <div className="bg-gray-600">
-          <div className="mx-28 py-7 flex justify-between">
-            <p className="text-gray-300">&copy;{t("copyright_notice")}</p>
-            <div className="flex space-x-4">
+          <div className="sm:mx-28 container py-7 sm:flex justify-between">
+            <p className="text-gray-300 text-center">
+              &copy;{t("copyright_notice")}
+            </p>
+            <div className="flex justify-center space-x-4">
               <a href="https://www.visa.co.in/" target="_blank">
                 <i
                   className="fab fa-cc-visa text-gray-400 hover:text-gray-300"

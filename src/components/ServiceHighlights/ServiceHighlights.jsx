@@ -3,11 +3,11 @@ import { useTranslation } from "react-i18next";
 const ServiceHighlights = () => {
   const { t } = useTranslation();
   return (
-    <div style={{ backgroundColor: "#F8F9FB" }} className="m-0">
-      <div className="mx-auto py-20">
-        <div className="mx-28">
-          <div className="grid grid-cols-3 divide-x-2">
-            <div className="flex items-center mx-10">
+    <div className="m-0 bg-[#F8F9FB]">
+      <div className="sm:mx-auto py-20">
+        <div className="sm:mx-28">
+          <div className="grid sm:grid-cols-3 sm:divide-x-2">
+            <div className="flex items-center mx-auto sm:mx-10 sm:w-full w-3/4 py-2">
               <i className="bi bi-truck text-6xl"></i>
               <div className="w-3/4 pl-3">
                 <div className="font-bold uppercase">
@@ -19,11 +19,10 @@ const ServiceHighlights = () => {
               </div>
             </div>
 
-            <div className="flex items-center mx-10">
+            <div className="flex items-center mx-auto sm:mx-10 sm:w-full w-3/4 py-2">
               <i className="bi bi-currency-bitcoin text-6xl"></i>
               <div className="w-3/4 pl-3">
                 <div className="font-bold uppercase">
-                  {" "}
                   {t("money_back_guarantee")}
                 </div>
                 <div className="font-mono text-gray-600">
@@ -32,13 +31,8 @@ const ServiceHighlights = () => {
               </div>
             </div>
 
-            <div className="flex items-center mx-10">
-              <img
-                src="https://i.pinimg.com/564x/ee/10/15/ee10150445cdadf2871e87cf362bff07.jpg"
-                className="w-1/6 object-contain"
-                alt="Support"
-                loading="lazy"
-              />
+            <div className="flex items-center  mx-auto sm:mx-10 sm:w-full w-3/4 py-2">
+              <i className="bi bi-telephone text-5xl p-2"></i>
               <div className="w-3/4 pl-3">
                 <div className="font-bold">020-800-456-747</div>
                 <div className="font-mono text-gray-600">

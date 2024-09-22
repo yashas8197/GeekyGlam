@@ -10,12 +10,10 @@ const resources = {
       caption_college_jackets: "Tigerrrs College Jackets",
       season_special: "SPECIAL",
       season_arrived: "JUST ARRIVED",
-      description_autumn:
-        "Immerse yourself in the beauty of a golden sunset over a tranquil beach, perfect for relaxation.",
+      description_autumn: "Relax with a golden sunset over a tranquil beach.",
       description_adventure:
-        "Experience the excitement of adventure with thrilling outdoor activities under a vibrant sky.",
-      description_sunset:
-        "Immerse yourself in the beauty of a golden sunset over a tranquil beach, perfect for relaxation.",
+        "Enjoy thrilling outdoor adventures under a vibrant sky.",
+      description_sunset: "Relax with a golden sunset over a peaceful beach.",
       buttonName: "VIEW COLLECTIONS",
 
       // New translations for the div content
@@ -106,11 +104,12 @@ const resources = {
       season_special: "ESPECIAL",
       season_arrived: "ACABADO DE LLEGAR",
       description_autumn:
-        "Sumérgete en la belleza de una puesta de sol dorada sobre una playa tranquila, perfecta para relajarte.",
+        "Relájate con una puesta de sol dorada sobre una playa tranquila.",
       description_adventure:
-        "Experimenta la emoción de la aventura con actividades al aire libre emocionantes bajo un cielo vibrante.",
+        "Disfruta de emocionantes aventuras al aire libre bajo un cielo vibrante.",
       description_sunset:
-        "Sumérgete en la belleza de una puesta de sol dorada sobre una playa tranquila, perfecta para relajarte.",
+        "Relájate con una puesta de sol dorada sobre una playa pacífica.",
+
       buttonName: "VER COLECCIONES",
 
       // New translations for the div content
@@ -204,11 +203,12 @@ const resources = {
       season_special: "ವಿಶೇಷ",
       season_arrived: "ಹೊಸವಾಗಿ ಬಂದಿದೆ",
       description_autumn:
-        "ಶಾಂತವಾದ ಬೀಚ್ ಮೇಲೆ ಬಿಳಿಯ ಸೂರ್ಯಮಿತಿ ಮತ್ತು ಶ್ರೇಷ್ಠವಾದ ವಿಶ್ರಾಂತಿ ಎಂದು ಚಿನ್ನದ ನೋಟದಲ್ಲಿ ನಿಮಗೆ ತೇಲಿಸಿ.",
+        "ಶಾಂತವಾದ ಸಮುದ್ರತೀರದ ಮೇಲೆ ಸುವರ್ಣಮಯ ಸೂರ್ಯಾಸ್ತದೊಂದಿಗೆ ವಿಶ್ರಾಂತಿ ಪಡೆಯಿರಿ.",
       description_adventure:
-        "ಬ್ರಾಹ್ಮಣ ಹಾಸ್ಯದ ಮೇಲೆ ನಿಂಗಿ ಆನಂದವನ್ನು ಅನುಭವಿಸಿ. ಚಿರಪಾತ ಹಾರಿಯ ಮೇಲೆ ಉಲ್ಲಾಸಕರ ಕ್ರಿಯೆಗಳೊಂದಿಗೆ.",
+        "ಸಂಜುಳಿದ ಆಕಾಶದಡಿ ರೋಮಾಂಚಕ ಔಟ್‌ಡೋರ್ ಸಾಹಸಗಳನ್ನು ಅನುಭವಿಸಿ.",
       description_sunset:
-        "ಶಾಂತವಾದ ಬೀಚ್ ಮೇಲೆ ಬಿಳಿಯ ಸೂರ್ಯಮಿತಿ ಮತ್ತು ಶ್ರೇಷ್ಠವಾದ ವಿಶ್ರಾಂತಿ ಎಂದು ಚಿನ್ನದ ನೋಟದಲ್ಲಿ ನಿಮಗೆ ತೇಲಿಸಿ.",
+        "ಶಾಂತವಾದ ಸಮುದ್ರತೀರದ ಮೇಲೆ ಸುವರ್ಣಮಯ ಸೂರ್ಯಾಸ್ತದೊಂದಿಗೆ ವಿಶ್ರಾಂತಿ ಪಡೆಯಿರಿ.",
+
       buttonName: "ಕಲೆಕ್ಷನ್‌ಗಳನ್ನು ನೋಡಿ",
 
       // New translations for the div content

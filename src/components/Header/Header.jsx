@@ -111,8 +111,17 @@ const Header = () => {
     <header className="fixed top-0 left-0 w-full z-50 bg-white shadow-md">
       <nav className="py-6">
         <div className="container mx-auto flex justify-between items-center">
-          <NavLink to="/" className="font-bold text-2xl font-serif">
+          <NavLink
+            to="/"
+            className="font-bold text-2xl font-serif sm:block hidden"
+          >
             GeekyGlam<span style={{ color: "#0284c7" }}>.</span>
+          </NavLink>
+          <NavLink to="/" className="sm:hidden">
+            <img
+              className=" h-[2.5rem]"
+              src="https://img.pikbest.com/png-images/ecommerce-logo-vector-graphics-element--e-commerce-logo-icon-design-online-store-logo-icon_1726010.png!sw800"
+            />
           </NavLink>
 
           <div className="flex space-x-6">
@@ -207,7 +216,7 @@ const Header = () => {
                 </span>
               </PopoverTrigger>
 
-              <PopoverContent className="w-72 bg-white border border-gray-200 shadow-lg rounded-lg p-4">
+              <PopoverContent className=" bg-white border border-gray-200 shadow-lg rounded-lg p-4">
                 {languages.map((lang, i) => (
                   <div
                     key={i}

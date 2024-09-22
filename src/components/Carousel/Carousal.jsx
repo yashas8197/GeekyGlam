@@ -49,30 +49,26 @@ const Carousal = () => {
 
   return (
     <div key={key}>
-      <Carousel style={{ backgroundColor: "#F8F9FB" }} className="w-full">
+      <Carousel className="w-full sm:bg-[#F8F9FB]">
         <CarouselContent>
           {slides.map((slide, index) => (
-            <CarouselItem key={index} className="w-full h-full">
-              <div
-                className="relative overflow-hidden"
-                style={{ width: "95%" }}
-              >
+            <CarouselItem key={index} className="sm:w-full h-full">
+              <div className="sm:w-[95%] w-full">
                 <div
-                  className="h-[600px] bg-no-repeat bg-right flex items-center justify-center px-24"
+                  className="sm:h-[600px] h-[28rem] sm:opacity-100 opacity-80 bg-center-bottom bg-no-repeat sm:bg-right-bottom bg-cover sm:bg-auto  flex items-center justify-center sm:px-24"
                   style={{
                     backgroundImage: `url(${slide.img})`,
-                    backgroundPosition: "right bottom",
                   }}
                 >
-                  <div className="container">
-                    <div className="lg:w-1/2 p-5">
-                      <h5 className="uppercase text-gray-500 mb-2 tracking-widest">
+                  <div className="sm:container">
+                    <div className="sm:w-1/2 w-full p-5">
+                      <h5 className="uppercase text-gray-800 mb-2 tracking-widest">
                         <Trans i18nKey={slide.seasonKey} />
                       </h5>
-                      <h2 className="text-5xl font-semibold mb-3">
+                      <h2 className="sm:text-5xl text-3xl font-semibold mb-3">
                         <Trans i18nKey={slide.captionKey} />
                       </h2>
-                      <p className="text-lg mb-4 text-gray-700">
+                      <p className="text-lg mb-4">
                         <Trans i18nKey={slide.descriptionKey} />
                       </p>
                       <Link
