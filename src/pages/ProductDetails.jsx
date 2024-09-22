@@ -102,16 +102,16 @@ const ProductDetails = () => {
   };
 
   return (
-    <div className="pt-14">
-      <div className="grid grid-cols-12">
-        <div className="grid-cols-6 p-4 pt-10">
+    <>
+      <div className="grid grid-cols-1 sm:grid-cols-12  pt-14">
+        <div className="sm:col-span-6 p-4 pt-10">
           <img
-            className="w-full h-auto object-cover"
+            className="w-full h-full object-cover"
             src={product.image}
             loading="lazy"
           />
         </div>
-        <div className="grid-cols-6  mx-20">
+        <div className="sm:col-span-6 container">
           <p className="mt-10 text-xs tracking-widest">
             <Link to="/" className="cursor-pointer">
               Home /
@@ -129,12 +129,12 @@ const ProductDetails = () => {
             </span>
           </p>
           <h1 className="text-6xl py-4  ">{product.title}</h1>
-          <div className="flex justify-between items-center">
+          <div className="sm:flex justify-between items-center">
             <div className="flex">
-              <p className="text-xl font-extralight mx-2">
+              <p className="text-xl font-extralight my-2 sm:mx-2">
                 ₹{product.price}.00
               </p>
-              <p className="text-gray-400 float-end mt-1 line-through">
+              <p className="text-gray-400 float-end m-3 line-through">
                 ₹{product.original_price}.00
               </p>
             </div>
@@ -216,7 +216,7 @@ const ProductDetails = () => {
                   {wishlistAdd === false ? (
                     <Button
                       variant="outline"
-                      className="mx-7 py-6 px-6 hover:bg-gray-400 text-gray-400"
+                      className="sm:mx-7 my-1 py-6 px-6 hover:bg-gray-400 text-gray-400"
                       onClick={() => handleAddToWishlist(product)}
                     >
                       <span className=" hover:text-white flex items-center">
@@ -227,7 +227,7 @@ const ProductDetails = () => {
                   ) : (
                     <Button
                       variant="outline"
-                      className="mx-7 py-6 px-6 hover:bg-gray-400 text-gray-400"
+                      className="sm:mx-7 my-1 py-6 px-6 hover:bg-gray-400 text-gray-400"
                       onClick={() => handleRemoveWishlist(product._id)}
                     >
                       <span className=" hover:text-white flex items-center text-xs">
@@ -241,7 +241,7 @@ const ProductDetails = () => {
           </div>
         </div>
       </div>
-      <div className="my-20 container w-full">
+      <div className=" container w-full">
         <ProductOverview product={product} />
       </div>
       <div>
@@ -251,7 +251,7 @@ const ProductDetails = () => {
         </div>
       </div>
       <ServiceHighlights />
-    </div>
+    </>
   );
 };
 

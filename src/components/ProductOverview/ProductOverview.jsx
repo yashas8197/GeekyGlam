@@ -92,13 +92,13 @@ const ProductOverview = ({ product }) => {
   };
   return (
     <div>
-      <Tabs defaultValue="description" className="w-full">
-        <TabsList className="w-1/2 m-0 py-10">
+      <Tabs defaultValue="description" className="w-full pb-10">
+        <TabsList className="m-0 py-10 sm:inline-flex grid grid-flow-row">
           <TabsTrigger value="description">DESCRIPTION</TabsTrigger>
           <TabsTrigger value="info">ADDITIONAL INFORMATION</TabsTrigger>
           <TabsTrigger value="reviews">REVIEWS</TabsTrigger>
         </TabsList>
-        <hr className="m-0" />
+        <hr className="sm:m-0 mb-32" />
         <TabsContent
           value="description"
           className="w-full text-gray-400 text-sm"
@@ -148,27 +148,26 @@ const ProductOverview = ({ product }) => {
             </TableBody>
           </Table>
         </TabsContent>
-        <TabsContent value="reviews" className="w-3/4">
-          <div className="container py-6">
+        <TabsContent value="reviews" className="w-full">
+          <div className="sm:container py-6">
             {product?.reviewsList?.length > 0 ? (
               product.reviewsList.map((review, i) => (
-                <div key={i} className="flex items-center justify-around">
-                  <div className="w-1/6">
+                <div key={i} className="grid grid-cols-12 sm:py-0 ">
+                  <div className="sm:col-span-1 col-span-4">
                     <img
-                      className="rounded-full"
+                      className="rounded-full w-20 h-20 object-cover"
                       src={review.avatarPhoto}
                       alt="avatar"
                       loading="lazy"
                     />
-                    <p className="mx-6 text-gray-400 py-4">{review.date}</p>
                   </div>
-                  <div className="w-3/4">
+                  <div className="sm:col-span-11 col-span-8 pl-2">
                     <h4 className="font-bold">{review.name}</h4>
                     <span>{getStars(review.ratings)}</span>
 
-                    <p className="text-gray-400 py-4">{review.reviews}</p>
+                    <p className="text-gray-400 py-4 ">{review.reviews}</p>
 
-                    <hr />
+                    <hr className="py-5" />
                   </div>
                 </div>
               ))
@@ -179,12 +178,15 @@ const ProductOverview = ({ product }) => {
               <h1 className="text-lg font-bold">LEAVE A REVIEW</h1>
 
               <form className="py-5" onSubmit={handleOnSubmit}>
-                <div className="my-3 flex justify-between">
-                  <label className="text-gray-400 w-3/4" htmlFor="yourName">
+                <div className="my-3 sm:flex">
+                  <label
+                    className="text-gray-400 sm:w-1/2 w-full"
+                    htmlFor="yourName"
+                  >
                     YOUR NAME *
                     <div>
                       <input
-                        className="border border-gray-400 text-black px-2 w-3/4 py-2"
+                        className="border border-gray-400 text-black px-2 sm:w-3/4 w-full py-2"
                         placeholder="   Enter Your Name"
                         id="yourName"
                         type="text"
@@ -196,7 +198,8 @@ const ProductOverview = ({ product }) => {
                     </div>
                   </label>
 
-                  <div className="w-1/4">
+                  <div className="my-10">
+                    <label className="text-gray-400">YOUR RATING: </label>
                     <select
                       name="ratings"
                       className="border border-black"
@@ -220,7 +223,7 @@ const ProductOverview = ({ product }) => {
                   <div>
                     <textarea
                       name="reviews"
-                      className="border border-gray-400 w-3/4 py-2 px-2"
+                      className="border border-gray-400 sm:w-3/4 w-full py-2 px-2"
                       placeholder="   Enter Your review"
                       id="review"
                       type="text"

@@ -7,7 +7,7 @@ const SortedProducts = ({ currentProduct, loading }) => {
       {loading === "loading" &&
         placeholderCards.map((_, index) => (
           <div key={index} className="relative group">
-            <div className="animate-shimmer bg-gray-200 h-96 w-full rounded"></div>
+            <div className="animate-shimmer bg-gray-200 sm:h-96 h-48 w-full rounded"></div>
           </div>
         ))}
       {loading !== "loading" &&

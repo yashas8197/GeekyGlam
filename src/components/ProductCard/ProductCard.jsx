@@ -77,13 +77,13 @@ const ProductCard = ({ product }) => {
 
         <p className="border border-black transition-colors duration-100 group-hover:border-blue-400"></p>
         <CardContent className="py-4">
-          <p className="text-gray-500 mb-1 text-xs">
+          <p className="text-gray-500 mb-1 text-xs sm:block hidden">
             {product.description.length > 30
               ? `${product.description.slice(0, 15)}...`
               : product.description}
           </p>
 
-          <CardTitle className="text-lg">
+          <CardTitle className="sm:text-lg">
             <p className="text-gray-900 uppercase font-sans tracking-widest text-sm">
               {product.title}
             </p>
