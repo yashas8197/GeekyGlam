@@ -217,8 +217,8 @@ const OrderReview = () => {
         </div>
       )}
       {!checkoutData.msg && cartItems.length > 0 && (
-        <div className="w-full max-w-4xl mx-auto my-10 px-4">
-          <div className="grid grid-cols-12 text-center my-4 py-3 bg-gray-50 border-b border-gray-200">
+        <div className="w-full max-w-4xl mx-auto my-10 px-4 overflow-x-scroll sm:overflow-x-hidden">
+          <div className=" min-w-[700px] grid grid-cols-12 text-center my-4 py-3 bg-gray-50 border-b border-gray-200">
             <p className="uppercase font-semibold tracking-widest col-span-6">
               Item
             </p>
@@ -236,7 +236,7 @@ const OrderReview = () => {
           <div className="cart-body">
             {cartItems.map((cart) => (
               <div key={cart._id} className="cart-item border-b py-4">
-                <div className="grid grid-cols-12 items-center text-center">
+                <div className="min-w-[700px] grid grid-cols-12 items-center text-center">
                   <div className="col-span-6 flex items-center space-x-4">
                     <img
                       className="w-20 h-20 object-cover"
@@ -262,26 +262,25 @@ const OrderReview = () => {
               </div>
             ))}
           </div>
-
-          <div className="flex justify-between my-5">
-            <Link
-              to="/cartlist"
-              className="text-gray-500 uppercase tracking-widest text-xs"
-            >
-              <i className="bi bi-chevron-left"></i>back
-            </Link>
-            <button
-              onClick={razorpayHandler}
-              className="tracking-widest text-xs uppercase py-3 px-3 font-semibold bg-slate-800 text-white border border-none hover:opacity-80"
-            >
-              place an order
-              <span className="text-xs">
-                <i className="bi bi-chevron-right"></i>
-              </span>
-            </button>
-          </div>
         </div>
       )}
+      <div className="container flex flex-col sm:flex-row sm:justify-between items-center my-10">
+        <Link
+          to="/cartlist"
+          className="flex items-center hover:underline text-gray-500 float-left mt-4  cursor-pointer text-xs tracking-widest font-light uppercase py-2"
+        >
+          <i className="bi bi-chevron-left"></i>back
+        </Link>
+        <button
+          onClick={razorpayHandler}
+          className="tracking-widest text-xs uppercase py-3 px-20 font-semibold bg-slate-800  text-white border border-none hover:opacity-80"
+        >
+          place an order
+          <span className="text-xs">
+            <i className="bi bi-chevron-right"></i>
+          </span>
+        </button>
+      </div>
     </div>
   );
 };

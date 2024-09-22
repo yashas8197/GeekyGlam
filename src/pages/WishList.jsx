@@ -35,7 +35,7 @@ const WishList = () => {
           You have {wishlistItems.length} items in your wishlist
         </p>
       </div>
-      <div className=" container flex flex-col flex-grow">
+      <div className="sm:container flex flex-col flex-grow">
         <div className="my-10">
           {wishlistItems?.length === 0 && (
             <div className="flex justify-center items-center">
@@ -45,9 +45,9 @@ const WishList = () => {
               </Button>
             </div>
           )}
-          <div className="grid grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-4 m-4 gap-4 ">
             {wishlistItems.map((card) => (
-              <div key={card._id} className="relative w-3/4">
+              <div key={card._id} className="relative sm:w-3/4">
                 <ProductCard product={card} />
                 <span
                   onClick={() => {

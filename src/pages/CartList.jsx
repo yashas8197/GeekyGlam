@@ -68,126 +68,145 @@ const CartList = () => {
 
   return (
     <TooltipProvider>
-      <div className="mt-14  flex flex-col flex-grow">
-        <div className="container">
-          <div className="text-center pt-20 pb-10">
+      <div className="mt-6 flex flex-col flex-grow">
+        <div className="">
+          <div className="container text-center  pt-20 pb-10">
             <small>
               <Link to="/" className="mx-2">
                 Home
               </Link>
               /<span className="text-gray-400 mx-2">Shopping cart</span>
             </small>
-            <h1 className="text-7xl font-bold my-4">SHOPPING CART</h1>
+            <h1 className="sm:text-7xl text-3xl tracking-widest font-semibold my-4">
+              SHOPPING CART
+            </h1>
             <p className="text-xl text-gray-400">
               You have {cartItems.length} items in your shopping cart
             </p>
           </div>
-
-          <div className="mb-6 space-y-4 flex justify-around items-center">
-            {cartItems.length === 0 && (
-              <div className="mx-auto my-12">
-                <Button onClick={() => navigate("/products")}>
-                  <ChevronLeft /> Back to Product
-                </Button>
-              </div>
-            )}
-            <div className="space-y-4">
-              {cartItems.map((item) => (
-                <div key={item._id} className="relative">
-                  <Card className="w-[350px] flex p-4 relative cursor-pointer">
-                    <img src={item.image} className=" w-1/4" alt={item.title} />
-                    <div className="w-3/4 ml-2">
-                      <p className="font-semibold">{item.title}</p>
-                      <div className="flex items-center">
-                        <p className="text-md font-semibold">
-                          ₹{item.price}.00
-                        </p>
-                        <p className="text-gray-400 mx-1 line-through">
-                          {item.original_price}.00
-                        </p>
-                      </div>
-
-                      <div className="flex">
-                        <p className="pr-3">Quantity: </p>
-                        <CircleMinus
-                          onClick={() => handleQuantityMinus(item)}
-                        />
-                        <p className="border border-gray-400 px-3 mx-3">
-                          {item.quantity}
-                        </p>
-                        <CirclePlus onClick={() => handleQuantityPlus(item)} />
-                      </div>
-                      <Tooltip>
-                        <div className="absolute bottom-1 right-3">
-                          <TooltipTrigger>
-                            <div>
-                              <CircleChevronRight
-                                onClick={() =>
-                                  navigate(`/product-details/${item._id}`)
-                                }
-                              />
-                            </div>
-                          </TooltipTrigger>
-
-                          <TooltipContent className="absolute top-0 right-5 ">
-                            <p>product detail page</p>
-                          </TooltipContent>
-                        </div>
-                      </Tooltip>
-                    </div>
-                  </Card>
-                  <Tooltip>
-                    <div className="absolute top-1 right-3">
-                      <TooltipTrigger>
-                        <span
-                          className="absolute top-1 right-1 cursor-pointer"
-                          onClick={() => {
-                            dispatch(toggleCartOptimistic(item._id));
-                            dispatch(
-                              updateDataApi({
-                                productId: item._id,
-                                field: "in_cart",
-                                value: false,
-                                quantity: 1,
-                              })
-                            );
-                          }}
-                        >
-                          <X />
-                        </span>
-                      </TooltipTrigger>
-
-                      <TooltipContent className="absolute top-0 right-6 ">
-                        <p>Remove item</p>
-                      </TooltipContent>
-                    </div>
-                  </Tooltip>
-                </div>
-              ))}
-            </div>
-
-            <OrderSummary cartItems={cartItems} />
-          </div>
-          {cartItems.length > 0 && (
-            <Link
-              variant="outline"
-              className="flex items-center hover:underline text-gray-500 float-left mt-4  cursor-pointer text-sm tracking-widest font-light"
-              to="/products"
-            >
-              <i className="bi bi-chevron-left font-extrabold tracking-widest"></i>
-              <span className=" text-xs pr-4 uppercase">continue shopping</span>
-            </Link>
-          )}
-          {cartItems.length > 0 && (
-            <div className="mb-10 float-end">
-              <Button onClick={() => handleCheckout(cartItems)}>
-                PROCEED TO CHECKOUT <ChevronRight />
+          {cartItems.length === 0 && (
+            <div className="my-12 flex justify-center">
+              <Button
+                className="text-center"
+                onClick={() => navigate("/products")}
+              >
+                <i className="bi bi-chevron-left" /> Back to Product
               </Button>
             </div>
           )}
+
+          <div className="mb-6 space-y-4 grid grid-cols-1 sm:grid-cols-12">
+            <div className="col-span-8 container">
+              {cartItems.length > 0 && (
+                <div className="my-10 px-4 overflow-x-scroll sm:overflow-x-hidden">
+                  <div className="grid grid-cols-12 min-w-[1024px] text-center my-4 py-3 bg-gray-50 border-b border-gray-200">
+                    <p className="uppercase font-semibold tracking-widest col-span-5">
+                      Item
+                    </p>
+                    <p className="uppercase font-semibold tracking-widest col-span-1">
+                      Price
+                    </p>
+                    <p className="uppercase font-semibold tracking-widest col-span-2">
+                      Quantity
+                    </p>
+                    <p className="uppercase font-semibold tracking-widest col-span-2">
+                      Total
+                    </p>
+                    <p className="uppercase hidden font-semibold tracking-widest col-span-2">
+                      Remove
+                    </p>
+                  </div>
+
+                  <div className="cart-body ">
+                    {cartItems.map((item) => (
+                      <div key={item._id} className="item-item border-b py-4">
+                        <div className="grid grid-cols-12 min-w-[1024px] items-center text-center ">
+                          <div className="col-span-5 flex items-center space-x-4">
+                            <img
+                              className="w-20 h-20 object-cover"
+                              src={item.image}
+                              alt="Product"
+                            />
+                            <div className=" text-start">
+                              <span className="text-lg font-semibold text-gray-900">
+                                {item.title}
+                              </span>
+                              <br />
+                              <span className="text-sm text-gray-500">
+                                Size: {item.size}
+                              </span>
+                            </div>
+                          </div>
+                          <div className="col-span-1">₹{item.price}</div>
+                          <div className="col-span-2 flex container">
+                            <CircleMinus
+                              onClick={() => handleQuantityMinus(item)}
+                            />
+                            <p className="border border-gray-400 px-3 mx-3">
+                              {item.quantity}
+                            </p>
+                            <CirclePlus
+                              onClick={() => handleQuantityPlus(item)}
+                            />
+                          </div>
+                          <div className="col-span-2">
+                            ₹{item.price * item.quantity}
+                          </div>
+                          <div className="col-span-2">
+                            <span
+                              className="cursor-pointer"
+                              onClick={() => {
+                                dispatch(toggleCartOptimistic(item._id));
+                                dispatch(
+                                  updateDataApi({
+                                    productId: item._id,
+                                    field: "in_cart",
+                                    value: false,
+                                    quantity: 1,
+                                  })
+                                );
+                              }}
+                            >
+                              <X />
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+
+            <div className="col-span-4 container">
+              <OrderSummary cartItems={cartItems} />
+            </div>
+          </div>
+          <div className="container flex flex-col sm:flex-row sm:justify-between items-center">
+            {cartItems.length > 0 && (
+              <Link
+                variant="outline"
+                className="flex items-center hover:underline text-gray-500 float-left mt-4  cursor-pointer text-sm tracking-widest font-light"
+                to="/products"
+              >
+                <i className="bi bi-chevron-left font-extrabold tracking-widest"></i>
+                <span className=" text-xs pr-4 py-3 uppercase">
+                  continue shopping
+                </span>
+              </Link>
+            )}
+            {cartItems.length > 0 && (
+              <div className="mb-10">
+                <Button onClick={() => handleCheckout(cartItems)}>
+                  PROCEED TO CHECKOUT
+                  <i className="bi bi-chevron-right" />
+                </Button>
+              </div>
+            )}
+          </div>
         </div>
 
-        <ServiceHighlights className="" />
+        <ServiceHighlights />
       </div>
     </TooltipProvider>
   );

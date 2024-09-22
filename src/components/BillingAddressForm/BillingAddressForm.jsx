@@ -69,7 +69,7 @@ const BillingAddressForm = ({ goToNextTab }) => {
         invoice address
       </p>
       <form className="py-5" onSubmit={handleSubmit}>
-        <div className="grid grid-cols-2 gap-3">
+        <div className="grid grid-cols-1 m-4 sm:grid-cols-2 gap-3">
           <div className="my-3">
             <div>
               <label
@@ -138,7 +138,7 @@ const BillingAddressForm = ({ goToNextTab }) => {
               </label>
             </div>
 
-            <div className="my-3">
+            <div className="sm:my-3">
               <label
                 className="text-gray-400 w-full font-light text-sm"
                 htmlFor="phoneNumber"
@@ -163,7 +163,7 @@ const BillingAddressForm = ({ goToNextTab }) => {
           </div>
 
           <div>
-            <div className="my-3">
+            <div className="sm:my-3">
               <label
                 className="text-gray-400 w-full font-light text-sm"
                 htmlFor="email"
@@ -231,15 +231,15 @@ const BillingAddressForm = ({ goToNextTab }) => {
             </div>
           </div>
         </div>
-        <div className="flex justify-between">
+        <div className="container flex flex-col sm:flex-row sm:justify-between items-center">
           <Link
             to="/cartlist"
-            className="text-gray-500 tracking-widest text-xs uppercase hover:underline"
+            className="flex items-center hover:underline text-gray-500 float-left mt-4  cursor-pointer text-xs tracking-widest font-light uppercase py-2"
           >
             <i className="bi bi-chevron-left"></i>back
           </Link>
           <button
-            className="tracking-widest text-xs uppercase py-3 px-3 font-semibold bg-slate-800 text-white border border-none hover:opacity-80"
+            className="tracking-widest text-xs uppercase py-3 px-14 font-semibold bg-slate-800  text-white border border-none hover:opacity-80"
             type="submit"
           >
             Choose Delivery Method

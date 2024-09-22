@@ -28,7 +28,7 @@ const PaymentMethod = ({ goToNextTab }) => {
   };
 
   return (
-    <div className="my-10">
+    <div className="my-10 mx-4">
       <div className="w-full mx-auto mt-4 bg-gray-50  p-4 cursor-pointer">
         <span
           onClick={() => handleClick("razorpay")}
@@ -97,16 +97,17 @@ const PaymentMethod = ({ goToNextTab }) => {
         </div>
       </div>
 
-      <div className="flex justify-between my-5">
+      <div className="container flex flex-col sm:flex-row sm:justify-between items-center my-10">
         <Link
           to="/cartlist"
-          className="text-gray-500 uppercase tracking-widest text-xs"
+          className="flex items-center hover:underline text-gray-500 float-left mt-4  cursor-pointer text-xs tracking-widest font-light uppercase py-2"
         >
           <i className="bi bi-chevron-left"></i>back
         </Link>
         <button
           onClick={orderOverview}
-          className="tracking-widest text-xs uppercase py-3 px-3 font-semibold bg-slate-800 text-white border border-none hover:opacity-80"
+          disabled={selectedPayment === ""}
+          className="tracking-widest text-xs uppercase py-3 px-6 font-semibold bg-slate-800  text-white border border-none hover:opacity-80"
         >
           continue to order overview
           <span className="text-xs">

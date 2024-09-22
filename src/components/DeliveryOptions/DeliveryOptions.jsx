@@ -30,7 +30,7 @@ const DeliveryOptions = ({ goToNextTab }) => {
 
   return (
     <div>
-      <div className="grid grid-cols-2 gap-4 py-10">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 py-10 container">
         <label className="flex items-center space-x-2">
           <input
             type="radio"
@@ -103,16 +103,16 @@ const DeliveryOptions = ({ goToNextTab }) => {
           </div>
         </label>
       </div>
-      <div className="flex justify-between items-center pb-10">
+      <div className="container flex flex-col sm:flex-row sm:justify-between items-center">
         <Link
           to="/cartlist"
-          className="text-gray-500 uppercase tracking-widest text-xs"
+          className="flex items-center hover:underline text-gray-500 float-left mt-4  cursor-pointer text-xs tracking-widest font-light uppercase py-2"
         >
           <i className="bi bi-chevron-left"></i>back
         </Link>
         <button
           onClick={handleClick}
-          className="tracking-widest text-xs uppercase py-3 px-3 font-semibold bg-slate-800 text-white border border-none hover:opacity-80"
+          className="tracking-widest text-xs uppercase py-3 px-14 font-semibold bg-slate-800  text-white border border-none hover:opacity-80"
         >
           Choose Delevery method
           <span className="text-xs">

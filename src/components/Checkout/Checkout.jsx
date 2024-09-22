@@ -28,19 +28,19 @@ const Checkout = () => {
           </Link>
           /<span className="text-gray-400 mx-2">Checkout</span>
         </small>
-        <h1 className="text-7xl font-bold my-4 uppercase tracking-widest">
+        <h1 className="sm:text-7xl text-4xl font-semibold my-4 uppercase tracking-widest">
           checkout
         </h1>
         <p className="text-xl text-gray-400 font-light">{message}</p>
       </div>
-      <div className="grid grid-flow-row-dense grid-cols-3 px-16">
+      <div className="grid grid-cols-1 sm:grid-cols-12 sm:px-16">
         <Tabs
           value={activeTab}
           onValueChange={setActiveTab}
-          className="col-span-2 mx-auto"
+          className=" col-span-8"
         >
-          <TabsList className="inline-flex bg-[#F8F9FB]">
-            <TabsTrigger value="address" className="uppercase w-1/4">
+          <TabsList className="sm:inline-flex grid grid-flow-row sm:bg-[#F8F9FB] sm:m-0 mb-56 justify-center ">
+            <TabsTrigger value="address" className="uppercase">
               address
             </TabsTrigger>
             <TabsTrigger value="delivery" className="uppercase">
@@ -66,7 +66,7 @@ const Checkout = () => {
             <OrderReview />
           </TabsContent>
         </Tabs>
-        <div>
+        <div className="col-span-4 m-4">
           <OrderSummary />
         </div>
       </div>
