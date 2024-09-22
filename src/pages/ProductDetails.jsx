@@ -103,11 +103,15 @@ const ProductDetails = () => {
 
   return (
     <div className="pt-14">
-      <div className="flex">
-        <div className="w-1/2 p-4 pt-10">
-          <img style={{ width: "120%" }} src={product.image} loading="lazy" />
+      <div className="grid grid-cols-12">
+        <div className="grid-cols-6 p-4 pt-10">
+          <img
+            className="w-full h-auto object-cover"
+            src={product.image}
+            loading="lazy"
+          />
         </div>
-        <div className="w-1/2 mx-20">
+        <div className="grid-cols-6  mx-20">
           <p className="mt-10 text-xs tracking-widest">
             <Link to="/" className="cursor-pointer">
               Home /
