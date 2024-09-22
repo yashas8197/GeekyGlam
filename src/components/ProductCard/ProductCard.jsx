@@ -53,7 +53,7 @@ const ProductCard = ({ product }) => {
           <div className="absolute inset-0 flex justify-center items-center space-x-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
             <button
               disabled={product.in_cart === true || product.in_stock === false}
-              className="text-black border border-slate-800 bg-white hover:text-white hover:bg-slate-800 px-4 py-2"
+              className="text-black border border-slate-800 bg-white hover:text-white hover:bg-slate-800 px-4 py-2 sm:block hidden"
               onClick={() => handleAddToCart(product._id)}
             >
               <i className="bi bi-cart"></i>

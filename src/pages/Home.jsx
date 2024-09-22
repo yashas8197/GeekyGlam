@@ -24,7 +24,7 @@ const Home = () => {
               alt=""
             />
             <div className="px-4 sm:absolute sm:bottom-0">
-              <h3 className="sm:text-3xl font-bold">
+              <h3 className="sm:text-3xl text-xl font-bold">
                 {t("black_canvas_bag").split(" ").slice(0, 1)}
                 <br />
                 {t("black_canvas_bag").split(" ").slice(1, 2)}

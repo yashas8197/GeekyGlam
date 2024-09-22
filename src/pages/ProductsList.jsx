@@ -147,31 +147,44 @@ const ProductsList = () => {
     <div className="my-10 py-2 ">
       <Banner loca={filterCategory} />
 
-      <div className="container flex justify-between items-center">
-        <small className="text-gray-400 ml-96">
-          Displaying <span className="font-bold">{currentProduct.length}</span>{" "}
-          out of <span className="font-bold">{sortProducts.length}</span>{" "}
-          products
-        </small>
-        <div className="flex items-center ">
-          <label className="mx-5 text-gray-400">Sort By: </label>
-          <Select
-            value={sort}
-            onValueChange={(value) => handleSortChange(value)}
-          >
-            <SelectTrigger className="w-[130px]">
-              <SelectValue placeholder="Default" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="Popularity">Popularity</SelectItem>
-              <SelectItem value="Rating">Rating</SelectItem>
-            </SelectContent>
-          </Select>
+      <div className="grid grid-cols-1 sm:grid-cols-12 gap-3 container">
+        <div className="sm:col-span-9">
+          <div className="flex justify-between items-center">
+            <small className="text-gray-400 ">
+              Displaying{" "}
+              <span className="font-bold">{currentProduct.length}</span> out of{" "}
+              <span className="font-bold">{sortProducts.length}</span> products
+            </small>
+            <div className="flex justify-end items-center">
+              <label className="mx-2 text-gray-400">Sort: </label>
+              <Select
+                value={sort}
+                onValueChange={(value) => handleSortChange(value)}
+              >
+                <SelectTrigger className="w-[130px]">
+                  <SelectValue placeholder="Default" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="Popularity">Popularity</SelectItem>
+                  <SelectItem value="Rating">Rating</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+          </div>
+          <SortedProducts
+            className=""
+            currentProduct={currentProduct}
+            loading={status}
+          />
+          <PaginationComponent
+            productsPerPage={productsPerPage}
+            totalProducts={products.length}
+            currentPage={currentPage}
+            paginate={paginate}
+          />
         </div>
-      </div>
-      <div className="flex justify-between items-start container">
-        <div className="w-1/4 mx-8 rounded-lg">
-          <div className="container">
+        <div className="mx-8 rounded-lg sm:col-span-3 ">
+          <div className="w-full">
             <div className="flex justify-between items-center mb-3 p-5">
               <h5 className="text-lg font-semibold uppercase">Filters</h5>
               <span
@@ -296,14 +309,7 @@ const ProductsList = () => {
             </div>
           </div>
         </div>
-        <SortedProducts currentProduct={currentProduct} loading={status} />
       </div>
-      <PaginationComponent
-        productsPerPage={productsPerPage}
-        totalProducts={products.length}
-        currentPage={currentPage}
-        paginate={paginate}
-      />
     </div>
   );
 };

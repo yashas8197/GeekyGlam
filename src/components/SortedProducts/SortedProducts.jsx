@@ -3,7 +3,7 @@ import ProductCard from "../ProductCard/ProductCard";
 const SortedProducts = ({ currentProduct, loading }) => {
   const placeholderCards = Array(6).fill(null);
   return (
-    <div className="w-3/4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+    <div className="grid sm:grid-cols-3 gap-4">
       {loading === "loading" &&
         placeholderCards.map((_, index) => (
           <div key={index} className="relative group">
