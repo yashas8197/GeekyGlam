@@ -93,12 +93,18 @@ const ProductOverview = ({ product }) => {
   return (
     <div>
       <Tabs defaultValue="description" className="w-full pb-10">
-        <TabsList className=" py-10 sm:inline-flex grid grid-flow-row justify-center">
-          <TabsTrigger value="description">DESCRIPTION</TabsTrigger>
-          <TabsTrigger value="info">ADDITIONAL INFORMATION</TabsTrigger>
-          <TabsTrigger value="reviews">REVIEWS</TabsTrigger>
+        <TabsList className="mb-32 md:m-0 py-10 sm:inline-flex grid grid-flow-row justify-center">
+          <TabsTrigger className="lg:px-20 px-14" value="description">
+            DESCRIPTION
+          </TabsTrigger>
+          <TabsTrigger className="lg:px-20 px-14" value="info">
+            ADDITIONAL INFORMATION
+          </TabsTrigger>
+          <TabsTrigger className="lg:px-20 px-14" value="reviews">
+            REVIEWS
+          </TabsTrigger>
         </TabsList>
-        <hr className="sm:m-0 mb-32" />
+        <hr className="sm:m-0 mb-32 lg:block hidden" />
         <TabsContent
           value="description"
           className="w-full text-gray-400 text-sm"

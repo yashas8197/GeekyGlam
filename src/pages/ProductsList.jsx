@@ -147,7 +147,7 @@ const ProductsList = () => {
     <div className="my-10 py-2 ">
       <Banner loca={filterCategory} />
 
-      <div className="grid grid-cols-1 sm:grid-cols-12 gap-3 m-1 sm:container">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 sm:grid-cols-12 gap-3 m-1 sm:container">
         <div className="sm:col-span-9">
           <div className="flex justify-between items-center">
             <small className="text-gray-400 ">

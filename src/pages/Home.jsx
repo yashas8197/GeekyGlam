@@ -16,7 +16,7 @@ const Home = () => {
             {t("popular_description")}
           </p>
         </div>
-        <div className="container sm:mb-32">
+        <div className="container sm:my-4 my-10">
           <div className="grid sm:grid-cols-12 gap-4">
             <div className="col-span-4 mt-4 mb-4">
               <img
@@ -45,7 +45,7 @@ const Home = () => {
             </div>
 
             <div className="col-span-8 ml-auto">
-              <div className="absolute py-24 z-10">
+              <div className="absolute py-24 z-10 -mt-8">
                 <h2 className="sm:text-4xl text-2xl font-bold">
                   {t("sweaters_for_her").split(" ").slice(0, 1)} <br />
                   {t("sweaters_for_her").split(" ").slice(1, 2)} <br />
@@ -53,7 +53,10 @@ const Home = () => {
                 </h2>
                 <p className="text-gray-500 ">{t("price_sweaters")}</p>
                 <p>
-                  <Link className="text-dark uppercase" to="/products">
+                  <Link
+                    className="text-dark uppercase sm:block hidden"
+                    to="/products"
+                  >
                     {t("shop_now")}
                   </Link>
                 </p>

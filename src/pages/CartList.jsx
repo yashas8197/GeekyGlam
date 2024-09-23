@@ -95,10 +95,10 @@ const CartList = () => {
             </div>
           )}
 
-          <div className="mb-6 space-y-4 grid grid-cols-1 sm:grid-cols-12">
+          <div className="mb-6 space-y-4 grid grid-cols-1 lg:grid-cols-12 md:grid-cols-2 sm:grid-cols-12">
             <div className="col-span-8 container">
               {cartItems.length > 0 && (
-                <div className="my-10 px-4 overflow-x-scroll sm:overflow-x-hidden">
+                <div className="my-10 px-4 overflow-x-scroll 2xl:overflow-x-hidden">
                   <div className="grid grid-cols-12 min-w-[1024px] text-center my-4 py-3 bg-gray-50 border-b border-gray-200">
                     <p className="uppercase font-semibold tracking-widest col-span-5">
                       Item
@@ -119,7 +119,10 @@ const CartList = () => {
 
                   <div className="cart-body ">
                     {cartItems.map((item) => (
-                      <div key={item._id} className="item-item border-b py-4">
+                      <div
+                        key={item._id}
+                        className="item-item border-b px-4 py-4"
+                      >
                         <div className="grid grid-cols-12 min-w-[1024px] items-center text-center ">
                           <div className="col-span-5 flex items-center space-x-4">
                             <img

@@ -217,7 +217,7 @@ const OrderReview = () => {
         </div>
       )}
       {!checkoutData.msg && cartItems.length > 0 && (
-        <div className="w-full max-w-4xl mx-auto my-10 px-4 overflow-x-scroll sm:overflow-x-hidden">
+        <div className="w-full max-w-4xl 2xl:mx-auto my-10 px-4 overflow-x-scroll 2xl:overflow-x-hidden">
           <div className=" min-w-[700px] grid grid-cols-12 text-center my-4 py-3 bg-gray-50 border-b border-gray-200">
             <p className="uppercase font-semibold tracking-widest col-span-6">
               Item
@@ -235,7 +235,7 @@ const OrderReview = () => {
 
           <div className="cart-body">
             {cartItems.map((cart) => (
-              <div key={cart._id} className="cart-item border-b py-4">
+              <div key={cart._id} className="cart-item border-b py-4 pl-10">
                 <div className="min-w-[700px] grid grid-cols-12 items-center text-center">
                   <div className="col-span-6 flex items-center space-x-4">
                     <img

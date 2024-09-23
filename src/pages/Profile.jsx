@@ -73,11 +73,15 @@ const Profile = () => {
       <Tabs defaultValue={defaultTab} className="sm:w-3/4  mx-auto  mb-52">
         <div className="w-full">
           <TabsList className="grid grid-cols-3">
-            <TabsTrigger className="" value="profileInfo">
+            <TabsTrigger className="px-2" value="profileInfo">
               Profile Info
             </TabsTrigger>
-            <TabsTrigger value="address">Address</TabsTrigger>
-            <TabsTrigger value="history">Order History</TabsTrigger>
+            <TabsTrigger className="px-2" value="address">
+              Address
+            </TabsTrigger>
+            <TabsTrigger className="px-2" value="history">
+              Order History
+            </TabsTrigger>
           </TabsList>
 
           <TabsContent className="max-w-5xl mx-auto" value="profileInfo">

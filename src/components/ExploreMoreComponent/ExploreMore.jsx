@@ -20,7 +20,7 @@ const ExploreMore = () => {
     );
   }
   return (
-    <div className="sm:w-3/4 p-1 mx-auto grid grid-cols-2 sm:grid-cols-4 sm:gap-20 gap-2">
+    <div className="sm:w-3/4 p-1 mx-auto grid grid-cols-2  md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 sm:gap-2 gap-2">
       {similarProducts.map((product) => (
         <ProductCard key={product._id} product={product} />
       ))}
