@@ -149,7 +149,7 @@ const Footer = () => {
       </div>
       <div className="my-0">
         <div className="bg-gray-600">
-          <div className="sm:mx-28 container py-7 sm:flex justify-between">
+          <div className=" container py-7 sm:flex justify-between">
             <p className="text-gray-300 text-center">
               &copy;{t("copyright_notice")}
             </p>

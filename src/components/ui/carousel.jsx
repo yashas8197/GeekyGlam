@@ -181,7 +181,7 @@ const CarouselPrevious = React.forwardRef(
         onClick={scrollPrev}
         {...props}
       >
-        <span className="hidden sm:flex items-center justify-center cursor-pointer">
+        <span className="hidden lg:flex items-center justify-center cursor-pointer">
           <img
             src="https://demo.bootstrapious.com/sell/2-0-1/img/prev-dark.svg"
             alt="Previous"
@@ -216,7 +216,7 @@ const CarouselNext = React.forwardRef(
         onClick={scrollNext}
         {...props}
       >
-        <span className="hidden sm:flex items-center justify-center cursor-pointer">
+        <span className="hidden lg:flex items-center justify-center cursor-pointer">
           <img
             src="https://demo.bootstrapious.com/sell/2-0-1/img/next-dark.svg"
             alt="Previous"

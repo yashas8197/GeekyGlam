@@ -57,21 +57,6 @@ const Header = () => {
   };
 
   const handleCheckout = () => {
-    cartItems.forEach((item) => {
-      const orderPayload = {
-        image: item.image,
-        title: item.title,
-        description: item.description,
-        category: item.category,
-        size: item.size,
-        original_price: item.original_price,
-        price: item.price,
-        delivery_time: item.delivery_time,
-        quantity: item.quantity,
-      };
-
-      // dispatch(addOrders(orderPayload));
-    });
     navigate("/checkout", { state: cartItems });
   };
 
@@ -110,7 +95,7 @@ const Header = () => {
   return (
     <header className="fixed top-0 left-0 w-full z-50 bg-white shadow-md">
       <nav className="py-6">
-        <div className="container mx-auto flex justify-between items-center ">
+        <div className="container flex justify-between items-center ">
           <NavLink
             to="/"
             className="font-bold text-2xl font-serif sm:block hidden"

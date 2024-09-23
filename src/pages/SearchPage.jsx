@@ -28,15 +28,15 @@ const SearchPage = () => {
   };
 
   return (
-    <div className=" h-screen flex items-center justify-center px-4">
+    <div className="h-screen flex flex-col items-center justify-center px-4">
       <input
         type="text"
-        className="sm:w-1/2  p-2 py-4 border-b-2 border-slate-500 bg-white rounded-t-md focus:outline-none focus:ring-0"
+        className="sm:w-1/2 w-full p-2 py-4 border-b-2 border-slate-500 bg-white rounded-t-md focus:outline-none focus:ring-0"
         placeholder="What are you looking for?"
         onChange={handleSearchInput}
       />
       {searchQuery !== "" && results?.products?.length > 0 && (
-        <div className="absolute sm:w-1/2 w-3/4 sm:top-80 top-96  sm:mt-10 bg-white border border-gray-300 rounded-lg shadow-lg overflow-auto">
+        <div className="sm:w-1/2 w-full bg-white border border-gray-300 rounded-lg shadow-lg overflow-auto">
           <ul className=" overflow-auto bg-white border border-gray-300 rounded-lg shadow-lg max-h-72">
             {results.products.map((suggestion) => (
               <li

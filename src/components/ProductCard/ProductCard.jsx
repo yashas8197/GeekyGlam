@@ -60,7 +60,7 @@ const ProductCard = ({ product }) => {
             </button>
             <button
               variant="cardViewBtn"
-              className="text-white tracking-widest text-sm uppercase font-mono border border-none px-6 mx-2 text-center leading-10 hover:opacity-80 bg-slate-800"
+              className="text-white tracking-widest text-sm uppercase font-mono border border-none px-5 mx-2 text-center leading-10 hover:opacity-80 bg-slate-800"
               onClick={() => navigate(`/product-details/${product._id}`)}
             >
               <i className="bi bi-search"></i>

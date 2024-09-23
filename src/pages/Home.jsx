@@ -8,7 +8,7 @@ const Home = () => {
   return (
     <div className="mt-20">
       <div className="flex min-h-screen flex-col">
-        <Carousal style={{ backgroundColor: "#F8F9FB" }} />
+        <Carousal className="bg-[#F8F9FB]" />
         <div className="py-16 p-4 sm:mx-auto sm:w-1/2">
           <p className="text-gray-500 uppercase py-2">{t("top_choices")}</p>
           <p className="text-2xl font-bold">{t("popular_week")}</p>
@@ -16,55 +16,55 @@ const Home = () => {
             {t("popular_description")}
           </p>
         </div>
-        <div className="relative sm:mx-28 grid sm:grid-cols-2 gap-4">
-          <div className="sm:relative sm:w-3/4 w-full mb-4 ">
-            <img
-              className="object-cover"
-              src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/product/artboard-bag.jpg"
-              alt=""
-            />
-            <div className="px-4 sm:absolute sm:bottom-0">
-              <h3 className="sm:text-3xl text-xl font-bold">
-                {t("black_canvas_bag").split(" ").slice(0, 1)}
-                <br />
-                {t("black_canvas_bag").split(" ").slice(1, 2)}
-                <br />
-                {t("black_canvas_bag").split(" ").slice(2, 3)}
-              </h3>
-              <p className="text-gray-500">{t("price_bag")}</p>
-              <p>
-                <Link
-                  to="/products"
-                  className="tracking-widest my-3 uppercase text-sm px-0"
-                >
-                  {t("shop_now")}
-                </Link>
-              </p>
-            </div>
-          </div>
-          <div className="flex items-center">
-            <div className="absolute sm:left-1/2 sm:mt-40">
-              <h2 className="sm:text-4xl text-2xl sm:p-0 pl-3  font-bold">
-                {t("sweaters_for_her").split(" ").slice(0, 1)} <br />
-                {t("sweaters_for_her").split(" ").slice(1, 2)} <br />
-                {t("sweaters_for_her").split(" ").slice(2, 3)}
-              </h2>
-              <p className="text-gray-500 sm:p-0 pl-3">{t("price_sweaters")}</p>
-              <p>
-                <Link
-                  className="text-dark px-0 sm:p-0 pl-3 uppercase"
-                  to="/products"
-                >
-                  {t("shop_now")}
-                </Link>
-              </p>
-            </div>
-            <div className="sm:ms-6 container">
+        <div className="container sm:mb-32">
+          <div className="grid sm:grid-cols-12 gap-4">
+            <div className="col-span-4 mt-4 mb-4">
               <img
-                className="sm:w-full sm:p-0 pl-10  object-cover sm:h-auto"
-                src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/photo/matthew-kane-365718-unsplash-gray-square.jpg"
+                className="w-full "
+                src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/product/artboard-bag.jpg"
                 alt=""
               />
+              <div className="px-4 sm:relative z-10 -mt-4">
+                <h3 className="sm:text-3xl text-xl font-bold leading-tight">
+                  {t("black_canvas_bag").split(" ").slice(0, 1)}
+                  <br />
+                  {t("black_canvas_bag").split(" ").slice(1, 2)}
+                  <br />
+                  {t("black_canvas_bag").split(" ").slice(2, 3)}
+                </h3>
+                <p className="text-gray-500">{t("price_bag")}</p>
+                <p>
+                  <Link
+                    to="/products"
+                    className="tracking-widest my-3 uppercase text-sm px-0"
+                  >
+                    {t("shop_now")}
+                  </Link>
+                </p>
+              </div>
+            </div>
+
+            <div className="col-span-8 ml-auto">
+              <div className="absolute py-24 z-10">
+                <h2 className="sm:text-4xl text-2xl font-bold">
+                  {t("sweaters_for_her").split(" ").slice(0, 1)} <br />
+                  {t("sweaters_for_her").split(" ").slice(1, 2)} <br />
+                  {t("sweaters_for_her").split(" ").slice(2, 3)}
+                </h2>
+                <p className="text-gray-500 ">{t("price_sweaters")}</p>
+                <p>
+                  <Link className="text-dark uppercase" to="/products">
+                    {t("shop_now")}
+                  </Link>
+                </p>
+              </div>
+              <div className="ml-24">
+                <img
+                  className="w-full h-auto"
+                  src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/photo/matthew-kane-365718-unsplash-gray-square.jpg"
+                  alt=""
+                />
+              </div>
             </div>
           </div>
         </div>
