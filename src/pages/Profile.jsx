@@ -70,11 +70,11 @@ const Profile = () => {
         </Link>
         <span className="text-gray-500"> profile</span>
       </div>
-      <Tabs defaultValue={defaultTab} className="w-3/4 mx-auto  mb-52">
+      <Tabs defaultValue={defaultTab} className="sm:w-3/4  mx-auto  mb-52">
         <div className="w-full">
           <TabsList className="grid grid-cols-3">
             <TabsTrigger className="" value="profileInfo">
-              Profile Information
+              Profile Info
             </TabsTrigger>
             <TabsTrigger value="address">Address</TabsTrigger>
             <TabsTrigger value="history">Order History</TabsTrigger>

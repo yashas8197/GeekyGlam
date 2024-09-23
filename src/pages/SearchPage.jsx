@@ -31,20 +31,20 @@ const SearchPage = () => {
     <div className=" h-screen flex items-center justify-center px-4">
       <input
         type="text"
-        className="w-1/2  p-2 py-4 border-b-2 border-slate-500 bg-white rounded-t-md focus:outline-none focus:ring-0"
+        className="sm:w-1/2  p-2 py-4 border-b-2 border-slate-500 bg-white rounded-t-md focus:outline-none focus:ring-0"
         placeholder="What are you looking for?"
         onChange={handleSearchInput}
       />
       {searchQuery !== "" && results?.products?.length > 0 && (
-        <div className="absolute w-1/2 top-96 mt-10 bg-white border border-gray-300 rounded-lg shadow-lg overflow-auto">
+        <div className="absolute sm:w-1/2 w-3/4 sm:top-80 top-96  sm:mt-10 bg-white border border-gray-300 rounded-lg shadow-lg overflow-auto">
           <ul className=" overflow-auto bg-white border border-gray-300 rounded-lg shadow-lg max-h-72">
             {results.products.map((suggestion) => (
               <li
                 onClick={() => navigate(`/product-details/${suggestion._id}`)}
-                className="flex items-start p-4 cursor-pointer hover:bg-gray-100"
+                className="grid grid-cols-12 p-4 cursor-pointer hover:bg-gray-100"
                 key={suggestion._id}
               >
-                <div className="w-1/3">
+                <div className="col-span-4">
                   <img
                     src={suggestion.image}
                     className="w-full h-auto rounded"
@@ -52,9 +52,9 @@ const SearchPage = () => {
                     loading="lazy"
                   />
                 </div>
-                <div className="w-2/3 ml-4">
+                <div className="col-span-8 ml-4">
                   <p className="text-lg font-semibold">{suggestion.title}</p>
-                  <p className="text-sm text-gray-600">
+                  <p className="text-sm text-gray-600 sm:block hidden">
                     {suggestion.description}
                   </p>
                   <span className="font-bold">₹{suggestion.price}</span>
