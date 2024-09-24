@@ -45,9 +45,9 @@ const WishList = () => {
               </Button>
             </div>
           )}
-          <div className="grid grid-cols-1 sm:grid-cols-4 m-4 gap-4 ">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 m-4">
             {wishlistItems.map((card) => (
-              <div key={card._id} className="relative sm:w-3/4">
+              <div key={card._id} className="relative w-full">
                 <ProductCard product={card} />
                 <span
                   onClick={() => {
