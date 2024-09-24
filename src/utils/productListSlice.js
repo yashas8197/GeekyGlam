@@ -1,12 +1,12 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
+const BASE_URL = import.meta.env.VITE_API_URL;
+
 export const fetchProducts = createAsyncThunk(
   "products/fetchProducts",
   async () => {
-    const response = await axios.get(
-      `https://geeky-glam-backend.vercel.app/products/All`
-    );
+    const response = await axios.get(`${BASE_URL}/products/All`);
 
     return response.data;
   }
@@ -15,9 +15,7 @@ export const fetchProducts = createAsyncThunk(
 export const fetchProductsByCategory = createAsyncThunk(
   "products/fetchProductsByCategory",
   async (category) => {
-    const response = await axios.get(
-      `https://geeky-glam-backend.vercel.app/products/${category}`
-    );
+    const response = await axios.get(`${BASE_URL}/products/${category}`);
     return response.data;
   }
 );
@@ -25,9 +23,7 @@ export const fetchProductsByCategory = createAsyncThunk(
 export const updateCartStatus = createAsyncThunk(
   "products/updateCartStatus",
   async () => {
-    const response = await axios.post(
-      `https://geeky-glam-backend.vercel.app/products/updateCartStatus`
-    );
+    const response = await axios.post(`${BASE_URL}/products/updateCartStatus`);
 
     return response.data;
   }

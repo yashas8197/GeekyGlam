@@ -1,12 +1,12 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
+const BASE_URL = import.meta.env.VITE_API_URL;
+
 export const fetchProductDetails = createAsyncThunk(
   "product/fetchProductDetails",
   async (productId) => {
-    const response = await axios.get(
-      `https://geeky-glam-backend.vercel.app/product/${productId}`
-    );
+    const response = await axios.get(`${BASE_URL}/product/${productId}`);
     return response.data;
   }
 );
@@ -22,7 +22,7 @@ export const updateDataApi = createAsyncThunk(
 
     try {
       const response = await axios.post(
-        `https://geeky-glam-backend.vercel.app/product/${productId}`,
+        `${BASE_URL}/product/${productId}`,
         dataToUpdate
       );
       return response.data;
@@ -36,7 +36,7 @@ export const reviewPost = createAsyncThunk(
   "product/postReviews",
   async ({ review, productId }) => {
     const response = await axios.post(
-      `https://geeky-glam-backend.vercel.app/product/reviews/${productId}`,
+      `${BASE_URL}/product/reviews/${productId}`,
       review
     );
 

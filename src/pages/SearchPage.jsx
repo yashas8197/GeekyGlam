@@ -10,8 +10,6 @@ const SearchPage = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const navigate = useNavigate();
 
-  console.log(results);
-
   const handleSearchInput = (e) => {
     const { value } = e.target;
     setSearchQuery(value);

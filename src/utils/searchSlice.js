@@ -1,10 +1,10 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
+const BASE_URL = import.meta.env.VITE_API_URL;
+
 export const searchProducts = createAsyncThunk("search/Products", async (q) => {
-  const response = await axios.get(
-    `https://geeky-glam-backend.vercel.app/productsearch?q=${q}`
-  );
+  const response = await axios.get(`${BASE_URL}/productsearch?q=${q}`);
   return response.data;
 });
 

@@ -1,19 +1,16 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
+const BASE_URL = import.meta.env.VITE_API_URL;
+
 export const fetchOrders = createAsyncThunk("orders/fetchOrders", async () => {
-  const response = await axios.get(
-    "https://geeky-glam-backend.vercel.app/orders"
-  );
+  const response = await axios.get(`${BASE_URL}/orders`);
 
   return response.data;
 });
 
 export const addOrders = createAsyncThunk("orders/addOrders", async (order) => {
-  const response = await axios.post(
-    "https://geeky-glam-backend.vercel.app/orders",
-    order
-  );
+  const response = await axios.post(`${BASE_URL}/orders`, order);
   return response.data;
 });
 
