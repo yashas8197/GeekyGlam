@@ -8,7 +8,6 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { Button } from "../ui/button";
-import { addOrders } from "@/utils/orderSlice";
 import { fetchProducts, toggleCartOptimistic } from "@/utils/productListSlice";
 import i18next from "i18next";
 import { updateDataApi } from "@/utils/productDetailsSlice";

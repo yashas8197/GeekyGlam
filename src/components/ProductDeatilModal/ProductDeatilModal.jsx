@@ -1,11 +1,8 @@
 import {
   Dialog,
   DialogContent,
-  DialogClose,
-  DialogDescription,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "@/components/ui/dialog";
 import ProductInfoSection from "../ProductInfoSection/ProductInfoSection";
 

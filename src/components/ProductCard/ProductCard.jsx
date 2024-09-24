@@ -1,11 +1,5 @@
 import React, { useState } from "react";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "../ui/card";
+import { Card, CardContent, CardTitle } from "../ui/card";
 import { useNavigate } from "react-router-dom";
 import { updateDataApi } from "@/utils/productDetailsSlice";
 import { useDispatch } from "react-redux";
@@ -44,6 +38,17 @@ const ProductCard = ({ product }) => {
     <div className="my-4">
       <Card className="relative group rounded-none border-none ">
         <div className="relative group">
+          {product.in_stock === false ? (
+            <div className="uppercase bg-[#3494E6] absolute top-2 -left-3 z-10 inline-block font-sans text-xs tracking-widest pt-1 pr-4 pb-1 pl-4 text-[#fff] items-center">
+              Out of Stock
+            </div>
+          ) : product.trending ? (
+            <div className="uppercase bg-[#f2aa3e] absolute top-2 -left-3 z-10 inline-block font-sans text-xs tracking-widest pt-1 pr-4 pb-1 pl-4 text-[#fff] items-center">
+              Trending
+            </div>
+          ) : (
+            ""
+          )}
           <img
             className="w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-10"
             src={product.image}

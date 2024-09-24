@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 const SearchPage = () => {
   const dispatch = useDispatch();
   const results = useSelector((state) => state.search.results);
-  const searchCache = useSelector((state) => state.search.query);
   const [searchQuery, setSearchQuery] = useState("");
   const navigate = useNavigate();
 

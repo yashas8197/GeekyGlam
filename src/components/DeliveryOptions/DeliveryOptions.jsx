@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import { Button } from "../ui/button";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addDeliveryFee, addInfo } from "@/utils/checkoutSlice";
 import { Link } from "react-router-dom";
 
 const DeliveryOptions = ({ goToNextTab }) => {
   const dispatch = useDispatch();
-  const { checkoutData } = useSelector((state) => state.checkout);
   const [deliveryMethod, setDeliveryMethod] = useState("");
   let deliveryFee = 0;
 

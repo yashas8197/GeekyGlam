@@ -1,21 +1,8 @@
-import {
-  ChevronLeft,
-  ChevronRight,
-  CircleChevronRight,
-  CircleMinus,
-  CirclePlus,
-  X,
-} from "lucide-react";
+import { CircleMinus, CirclePlus, X } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
+import { TooltipProvider } from "@/components/ui/tooltip";
 import ServiceHighlights from "@/components/ServiceHighlights/ServiceHighlights";
 import { useEffect } from "react";
 import { updateDataApi } from "@/utils/productDetailsSlice";
@@ -25,7 +12,6 @@ import {
   fetchProducts,
   decrementQuantity,
 } from "@/utils/productListSlice";
-import { addOrders } from "@/utils/orderSlice";
 import OrderSummary from "@/components/OrderSummary/OrderSummary";
 
 const CartList = () => {

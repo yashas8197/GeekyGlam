@@ -13,7 +13,7 @@ import { Plus } from "lucide-react";
 import { deleteAddress } from "@/utils/addressSlice";
 import { useDispatch, useSelector } from "react-redux";
 import AddressModel from "@/components/AddressModel/AddressModel";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { fetchOrders } from "@/utils/orderSlice";
 
 const Profile = () => {
@@ -34,8 +34,6 @@ const Profile = () => {
     postalCode: "",
     country: "",
   });
-
-  // console.log(orders);
 
   useEffect(() => {
     dispatch(fetchOrders());
