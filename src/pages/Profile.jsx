@@ -15,6 +15,7 @@ import { useDispatch, useSelector } from "react-redux";
 import AddressModel from "@/components/AddressModel/AddressModel";
 import { Link, useLocation } from "react-router-dom";
 import { fetchOrders } from "@/utils/orderSlice";
+import { SyncLoader } from "react-spinners";
 
 const Profile = () => {
   const location = useLocation();
@@ -59,6 +60,14 @@ const Profile = () => {
   const handleDeleteBtn = (id) => {
     dispatch(deleteAddress(id));
   };
+
+  if (status === "loading") {
+    return (
+      <div className="flex justify-center items-center min-h-screen">
+        <SyncLoader size={20} color="#4A90E2" />
+      </div>
+    );
+  }
 
   return (
     <>

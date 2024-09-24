@@ -20,11 +20,11 @@ const PromotionalProductGrid = () => {
               <br />
               {t("black_canvas_bag").split(" ").slice(2, 3)}
             </h3>
-            <p className="text-gray-500">{t("price_bag")}</p>
-            <p>
+            <p className="text-gray-500 font-light my-2">{t("price_bag")}</p>
+            <p className="my-4">
               <Link
                 to="/products"
-                className="tracking-widest my-3 uppercase text-sm px-0"
+                className="tracking-widest font-extralight  uppercase text-xs px-0"
               >
                 {t("shop_now")}
               </Link>
@@ -32,17 +32,19 @@ const PromotionalProductGrid = () => {
           </div>
         </div>
 
-        <div className="col-span-8 ml-auto">
+        <div className="col-span-8 ml-auto mb-8">
           <div className="absolute py-24 z-10 -mt-8">
             <h2 className="sm:text-4xl text-2xl font-bold">
               {t("sweaters_for_her").split(" ").slice(0, 1)} <br />
               {t("sweaters_for_her").split(" ").slice(1, 2)} <br />
               {t("sweaters_for_her").split(" ").slice(2, 3)}
             </h2>
-            <p className="text-gray-500 ">{t("price_sweaters")}</p>
-            <p>
+            <p className="text-gray-500 font-light my-2">
+              {t("price_sweaters")}
+            </p>
+            <p className="my-4">
               <Link
-                className="text-dark uppercase sm:block hidden"
+                className="text-dark uppercase font-extralight text-xs tracking-widest"
                 to="/products"
               >
                 {t("shop_now")}

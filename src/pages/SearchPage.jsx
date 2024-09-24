@@ -2,6 +2,7 @@ import { searchProducts } from "@/utils/searchSlice";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { SyncLoader } from "react-spinners";
 
 const SearchPage = () => {
   const dispatch = useDispatch();
@@ -23,6 +24,14 @@ const SearchPage = () => {
       clearTimeout(timer);
     };
   };
+
+  if (status === "loading") {
+    return (
+      <div className="flex justify-center items-center min-h-screen">
+        <SyncLoader size={20} color="#4A90E2" />
+      </div>
+    );
+  }
 
   return (
     <div className="h-screen flex flex-col items-center justify-center px-4">

@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
 import ProductInfoSection from "@/components/ProductInfoSection/ProductInfoSection";
+import { SyncLoader } from "react-spinners";
 
 const ProductDetails = () => {
   const { productId } = useParams();
@@ -18,6 +19,14 @@ const ProductDetails = () => {
   }, [productId]);
 
   const fashion = true;
+
+  if (status === "loading") {
+    return (
+      <div className="flex justify-center items-center min-h-screen">
+        <SyncLoader size={20} color="#4A90E2" />
+      </div>
+    );
+  }
 
   return (
     <>

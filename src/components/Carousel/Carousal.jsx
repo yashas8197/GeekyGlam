@@ -49,20 +49,20 @@ const Carousal = () => {
 
   return (
     <div key={key}>
-      <Carousel className="w-full sm:bg-[#F8F9FB]">
+      <Carousel className="w-full bg-[#FFFFFF] sm:bg-[#F8F9FB]">
         <CarouselContent>
           {slides.map((slide, index) => (
             <CarouselItem key={index} className="sm:w-full h-full">
               <div className="sm:w-[95%] w-full">
                 <div
-                  className="sm:h-[600px] h-[28rem] sm:opacity-100 opacity-80 bg-center-bottom bg-no-repeat sm:bg-right-bottom bg-cover sm:bg-auto  flex items-center justify-center sm:px-24"
+                  className="sm:h-[620px] h-[28rem] sm:opacity-100 opacity-80 bg-center-bottom bg-no-repeat sm:bg-right-bottom bg-cover sm:bg-auto  flex items-center justify-center sm:px-24"
                   style={{
                     backgroundImage: `url(${slide.img})`,
                   }}
                 >
                   <div className="sm:container">
                     <div className="sm:w-1/2 w-full p-5">
-                      <h5 className="uppercase text-gray-800 mb-2 tracking-widest">
+                      <h5 className="uppercase text-gray-800 text-2xl mb-2 tracking-widest">
                         <Trans i18nKey={slide.seasonKey} />
                       </h5>
                       <h2 className="sm:text-5xl text-3xl font-semibold mb-3">

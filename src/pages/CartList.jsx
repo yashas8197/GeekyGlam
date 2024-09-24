@@ -13,6 +13,7 @@ import {
   decrementQuantity,
 } from "@/utils/productListSlice";
 import OrderSummary from "@/components/OrderSummary/OrderSummary";
+import { SyncLoader } from "react-spinners";
 
 const CartList = () => {
   const { products, status, error } = useSelector((state) => state.productList);
@@ -51,6 +52,14 @@ const CartList = () => {
       })
     );
   };
+
+  if (status === "loading") {
+    return (
+      <div className="flex justify-center items-center min-h-screen">
+        <SyncLoader size={20} color="#4A90E2" />
+      </div>
+    );
+  }
 
   return (
     <TooltipProvider>

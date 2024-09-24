@@ -9,6 +9,7 @@ import { ChevronLeft, X } from "lucide-react";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+import { SyncLoader } from "react-spinners";
 
 const WishList = () => {
   const navigate = useNavigate();
@@ -20,6 +21,14 @@ const WishList = () => {
   useEffect(() => {
     dispatch(fetchProducts());
   }, [dispatch]);
+
+  if (status === "loading") {
+    return (
+      <div className="flex justify-center items-center min-h-screen">
+        <SyncLoader size={20} color="#4A90E2" />
+      </div>
+    );
+  }
 
   return (
     <>
