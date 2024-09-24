@@ -54,7 +54,7 @@ const CartList = () => {
 
   return (
     <TooltipProvider>
-      <div className="mt-6 flex flex-col flex-grow">
+      <div className="my-4 py-2 flex flex-col flex-grow">
         <div className="">
           <div className="container text-center  pt-20 pb-10">
             <small>

@@ -144,11 +144,11 @@ const ProductsList = () => {
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
-    <div className="my-10 py-2 ">
+    <div className="my-4 py-2 ">
       <Banner loca={filterCategory} />
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 sm:grid-cols-12 gap-3 m-1 sm:container">
-        <div className="sm:col-span-9">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-3 p-4 lg:p-6 sm:container">
+        <div className="lg:col-span-9">
           <div className="flex justify-between items-center">
             <small className="text-gray-400 ">
               Displaying{" "}
@@ -183,7 +183,7 @@ const ProductsList = () => {
             paginate={paginate}
           />
         </div>
-        <div className="mx-8 rounded-lg sm:col-span-3 ">
+        <div className=" lg:col-span-3 bg-white shadow-lg p-4 rounded-lg">
           <div className="w-full">
             <div className="flex justify-between items-center mb-3 p-5">
               <h5 className="text-lg font-semibold uppercase">Filters</h5>
