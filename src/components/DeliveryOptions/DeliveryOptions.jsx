@@ -19,10 +19,14 @@ const DeliveryOptions = ({ goToNextTab }) => {
     deliveryFee = 0;
   }
 
+  const handleDeliveryMethod = (e) => {
+    setDeliveryMethod(e.target.value);
+  };
+
   const handleClick = () => {
     if (deliveryMethod !== "") {
-      dispatch(addDeliveryFee(deliveryFee));
       dispatch(addInfo({ deliveryMethod }));
+      dispatch(addDeliveryFee(deliveryFee));
       goToNextTab();
     }
   };
@@ -36,7 +40,7 @@ const DeliveryOptions = ({ goToNextTab }) => {
             name="delivery"
             className="mt-1"
             value="USPS Next Day"
-            onChange={(e) => setDeliveryMethod(e.target.value)}
+            onChange={(e) => handleDeliveryMethod(e)}
           />
           <div>
             <span className="font-medium uppercase tracking-wider">
@@ -54,7 +58,7 @@ const DeliveryOptions = ({ goToNextTab }) => {
             name="delivery"
             className="mt-1"
             value="Standard Delivery"
-            onChange={(e) => setDeliveryMethod(e.target.value)}
+            onChange={(e) => handleDeliveryMethod(e)}
           />
           <div>
             <span className="font-medium uppercase tracking-wider">
@@ -90,7 +94,7 @@ const DeliveryOptions = ({ goToNextTab }) => {
             name="delivery"
             className="mt-1"
             value="Same Day Delivery"
-            onChange={(e) => setDeliveryMethod(e.target.value)}
+            onChange={(e) => handleDeliveryMethod(e)}
           />
           <div>
             <span className="font-medium uppercase tracking-wider">
@@ -113,7 +117,7 @@ const DeliveryOptions = ({ goToNextTab }) => {
           onClick={handleClick}
           className="tracking-widest text-xs uppercase py-3 px-14 font-semibold bg-slate-800  text-white border border-none hover:opacity-80"
         >
-          Choose Delevery method
+          Choose payment method
           <span className="text-xs">
             <i className="bi bi-chevron-right"></i>
           </span>

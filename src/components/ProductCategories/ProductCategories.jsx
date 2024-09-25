@@ -4,68 +4,81 @@ import { Link } from "react-router-dom";
 const ProductCategories = () => {
   const { t } = useTranslation();
   return (
-    <div className="container mx-auto my-4">
-      <div className="grid sm:grid-cols-3 gap-3">
-        <div className="group flex ">
+    <div className="container mx-auto my-4 py-20">
+      <div className="flex flex-col items-center justify-center text-center mb-12">
+        <h2 className="text-4xl font-bold font-serif ">
+          Explore Our Exclusive Collections
+        </h2>
+        <p className="max-w-3xl text-[#868e96] font-sans text-xl font-light text-opacity-100 mb-4">
+          Discover the latest trends in men's, women's, and kids' fashion. Our
+          carefully curated collections bring you the best in style and quality.
+        </p>
+      </div>
+      <div className="grid  sm:grid-cols-2 sm:gap-4">
+        <div className="group flex col-span-1 sm:h-full">
           <Link
-            className="relative overflow-hidden rounded-none"
+            className="relative overflow-hidden rounded-none flex-1"
             to="/products"
             state={"Men"}
           >
-            <img
-              className=""
-              src="https://demo.bootstrapious.com/sell/2-0-1/img/photo/christopher-campbell-28571-unsplash.jpg"
-              alt="Men's Collection"
-              loading="lazy"
-            />
+            <div className="h-full flex justify-start">
+              <img
+                className="sm:w-full w-[426.4px] sm:h-full h-[230px] mb-4 object-cover filter brightness-75"
+                src="https://demo.bootstrapious.com/sell/2-0-1/img/photo/nordwood-themes-481980-unsplash-square.jpg"
+                alt="Men's Collection"
+                loading="lazy"
+              />
+            </div>
             <div className="absolute inset-0 flex items-center justify-center">
-              <h4 className="text-white text-xl font-bold">
+              <h4 className="text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl uppercase tracking-widest font-bold">
                 {t("mens_collection")}
               </h4>
             </div>
           </Link>
         </div>
 
-        <div className="group flex ">
-          <Link
-            className="relative  overflow-hidden rounded-none"
-            to="/products"
-            state={"Women"}
-          >
-            <img
-              className=""
-              src="https://res.cloudinary.com/dlrlwy7hg/image/upload/f_webp/q_auto/marco-xu-496929-unsplash_x3mctr.jpg"
-              alt="Women's Collection"
-              loading="lazy"
-            />
+        <div className="col-span-1 ">
+          <div className="group flex mb-4">
+            <Link
+              className="relative  overflow-hidden rounded-none"
+              to="/products"
+              state={"Women"}
+            >
+              <img
+                className="filter brightness-75"
+                src="https://demo.bootstrapious.com/sell/2-0-1/img/photo/malvestida-magazine-458585-unsplash.jpg"
+                alt="Women's Collection"
+                loading="lazy"
+              />
 
-            <div className="absolute inset-0 flex items-center justify-center">
-              <h4 className="text-white text-xl font-bold">
-                {t("womens_collection")}
-              </h4>
-            </div>
-          </Link>
-        </div>
+              <div className="absolute inset-0 flex items-center justify-center">
+                <h4 className="text-white  text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl uppercase tracking-widest  font-bold">
+                  {t("womens_collection")}
+                </h4>
+              </div>
+            </Link>
+          </div>
 
-        <div className="group flex ">
-          <Link
-            className="relative overflow-hidden rounded-none"
-            to="/products"
-            state={"Kids"}
-          >
-            <img
-              className=""
-              src="https://res.cloudinary.com/dlrlwy7hg/image/upload/f_webp/q_auto:low/photo-1591845466204-dd3aba67ea58_fngure.jpg"
-              alt="Kid's Collection"
-              loading="lazy"
-            />
+          <div className="group flex mt-4">
+            <Link
+              className="relative overflow-hidden rounded-none"
+              to="/products"
+              state={"Kids"}
+            >
+              <img
+                className="filter brightness-75"
+                src="https://res.cloudinary.com/dlrlwy7hg/image/upload/f_webp/q_auto:low/v1727283932/premium_photo-1675183690726-a5d47dbcc14a_1_xpskgo.jpg"
+                alt="Kid's Collection"
+                loading="lazy"
+              />
 
-            <div className="absolute inset-0 flex items-center justify-center">
-              <h4 className="text-white text-xl font-bold">
-                {t("kids_collection")}
-              </h4>
-            </div>
-          </Link>
+              <div className="absolute inset-0 flex items-center justify-center">
+                <h4 className="text-white  text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl uppercase tracking-widest  font-bold">
+                  {t("kids_collection")}
+                </h4>
+              </div>
+            </Link>
+          </div>
         </div>
       </div>
     </div>

@@ -36,7 +36,7 @@ const Carousal = () => {
 
   useEffect(() => {
     const handleLanguageChange = () => {
-      setKey((prevKey) => prevKey + 1); // Increment key to trigger a re-render
+      setKey((prevKey) => prevKey + 1);
     };
 
     i18n.on("languageChanged", handleLanguageChange);
@@ -49,7 +49,7 @@ const Carousal = () => {
 
   return (
     <div key={key}>
-      <Carousel className="w-full bg-[#FFFFFF] sm:bg-[#F8F9FB]">
+      <Carousel className="w-full bg-[#FAFBFC] sm:bg-[#F8F9FB]">
         <CarouselContent>
           {slides.map((slide, index) => (
             <CarouselItem key={index} className="sm:w-full h-full">
@@ -62,13 +62,13 @@ const Carousal = () => {
                 >
                   <div className="sm:container">
                     <div className="sm:w-1/2 w-full p-5">
-                      <h5 className="uppercase text-gray-800 text-2xl mb-2 tracking-widest">
+                      <h5 className="uppercase text-gray-800 font-medium font-mono text-2xl mb-2 tracking-widest">
                         <Trans i18nKey={slide.seasonKey} />
                       </h5>
-                      <h2 className="sm:text-5xl text-3xl font-semibold mb-3">
+                      <h2 className="sm:text-5xl text-3xl  font-bold mb-3">
                         <Trans i18nKey={slide.captionKey} />
                       </h2>
-                      <p className="text-lg mb-4">
+                      <p className="text-xl font-light pr-5 mb-4">
                         <Trans i18nKey={slide.descriptionKey} />
                       </p>
                       <Link
@@ -78,7 +78,9 @@ const Carousal = () => {
                           variant: "checkoutButton",
                         })}
                       >
-                        <Trans i18nKey="buttonName" />
+                        <span className="text-xs tracking-widest">
+                          <Trans i18nKey="buttonName" />
+                        </span>
                       </Link>
                     </div>
                   </div>

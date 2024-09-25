@@ -6,6 +6,7 @@ import { useLocation } from "react-router-dom";
 const OrderSummary = ({ cartItems: propCartItems }) => {
   const location = useLocation();
   const dispatch = useDispatch();
+
   let deliveryFee = 0;
   const checkoutData = useSelector((state) => state.checkout.checkoutData);
   let cartProducts = [];
@@ -31,7 +32,7 @@ const OrderSummary = ({ cartItems: propCartItems }) => {
   }
   useEffect(() => {
     dispatch(addAmount(total + 100 + deliveryFee));
-  }, []);
+  }, [dispatch, total, deliveryFee]);
 
   return (
     <div>

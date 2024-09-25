@@ -20,7 +20,9 @@ const Home = () => {
         <PromotionalProductGrid />
       </div>
 
-      <ProductCategories />
+      <div className="bg-[#F8F9FA]">
+        <ProductCategories />
+      </div>
       <ServiceHighlights />
     </div>
   );

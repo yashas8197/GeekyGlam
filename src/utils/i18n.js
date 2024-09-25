@@ -28,9 +28,9 @@ const resources = {
       shop_now: "Shop now",
 
       // New translations for collections
-      mens_collection: "Men's Collection",
-      womens_collection: "Women's Collection",
-      kids_collection: "Kid's Collection",
+      mens_collection: "Men",
+      womens_collection: "Women",
+      kids_collection: "Kid",
 
       sweaters_for_her: "Sweaters for her",
       price_sweaters: "₹3990",
@@ -129,9 +129,9 @@ const resources = {
       shop_now: "Compra ahora",
 
       // New translations for collections
-      mens_collection: "Colección para hombres",
-      womens_collection: "Colección para mujeres",
-      kids_collection: "Colección para niños",
+      mens_collection: "hombres",
+      womens_collection: "mujeres",
+      kids_collection: "niños",
 
       // New translations
       free_shipping_return: "Envío y devoluciones gratis",
@@ -227,9 +227,9 @@ const resources = {
       shop_now: "ಈಗ ಶಾಪ್ ಮಾಡಿ",
 
       // New translations for collections
-      mens_collection: "ಪುರುಷರ ಸಂಗ್ರಹ",
-      womens_collection: "ಮಹಿಳೆಗಳ ಸಂಗ್ರಹ",
-      kids_collection: "ಮಕ್ಕಳ ಸಂಗ್ರಹ",
+      mens_collection: "ಪುರುಷರ",
+      womens_collection: "ಮಹಿಳೆಗಳ",
+      kids_collection: "ಮಕ್ಕಳ",
 
       // New translations
       free_shipping_return: "ನಿರ್ವಹಣಾ & ವಾಪಸು",

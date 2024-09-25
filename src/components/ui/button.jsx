@@ -25,7 +25,7 @@ const buttonVariants = cva(
         addToCart:
           "rounded-none text-white font-semibold text-sm bg-slate-700 hover:opacity-80",
         checkoutButton:
-          "border border-black py-2 hover:text-white hover:bg-gray-600 rounded-none relative inline-flex items-center justify-start overflow-hidden transition-all group",
+          "border border-black py-5 hover:text-white hover:bg-gray-600 rounded-none relative inline-flex items-center justify-start overflow-hidden transition-all group",
       },
       size: {
         default: "h-9 px-4 py-2",

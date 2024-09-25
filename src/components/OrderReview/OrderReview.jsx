@@ -159,8 +159,6 @@ const OrderReview = () => {
         }
       );
 
-      console.log(response.data);
-
       const options = {
         key: "rzp_test_MfkVTZfHL3RsJj",
         amount: response.data.order.amount * 100,
@@ -272,6 +270,7 @@ const OrderReview = () => {
           <i className="bi bi-chevron-left"></i>back
         </Link>
         <button
+          disabled={cartItems.length === 0}
           onClick={razorpayHandler}
           className="tracking-widest text-xs uppercase py-3 px-20 font-semibold bg-slate-800  text-white border border-none hover:opacity-80"
         >
