@@ -1,8 +1,33 @@
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Footer = () => {
+  const location = useLocation();
   const { t } = useTranslation();
+  const [visible, setVisible] = useState(false);
+
+  const handleScroll = () => {
+    const scrollPosition = window.scrollY;
+    const halfPageHeight = document.documentElement.scrollHeight / 2;
+
+    setVisible(scrollPosition > halfPageHeight);
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
   return (
     <div>
       <div className="py-6 bg-gray-300 text-gray-600">
@@ -176,6 +201,20 @@ const Footer = () => {
           </div>
         </div>
       </div>
+
+      {location.pathname === "/" && (
+        <div
+          id="scrollTop"
+          className={`fixed bottom-8 right-8 w-11 h-11 leading-[45px] text-[#343a40] border border-[#343a40] text-center bg-white text-[0.8rem] z-[999] cursor-pointer transition-all duration-300 ease-in-out ${
+            visible
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 translate-y-4 pointer-events-none"
+          }`}
+          onClick={() => scrollToTop()}
+        >
+          <i className="fa fa-long-arrow-alt-up"></i>
+        </div>
+      )}
     </div>
   );
 };

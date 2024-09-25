@@ -6,12 +6,9 @@ const ProductCategories = () => {
   return (
     <div className="container mx-auto my-4 py-20">
       <div className="flex flex-col items-center justify-center text-center mb-12">
-        <h2 className="text-4xl font-bold font-serif ">
-          Explore Our Exclusive Collections
-        </h2>
+        <h2 className="text-4xl font-bold font-serif ">{t("title")}</h2>
         <p className="max-w-3xl text-[#868e96] font-sans text-xl font-light text-opacity-100 mb-4">
-          Discover the latest trends in men's, women's, and kids' fashion. Our
-          carefully curated collections bring you the best in style and quality.
+          {t("category_description")}
         </p>
       </div>
       <div className="grid  sm:grid-cols-2 sm:gap-4">

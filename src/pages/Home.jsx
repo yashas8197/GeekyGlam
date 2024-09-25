@@ -7,7 +7,7 @@ import PromotionalProductGrid from "@/components/PromotionalProductGrid/Promotio
 const Home = () => {
   const { t } = useTranslation();
   return (
-    <div className="mt-20">
+    <div className="">
       <div className="flex min-h-screen flex-col">
         <Carousal className="bg-[#F8F9FB]" />
         <div className="py-16 p-4 sm:mx-auto sm:w-1/2">

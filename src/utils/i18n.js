@@ -94,6 +94,9 @@ const resources = {
             "Brighten up your little one's wardrobe with our playful and comfortable clothing.",
         },
       },
+      title: "Explore Our Exclusive Collections",
+      category_description:
+        "Discover the latest trends in men's, women's, and kids' fashion. Our carefully curated collections bring you the best in style and quality.",
     },
   },
   es: {
@@ -192,6 +195,9 @@ const resources = {
             "Ilumina el guardarropa de tus pequeños con nuestra ropa cómoda y divertida.",
         },
       },
+      title: "Explora Nuestras Colecciones Exclusivas",
+      category_description:
+        "Descubre las últimas tendencias en moda para hombres, mujeres y niños. Nuestras colecciones cuidadosamente seleccionadas te traen lo mejor en estilo y calidad.",
     },
   },
   kn: {
@@ -290,6 +296,9 @@ const resources = {
             "ನಿಮ್ಮ ಚಿಕ್ಕವರ ಬಟ್ಟೆಯ ಅಲ್ಮಾರಿಯನ್ನು ನಮ್ಮ ಆನಂದಕರ ಮತ್ತು ಆರಾಮದಾಯಕ ಬಟ್ಟೆಯೊಂದಿಗೆ ಬೆಳಗಿಸಿ.",
         },
       },
+      title: "ನಮ್ಮ ವಿಶೇಷ ಸಂಗ್ರಹಗಳನ್ನು ಅನ್ವೇಷಿಸಿ",
+      category_description:
+        "ಪುರುಷರ, ಮಹಿಳೆಯರ ಮತ್ತು ಮಕ್ಕಳ ಫ್ಯಾಷನ್‌ನಲ್ಲಿ ಇತ್ತೀಚಿನ ಶ್ರೇಣಿಗಳನ್ನು ತಿಳಿಯಿರಿ. ನಮ್ಮ ಕಾಳಜಿಯೊಂದಿಗೆ ಆಯ್ಕೆ ಮಾಡಲಾದ ಸಂಗ್ರಹಗಳು ನಿಮಗೆ ಶ್ರೇಣಿಯಲ್ಲಿನ ಉತ್ತಮ ಮತ್ತು ಗುಣಮಟ್ಟವನ್ನು ತರುತ್ತವೆ.",
     },
   },
 };

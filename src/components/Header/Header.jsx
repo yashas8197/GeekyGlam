@@ -1,5 +1,5 @@
 import { CircleUser, Heart, Search, ShoppingCart } from "lucide-react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import {
   Popover,
   PopoverContent,
@@ -22,6 +22,7 @@ const Header = () => {
   const [langOpen, setLangOpen] = useState(false);
   const { products, status, error } = useSelector((state) => state.productList);
   const { toast } = useToast();
+  const location = useLocation();
 
   const navigate = useNavigate();
   const cartItems = products.filter((cart) => cart.in_cart === true);
@@ -95,7 +96,13 @@ const Header = () => {
   };
 
   return (
-    <header className="fixed top-0 left-0 w-full z-50 bg-white shadow-md">
+    <header
+      className={`w-full ${
+        location.pathname === "/"
+          ? "bg-[#F8F9FB]"
+          : "bg-white fixed top-0 left-0 z-50"
+      } shadow-md`}
+    >
       <nav className="py-6">
         <div className="container flex justify-between items-center ">
           <NavLink
