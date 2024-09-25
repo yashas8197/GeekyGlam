@@ -28,6 +28,7 @@ To get started with GeekyGlam locally, follow these steps:
 - 📜 **Pagination on Product Listing Page**
 - 💳 **Payment Gateway Integration**
 - 🌐 **Language Translation (i18Next) for Kannada and Spanish**
+- 📱 Fully Responsive
 
 ## Upcoming Features
 
@@ -35,7 +36,6 @@ To get started with GeekyGlam locally, follow these steps:
 - 📝 User Signup
 - 🔑 User Login
 - 🚪 Logout Page
-- 🌐 Fully Responsive
 - ⚠️ Error Page
 
 ## **Built With**

@@ -8,7 +8,10 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { Button } from "../ui/button";
-import { fetchProducts, toggleCartOptimistic } from "@/utils/productListSlice";
+import {
+  fetchProductsByCategory,
+  toggleCartOptimistic,
+} from "@/utils/productListSlice";
 import i18next from "i18next";
 import { updateDataApi } from "@/utils/productDetailsSlice";
 import { useToast } from "../ui/use-toast";
@@ -24,7 +27,7 @@ const Header = () => {
   const cartItems = products.filter((cart) => cart.in_cart === true);
 
   useEffect(() => {
-    dispatch(fetchProducts());
+    dispatch(fetchProductsByCategory("All"));
   }, [dispatch]);
 
   const handleViewCart = () => {

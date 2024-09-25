@@ -3,15 +3,6 @@ import axios from "axios";
 
 const BASE_URL = import.meta.env.VITE_API_URL;
 
-export const fetchProducts = createAsyncThunk(
-  "products/fetchProducts",
-  async () => {
-    const response = await axios.get(`${BASE_URL}/products/All`);
-
-    return response.data;
-  }
-);
-
 export const fetchProductsByCategory = createAsyncThunk(
   "products/fetchProductsByCategory",
   async (category) => {
@@ -118,17 +109,6 @@ export const productListSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(fetchProducts.pending, (state) => {
-      state.status = "loading";
-    });
-    builder.addCase(fetchProducts.fulfilled, (state, action) => {
-      state.status = "fulfilled";
-      state.products = action.payload.products;
-    });
-    builder.addCase(fetchProducts.rejected, (state, action) => {
-      state.status = "error";
-      state.error = action.payload.message;
-    });
     builder.addCase(fetchProductsByCategory.pending, (state) => {
       state.status = "loading";
     });

@@ -1,13 +1,13 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ProductCard from "../ProductCard/ProductCard";
-import { fetchProducts } from "@/utils/productListSlice";
+import { fetchProductsByCategory } from "@/utils/productListSlice";
 
 const ExploreMore = () => {
   const dispatch = useDispatch();
   const { products } = useSelector((state) => state.productList);
   useEffect(() => {
-    dispatch(fetchProducts());
+    dispatch(fetchProductsByCategory("All"));
   }, []);
 
   if (!products) return;

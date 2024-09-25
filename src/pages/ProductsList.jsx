@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { useLocation, useSearchParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import {
   categoryFilter,
   clearCategoryFilter,
   clearSort,
-  fetchProducts,
   fetchProductsByCategory,
   setSort,
 } from "../utils/productListSlice";
@@ -33,66 +32,56 @@ const ProductsList = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [productsPerPage, setProductsPerPage] = useState(6);
 
-  const [query, setQuery] = useSearchParams({
+  const [query, setQuery] = useState({
     cSize: "",
     cPrice: "",
     sort: "",
-    selectedCat: "",
+    selectedCat: filterCategory,
   });
 
+  let updatedSelectedItems = [...category];
+
   useEffect(() => {
-    if (filterCategory === "All") {
-      dispatch(fetchProducts());
-      dispatch(clearCategoryFilter());
-      dispatch(categoryFilter({ value: filterCategory, checked: true }));
-    } else {
-      dispatch(fetchProductsByCategory(filterCategory));
-      dispatch(clearCategoryFilter());
-      dispatch(categoryFilter({ value: filterCategory, checked: true }));
-    }
-  }, []);
+    dispatch(fetchProductsByCategory(filterCategory));
+    dispatch(clearCategoryFilter());
+
+    dispatch(categoryFilter({ value: filterCategory, checked: true }));
+  }, [dispatch]);
 
   const maxValue = products.reduce(
     (acc, curr) => (parseInt(curr.price) > acc ? parseInt(curr.price) : acc),
     0
   );
 
-  const cSize = query.get("cSize");
-  const cPrice = query.get("cPrice") || maxValue;
-  const sort = query.get("sort");
-  const selectedCat = query.get("selectedCat")?.split(",") || [];
+  const cSize = query.cSize;
+  const cPrice = query.cPrice || maxValue;
+  const sort = query.sort;
+  const selectedCat = query.selectedCat?.split(",") || [];
 
   const handleCategoryChange = (value, checked) => {
-    const updatedSelectedItems = checked
+    updatedSelectedItems = checked
       ? [...selectedCat, value]
       : selectedCat.filter((selectedItem) => selectedItem !== value);
-
     dispatch(categoryFilter({ value: value, checked: checked }));
-    dispatch(fetchProducts());
-    setQuery(
-      (prev) => {
-        prev.set("selectedCat", updatedSelectedItems.join(","));
-        return prev;
-      },
-      { return: true }
-    );
+    dispatch(fetchProductsByCategory("All"));
+    setQuery((prev) => ({
+      ...prev,
+      selectedCat: updatedSelectedItems.join(","),
+    }));
   };
 
   const handleSizeChange = (value) => {
-    setQuery(
-      (prev) => {
-        prev.set("cSize", value);
-        return prev;
-      },
-      { replace: true }
-    );
+    setQuery((prev) => ({
+      ...prev,
+      cSize: value,
+    }));
   };
 
   const handleSortChange = (value) => {
-    setQuery((prev) => {
-      prev.set("sort", value);
-      return prev;
-    });
+    setQuery((prev) => ({
+      ...prev,
+      sort: value,
+    }));
 
     dispatch(setSort(value));
   };
@@ -118,20 +107,15 @@ const ProductsList = () => {
   });
 
   const clearFilters = () => {
-    setQuery(
-      (prev) => {
-        prev.delete("cSize");
-        prev.delete("cPrice");
-        prev.delete("sort");
-        prev.delete("selectedCat");
-        return prev;
-      },
-      { replace: true }
-    );
+    setQuery({
+      cSize: "",
+      cPrice: "",
+      sort: "",
+      selectedCat: "",
+    });
 
     dispatch(clearCategoryFilter());
     dispatch(clearSort());
-    dispatch(fetchProducts());
   };
 
   //Get current posts
@@ -208,10 +192,10 @@ const ProductsList = () => {
                 max={maxValue}
                 min={299}
                 onValueChange={(value) =>
-                  setQuery((prev) => {
-                    prev.set("cPrice", value);
-                    return prev;
-                  })
+                  setQuery((prev) => ({
+                    ...prev,
+                    cPrice: value,
+                  }))
                 }
               />
             </div>
