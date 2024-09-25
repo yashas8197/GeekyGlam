@@ -6,11 +6,14 @@ export const addressSlice = createSlice({
     addresses: [
       {
         id: 1,
+        fullName: "John Doe",
         street: "123 Main St",
         city: "Springfield",
         state: "IL",
         postalCode: "62701",
         country: "USA",
+        email: "johndoe@gmail.com",
+        phoneNumber: "9857646372",
       },
     ],
   },

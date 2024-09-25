@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addInfo } from "@/utils/checkoutSlice";
 import { Link } from "react-router-dom";
 
 const BillingAddressForm = ({ goToNextTab }) => {
+  const addresses = useSelector((state) => state.address.addresses);
   const [formData, setFormData] = useState({
     fullName: "",
     street: "",
@@ -56,6 +57,33 @@ const BillingAddressForm = ({ goToNextTab }) => {
       // console.log("Form Data Submitted: ", formData);
     } else {
       setErrors(formErrors);
+    }
+  };
+
+  const handleUseAddress = (e) => {
+    const { checked } = e.target;
+
+    if (checked) {
+      const address = addresses[0];
+      setFormData({
+        fullName: address.fullName || "",
+        street: address.street || "",
+        zip: address.postalCode || "",
+        phoneNumber: address.phoneNumber || "",
+        email: address.email || "",
+        city: address.city || "",
+        state: address.state || "",
+      });
+    } else {
+      setFormData({
+        fullName: "",
+        street: "",
+        zip: "",
+        phoneNumber: "",
+        email: "",
+        city: "",
+        state: "",
+      });
     }
   };
 
@@ -159,6 +187,15 @@ const BillingAddressForm = ({ goToNextTab }) => {
                 </div>
               </label>
             </div>
+
+            <input
+              onChange={handleUseAddress}
+              type="checkbox"
+              id="useExistingAddress"
+            />
+            <label htmlFor="useExistingAddress" className="text-sm mx-2">
+              Use existing address
+            </label>
           </div>
 
           <div>
