@@ -8,6 +8,7 @@ import {
 } from "@/utils/productListSlice";
 import { updateDataApi } from "@/utils/productDetailsSlice";
 import { useDispatch } from "react-redux";
+import { SyncLoader } from "react-spinners";
 
 const ProductInfoSection = ({ product, fashion, isModal }) => {
   const [noOfItems, setNoOfItems] = useState(1);
@@ -99,8 +100,8 @@ const ProductInfoSection = ({ product, fashion, isModal }) => {
         <img
           className={`${
             isModal
-              ? "2xl:w-3/4 h-full object-cover"
-              : "w-full h-full object-cover"
+              ? "2xl:w-[90%] h-[95%] object-cover"
+              : "w-full h-[95%] object-cover object-bottom"
           }`}
           src={product.image}
           loading="lazy"

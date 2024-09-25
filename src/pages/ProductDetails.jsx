@@ -20,17 +20,15 @@ const ProductDetails = () => {
 
   const fashion = true;
 
-  if (status === "loading") {
-    return (
-      <div className="flex justify-center items-center min-h-screen">
-        <SyncLoader size={20} color="#4A90E2" />
-      </div>
-    );
-  }
-
   return (
     <>
-      <ProductInfoSection product={product} fashion={fashion} />
+      {status === "loading" ? (
+        <div className="flex justify-center items-center min-h-screen">
+          <SyncLoader size={20} color="#4A90E2" />
+        </div>
+      ) : (
+        <ProductInfoSection product={product} fashion={fashion} />
+      )}
       <div className=" container w-full">
         <ProductOverview product={product} />
       </div>
