@@ -40,7 +40,6 @@ export const reviewPost = createAsyncThunk(
       review
     );
 
-    console.log(response);
     return response.data;
   }
 );
@@ -54,7 +53,6 @@ export const productDetailsSlice = createSlice({
   },
   reducers: {
     reviewProduct: (state, action) => {
-      console.log(action.payload);
       state.product.reviewsList.push(action.payload);
     },
   },

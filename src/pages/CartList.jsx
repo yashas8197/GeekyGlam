@@ -9,7 +9,7 @@ import { updateDataApi } from "@/utils/productDetailsSlice";
 import {
   incrementQuantity,
   toggleCartOptimistic,
-  fetchProducts,
+  fetchProductsByCategory,
   decrementQuantity,
 } from "@/utils/productListSlice";
 import OrderSummary from "@/components/OrderSummary/OrderSummary";
@@ -23,7 +23,7 @@ const CartList = () => {
   const cartItems = products.filter((cart) => cart.in_cart === true);
 
   useEffect(() => {
-    dispatch(fetchProducts());
+    dispatch(fetchProductsByCategory("All"));
   }, [dispatch]);
 
   const handleCheckout = (cartItems) => {

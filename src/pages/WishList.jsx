@@ -2,7 +2,7 @@ import ProductCard from "@/components/ProductCard/ProductCard";
 import { Button } from "@/components/ui/button";
 import { updateDataApi } from "@/utils/productDetailsSlice";
 import {
-  fetchProducts,
+  fetchProductsByCategory,
   toggleWishlistOptimistic,
 } from "@/utils/productListSlice";
 import { ChevronLeft, X } from "lucide-react";
@@ -19,7 +19,7 @@ const WishList = () => {
   const wishlistItems = products.filter((cart) => cart.is_wished === true);
 
   useEffect(() => {
-    dispatch(fetchProducts());
+    dispatch(fetchProductsByCategory("All"));
   }, [dispatch]);
 
   if (status === "loading") {
