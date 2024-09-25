@@ -187,15 +187,6 @@ const BillingAddressForm = ({ goToNextTab }) => {
                 </div>
               </label>
             </div>
-
-            <input
-              onChange={handleUseAddress}
-              type="checkbox"
-              id="useExistingAddress"
-            />
-            <label htmlFor="useExistingAddress" className="text-sm mx-2">
-              Use existing address
-            </label>
           </div>
 
           <div>
@@ -267,6 +258,16 @@ const BillingAddressForm = ({ goToNextTab }) => {
             </div>
           </div>
         </div>
+
+        <input
+          className="ml-2"
+          onChange={handleUseAddress}
+          type="checkbox"
+          id="useExistingAddress"
+        />
+        <label htmlFor="useExistingAddress" className="text-sm mx-2">
+          Use existing address
+        </label>
         <div className="container flex flex-col sm:flex-row sm:justify-between items-center">
           <Link
             to="/cartlist"
