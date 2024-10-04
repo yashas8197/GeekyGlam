@@ -183,7 +183,7 @@ const CarouselPrevious = React.forwardRef(
       >
         <span className="hidden lg:flex items-center justify-center cursor-pointer">
           <img
-            src="https://demo.bootstrapious.com/sell/2-0-1/img/prev-dark.svg"
+            src="https://res.cloudinary.com/dlrlwy7hg/image/upload/v1728029832/prev-dark_nqg3p7.svg"
             alt="Previous"
             className="w-12" // Set width and height for the image
           />
@@ -218,7 +218,7 @@ const CarouselNext = React.forwardRef(
       >
         <span className="hidden lg:flex items-center justify-center cursor-pointer">
           <img
-            src="https://demo.bootstrapious.com/sell/2-0-1/img/next-dark.svg"
+            src="https://res.cloudinary.com/dlrlwy7hg/image/upload/q_auto,f_auto/v1728029832/next-dark_vab2ar.svg"
             alt="Previous"
             className="w-12" // Set width and height for the image
           />

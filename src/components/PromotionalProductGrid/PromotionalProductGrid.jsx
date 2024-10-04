@@ -9,7 +9,7 @@ const PromotionalProductGrid = () => {
         <div className="col-span-4 mt-4 mb-4">
           <img
             className="w-full "
-            src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/product/artboard-bag.jpg"
+            src="https://res.cloudinary.com/dlrlwy7hg/image/upload/q_auto,f_auto/v1728029403/artboard-bag_y4pm5i.jpg"
             alt=""
           />
           <div className="px-4 sm:relative z-10 -mt-4">
@@ -54,7 +54,7 @@ const PromotionalProductGrid = () => {
           <div className="ml-24">
             <img
               className="w-full h-auto"
-              src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/photo/matthew-kane-365718-unsplash-gray-square.jpg"
+              src="https://res.cloudinary.com/dlrlwy7hg/image/upload/v1728029403/matthew-kane-365718-unsplash-gray-square_rw26ld.jpg"
               alt=""
             />
           </div>

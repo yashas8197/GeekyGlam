@@ -42,6 +42,7 @@ const ProductsList = () => {
   let updatedSelectedItems = [...category];
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     dispatch(fetchProductsByCategory(filterCategory));
     dispatch(clearCategoryFilter());
 

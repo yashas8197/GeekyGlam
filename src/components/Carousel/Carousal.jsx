@@ -15,19 +15,19 @@ const Carousal = () => {
   const [key, setKey] = useState(0);
   const slides = [
     {
-      img: "https://demo.bootstrapious.com/sell/2-0-1/img/slider/circle-slider-1.jpg",
+      img: "https://res.cloudinary.com/dlrlwy7hg/image/upload/q_auto,f_auto/v1722769196/circle-slider-1_oe2emx.jpg",
       captionKey: "caption_autumn_coats",
       seasonKey: "season_special",
       descriptionKey: "description_autumn",
     },
     {
-      img: "https://demo.bootstrapious.com/sell/2-0-1/img/slider/circle-slider-3.jpg",
+      img: "https://res.cloudinary.com/dlrlwy7hg/image/upload/q_auto,f_auto/v1722769196/circle-slider-3_mewyfg.jpg",
       captionKey: "caption_bestseller",
       seasonKey: "season_special",
       descriptionKey: "description_adventure",
     },
     {
-      img: "https://demo.bootstrapious.com/sell/2-0-1/img/slider/circle-slider-2.jpg",
+      img: "https://res.cloudinary.com/dlrlwy7hg/image/upload/q_auto,f_auto/v1722769196/circle-slider-2_vty8mf.jpg",
       captionKey: "caption_college_jackets",
       seasonKey: "season_arrived",
       descriptionKey: "description_sunset",

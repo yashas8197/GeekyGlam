@@ -15,6 +15,7 @@ const ProductDetails = () => {
   const { product, status } = useSelector((state) => state.productDetails);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     dispatch(fetchProductDetails(productId));
   }, [productId]);
 
@@ -24,7 +25,7 @@ const ProductDetails = () => {
     <>
       {status === "loading" ? (
         <div className="flex justify-center items-center min-h-screen">
-          <SyncLoader size={20} color="#4A90E2" />
+          <SyncLoader size={20} color="#3b82f6" />
         </div>
       ) : (
         <ProductInfoSection product={product} fashion={fashion} />

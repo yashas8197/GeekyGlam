@@ -19,13 +19,14 @@ const WishList = () => {
   const wishlistItems = products.filter((cart) => cart.is_wished === true);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     dispatch(fetchProductsByCategory("All"));
   }, [dispatch]);
 
   if (status === "loading") {
     return (
       <div className="flex justify-center items-center min-h-screen">
-        <SyncLoader size={20} color="#4A90E2" />
+        <SyncLoader size={20} color="#3b82f6" />
       </div>
     );
   }

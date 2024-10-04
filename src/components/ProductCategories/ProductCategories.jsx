@@ -21,7 +21,7 @@ const ProductCategories = () => {
             <div className="h-full flex justify-start">
               <img
                 className="sm:w-full w-[426.4px] sm:h-full h-[230px] mb-4 object-cover filter brightness-75"
-                src="https://demo.bootstrapious.com/sell/2-0-1/img/photo/nordwood-themes-481980-unsplash-square.jpg"
+                src="https://res.cloudinary.com/dlrlwy7hg/image/upload/q_auto,f_auto/v1728029403/nordwood-themes-481980-unsplash-square_ezhuca.jpg"
                 alt="Men's Collection"
                 loading="lazy"
               />
@@ -43,7 +43,7 @@ const ProductCategories = () => {
             >
               <img
                 className="filter brightness-75"
-                src="https://demo.bootstrapious.com/sell/2-0-1/img/photo/malvestida-magazine-458585-unsplash.jpg"
+                src="https://res.cloudinary.com/dlrlwy7hg/image/upload/q_auto,f_auto/v1728029609/malvestida-magazine-458585-unsplash_t9zd2v.jpg"
                 alt="Women's Collection"
                 loading="lazy"
               />
