@@ -30,7 +30,7 @@ const ProductsList = () => {
   const sortBy = useSelector((state) => state.productList.filters.sortBy);
   const filterCategory = location.state || "All";
   const [currentPage, setCurrentPage] = useState(1);
-  const [productsPerPage, setProductsPerPage] = useState(6);
+  const productsPerPage = 6;
 
   const [query, setQuery] = useState({
     cSize: "",
