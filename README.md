@@ -1,5 +1,5 @@
 <div align="center">
-    <h1 align="center">geekyGlam</h1>
+    <h1 align="center">Geeky Glam</h1>
     <h2 align="center">Where Style Meets Trend</h2>
     <p align="center">Discover the latest fashion trends and elevate your wardrobe with our exclusive collection of new clothes.</p>
 </div>
